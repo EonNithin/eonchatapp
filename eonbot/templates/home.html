@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+  <div class="card-header">
+    Hi there!, Welcome to Eon Chat App :)
+  </div><br/>
+
+  <div class="card-body" style="max-height: 650px; overflow-y: auto; ">
+
+    {% for message in conversation_history %}
+      {% if forloop.counter|divisibleby:2 %}
+        <pre>Eon: {{ message }}</pre><hr>
+      {% else %}
+        <p>You: {{ message }}</p>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+</div>
+<br/><br/>
+
+<form method="post" action="{% url 'home' %}">
+  {% csrf_token %}
+  <div class="mb-3">
+    <input type="text" class="form-control" name="question" placeholder="Ask your question here...">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br/>
+
+{% endblock content %}
