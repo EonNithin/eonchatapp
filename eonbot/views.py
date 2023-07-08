@@ -68,3 +68,4 @@ def home(request):
         return render(request, "home.html", {"question": question, "response": response, "conversation_history":conversation_history })
 
     return render(request, "home.html", {})
+
