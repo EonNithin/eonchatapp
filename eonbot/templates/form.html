@@ -1,21 +1,21 @@
 
 <form method="post" action="{% url 'home' %}" id="myForm">
     {% csrf_token %}
+    <div class="progress-bar progress-bar-striped" style="display: none;">
+    <div class="progress-fill"></div>
+    </div>
+
+    <div class="progress-bar progress-bar-striped" style="display: none;">
+    <div class="progress-fill"></div>
+    </div>
+
+    <div class="progress-bar progress-bar-striped" style="display: none;">
+    <div class="progress-fill"></div>
+    </div>
     <div class="mb-3">
         <input type="text" class="form-control" name="question" placeholder="Ask your question here...">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </br>
-<div class="progress-bar progress-bar-striped" style="display: none;">
-    <div class="progress-fill"></div>
-</div>
-
-<div class="progress-bar progress-bar-striped" style="display: none;">
-    <div class="progress-fill"></div>
-</div>
-
-<div class="progress-bar progress-bar-striped" style="display: none;">
-    <div class="progress-fill"></div>
-</div>
 
