@@ -26,3 +26,4 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
         document.getElementById("myForm").reset();
     }, 5000); // Adjust the timeout value or replace with your actual request
 });
+

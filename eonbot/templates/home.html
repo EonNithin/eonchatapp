@@ -10,9 +10,9 @@
 
     {% for message in conversation_history %}
       {% if forloop.counter|divisibleby:2 %}
-        <pre>Eon: {{ message }}</pre><hr>
+        <pre>{{ message }}</pre><hr>
       {% else %}
-        <p>You: {{ message }}</p>
+        <p> {{ message }}</p>
       {% endif %}
     {% endfor %}
 
@@ -23,3 +23,4 @@
 <br/>
 
 {% endblock content %}
+
