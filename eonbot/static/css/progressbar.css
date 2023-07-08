@@ -3,7 +3,8 @@
 .progress-bar {
     width: 100%;
     height: 10px;
-    background-color: #f1f1f1;
+    overflow: visible;
+    background-color: #007bff;
     position: relative;
     border-radius: 5px; /* Rounded edges */
     margin-bottom: 5px;  /*Spacing between progress bars */
@@ -11,7 +12,7 @@
 
 .progress-fill {
     height: 100%;
-    background-color: #007bff;
+    background-color: #f1f1f1;
     position: absolute;
     top: 0;
     left: 0;
