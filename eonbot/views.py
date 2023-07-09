@@ -22,7 +22,7 @@ def get_chatgpt_response(question):
     if is_syllabus_related_question(question):
         # API implementation
         # Set API Key
-        openai.api_key = "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"
+        openai.api_key = "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"
         # Create Openai instance
         openai.Model.list()
 
