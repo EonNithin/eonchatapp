@@ -1,6 +1,9 @@
+import os
 from django.shortcuts import render
 from django.http import HttpResponse
 import openai
+
+from eonchatapp.settings import OPENAI_API_KEY
 
 # Set of syllabus-related keywords
 syllabus_keywords = {"hi", "hello", "cbse", "class", "grade", "mathematics", "science", "physics", "chemistry", "biology",
@@ -21,10 +24,14 @@ def get_chatgpt_response(question):
 
     if is_syllabus_related_question(question):
         # API implementation
-        # Set API Key
-        openai.api_key = "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"
-        # Create Openai instance
-        openai.Model.list()
+
+        # Get OpenAI api key from environment variables path(eonchatapp-m3).
+        # Set the API key
+        openai.api_key = OPENAI_API_KEY
+        print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
+
+        # Make API requests or use the API key as required
+        # ...
 
         # Append the current question to the conversation history
         conversation_history.append(question)
