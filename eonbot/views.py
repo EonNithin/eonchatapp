@@ -24,6 +24,8 @@ def get_chatgpt_response(question):
     if is_syllabus_related_question(question):
         # API implementation
 
+        # create openai instance
+        openai.Model.list()
         # Set the API key -- Get OpenAI api key from environment variables path(eonchatapp-m3) done in settings.py file.
         openai.api_key = OPENAI_API_KEY
         #print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
