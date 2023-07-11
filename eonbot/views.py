@@ -1,12 +1,27 @@
+import json
 import os
 from django.shortcuts import render
 from django.http import HttpResponse
 import openai
+import eonchatapp
+from eonchatapp import settings
 from eonchatapp.settings import OPENAI_API_KEY
+import pandas as pd
+from django.templatetags.static import static
+
+# CSV file data importing and processing
+csv_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE-Syllabus.csv')
+# static('csv_files/CBSE-Syllabus.csv')  # Update with the actual CSV file name
+df = pd.read_csv(csv_file_path)
+# Handle missing values
+df = df.dropna()  # Drop rows with missing values
+# Convert the DataFrame to a JSON serializable format
+json_data = df.to_dict(orient='records')
+# Convert the JSON serializable data to a string
+data_str = json.dumps(json_data)
 
 # Set of syllabus-related keywords
-syllabus_keywords = {"hi", "hello", "cbse", "class", "grade", "mathematics", "science", "physics", "chemistry", "biology",
-                     "continue", "thanks", "quit", "exit", "ok", "question", "yes", "no", "nothing"}
+syllabus_keywords = data_str
 
 # Variable to store the conversation history
 conversation_history = []
@@ -38,6 +53,7 @@ def get_chatgpt_response(question):
 
         # Construct the prompt using conversation history
         prompt = "\n".join(conversation_history)
+        #prompt = ",".join(syllabus_keywords)
 
         # Make a Completion
         response = openai.Completion.create(
