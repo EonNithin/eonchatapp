@@ -10,13 +10,19 @@ import pandas as pd
 from django.templatetags.static import static
 
 # CSV file data importing and processing
-csv_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE-Syllabus.csv')
+csv_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus.csv')
 # static('csv_files/CBSE-Syllabus.csv')  # Update with the actual CSV file name
 df = pd.read_csv(csv_file_path)
+
+# Handle missing values
+#df = df.dropna()  # Drop rows with missing values
+
 # Handle missing values
 df = df.dropna()  # Drop rows with missing values
+
 # Convert the DataFrame to a JSON serializable format
-json_data = df.to_dict(orient='records')
+json_data = df.to_dict(orient='list')
+
 # Convert the JSON serializable data to a string
 data_str = json.dumps(json_data)
 
@@ -45,22 +51,22 @@ def get_chatgpt_response(question):
         openai.api_key = OPENAI_API_KEY
         #print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
 
-        # Make API requests or use the API key as required
-        # ...
-
         # Append the current question to the conversation history
         conversation_history.append(question)
 
         # Construct the prompt using conversation history
+
         prompt = "\n".join(conversation_history)
         #prompt = ",".join(syllabus_keywords)
+        if prompt=='':
+            prompt = syllabus_keywords
 
         # Make a Completion
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=prompt,
             temperature=0.5,
-            max_tokens=100,
+            max_tokens=300,
             top_p=0,
             frequency_penalty=0,
             presence_penalty=0
