@@ -10,24 +10,37 @@ import pandas as pd
 from django.templatetags.static import static
 
 # CSV file data importing and processing
-csv_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus.csv')
+csv_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus class9&10.csv')
 # static('csv_files/CBSE-Syllabus.csv')  # Update with the actual CSV file name
 df = pd.read_csv(csv_file_path)
+print('begin dataframe'+'='*50)
+print(df)
+print('end dataframe'+'='*50)
 
 # Handle missing values
-#df = df.dropna()  # Drop rows with missing values
-
-# Handle missing values
-df = df.dropna()  # Drop rows with missing values
+df = df.stack().reset_index(drop=True).to_frame()
+df = df.dropna() # Drop rows with missing values
+print('begin dataframe after dropped missing values'+'='*50)
+print(df)
+print('end dataframe'+'='*50)
 
 # Convert the DataFrame to a JSON serializable format
 json_data = df.to_dict(orient='list')
+print('begin dataframe'+'='*50)
+print(json_data)
+print('end dataframe'+'='*50)
 
 # Convert the JSON serializable data to a string
 data_str = json.dumps(json_data)
+print('begin dataframe'+'='*50)
+print(data_str)
+print('end dataframe'+'='*50)
 
 # Set of syllabus-related keywords
 syllabus_keywords = data_str
+print('begin syllabus_keywords'+'='*50)
+print(syllabus_keywords)
+print('end syllabus_keywords'+'='*50)
 
 # Variable to store the conversation history
 conversation_history = []
@@ -57,9 +70,9 @@ def get_chatgpt_response(question):
         # Construct the prompt using conversation history
 
         prompt = "\n".join(conversation_history)
-        #prompt = ",".join(syllabus_keywords)
+
         if prompt=='':
-            prompt = syllabus_keywords
+            prompt = 'Answer as consisely as possible'+syllabus_keywords
 
         # Make a Completion
         response = openai.Completion.create(
