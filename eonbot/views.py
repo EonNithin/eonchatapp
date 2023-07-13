@@ -13,34 +13,34 @@ from django.templatetags.static import static
 csv_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus class9&10.csv')
 # static('csv_files/CBSE-Syllabus.csv')  # Update with the actual CSV file name
 df = pd.read_csv(csv_file_path)
-print('begin dataframe'+'='*50)
+print('begin dataframe\n'+'='*50)
 print(df)
-print('end dataframe'+'='*50)
+print('end dataframe\n'+'='*50)
 
 # Handle missing values
 df = df.stack().reset_index(drop=True).to_frame()
 df = df.dropna() # Drop rows with missing values
-print('begin dataframe after dropped missing values'+'='*50)
+print('begin dataframe after dropped missing values\n'+'='*50)
 print(df)
-print('end dataframe'+'='*50)
+print('end dataframe\n'+'='*50)
 
 # Convert the DataFrame to a JSON serializable format
 json_data = df.to_dict(orient='list')
-print('begin dataframe'+'='*50)
+print('begin dataframe\n'+'='*50)
 print(json_data)
-print('end dataframe'+'='*50)
+print('end dataframe\n'+'='*50)
 
 # Convert the JSON serializable data to a string
 data_str = json.dumps(json_data)
-print('begin dataframe'+'='*50)
+print('begin dataframe\n'+'='*50)
 print(data_str)
-print('end dataframe'+'='*50)
+print('end dataframe\n'+'='*50)
 
 # Set of syllabus-related keywords
 syllabus_keywords = data_str
-print('begin syllabus_keywords'+'='*50)
+print('begin syllabus_keywords\n'+'='*50)
 print(syllabus_keywords)
-print('end syllabus_keywords'+'='*50)
+print('end syllabus_keywords\n'+'='*50)
 
 # Variable to store the conversation history
 conversation_history = []
