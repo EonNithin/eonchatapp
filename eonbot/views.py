@@ -54,8 +54,7 @@ def get_chatgpt_response(question):
 
         prompt = "\n".join(conversation_history)
 
-        if prompt=='':
-            prompt = 'please provide information about '+relevant_info_str
+        prompt = 'please provide information about '+relevant_info_str
 
         # Make a Completion
         response = openai.ChatCompletion.create(
