@@ -10,7 +10,7 @@ import pandas as pd
 from django.templatetags.static import static
 
 # CSV file data importing and processing
-csv_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus.csv')
+csv_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus class9&10.csv')
 # static('csv_files/CBSE-Syllabus.csv')  # Update with the actual CSV file name
 
 df = pd.read_csv(csv_file_path)
@@ -21,10 +21,6 @@ relevant_info = df.dropna() # Drop rows with missing values
 
 # Convert the extracted information to a string
 syllabus_keywords = relevant_info_str = ','.join(df.values.flatten())
-
-print('begin dataframe'+'='*50)
-print(relevant_info_str)
-print('end dataframe'+'='*50)
 
 # Variable to store the conversation history
 conversation_history = []
@@ -51,9 +47,9 @@ def get_chatgpt_response(question):
         conversation_history.append(question)
 
         # Construct the prompt using conversation history
-
         prompt = "\n".join(conversation_history)
 
+        # send relevant info as prompt to openai completion
         prompt = 'please provide information about '+relevant_info_str
 
         # Make a Completion
@@ -64,14 +60,13 @@ def get_chatgpt_response(question):
                 {"role": "user", "content": question}
             ],
             temperature=0.5,
-            max_tokens=300,
+            max_tokens=1300,
             top_p=0,
             frequency_penalty=0,
             presence_penalty=0
         )
-        # Get the last response from the API
-        response = response['choices'][0]['message']['content'] if 'choices' in response else response['message'][
-            'content']
+        response_content = response['choices'][0]['message'][ 'content'] if response and 'choices' in response else 'Sorry, Something went wrong cannot process your request at the moment. Please try again later.'
+        response = response_content.strip() if response_content else 'Sorry, I could not answer your question. Please try again later or ask a different question.'
 
         # Append the current question and AI response to the conversation history
         conversation_history.append(response)
