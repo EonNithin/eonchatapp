@@ -22,9 +22,8 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
         // Enable the submit button
         submitButton.disabled = false;
 
-        // Optional: Reset the form
-        document.getElementById("myForm").reset();
-    }, 10000); // Adjust the timeout value or replace with your actual request
+
+    }, 5000); // Adjust the timeout value or replace with your actual request
 });
 
 
