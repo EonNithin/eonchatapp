@@ -23,7 +23,7 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
         submitButton.disabled = false;
 
 
-    }, 5000); // Adjust the timeout value or replace with your actual request
+    }, 25000); // Adjust the timeout value or replace with your actual request
 });
 
 
