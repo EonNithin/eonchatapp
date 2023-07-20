@@ -1,0 +1,15 @@
+.t-symbol {
+  display: flex;
+  align-items: center;
+}
+
+.horizontal-bar {
+  display: flex;
+  align-items: center;
+  flex-direction:column;
+  /*gap: 10px; /* Adjust the gap between images as needed */
+}
+
+.vertical-bar {
+  margin-top: 5px; /* Adjust the margin to position the vertical bar as needed */
+}

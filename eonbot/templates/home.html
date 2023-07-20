@@ -2,31 +2,24 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+<div class="home-page" style="display: flex; ">
 
-<div class="card" >
-
-    <div class="card-header" style="display: flex; align-items: center; background-color: #ffffff;">
-        <img src="{% static 'images/eonbotlogo.jpg' %}" alt="eonbotlogo" style="max-width: 80%; max-height: 80px;">
-        <p>Hi there! How can I help you?</p>
+    <div class="left-div" >
+        {% include "images_left_div.html" %}
     </div>
+    <div class="right-div" >
+        <div class="right-div-card">
+            {% include "cardview.html" %}
+        </div>
 
-    <div class="card-body overflow-auto" id="cardBody">
-        <div class="scrollable-content">
-          {% for message in conversation_history %}
-            {% if forloop.counter|divisibleby:2 %}
-              <pre>Eon: {{ message }}</pre><hr>
-            {% else %}
-              <p>You: {{ message }}</p>
-            {% endif %}
-          {% endfor %}
+        <div class="right-div-form">
+            {% include "form.html" %}
+        </div>
+        <div class="right-div-bottom">
+
         </div>
     </div>
 
 </div>
-
-<br/><br/>
-{% include "form.html" %}
-<br/>
-
 {% endblock content %}
 

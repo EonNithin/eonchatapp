@@ -1,0 +1,18 @@
+
+#myForm{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-txt-btn{
+    display:flex;
+}
+
+.form-control, .btn {
+
+  /* Add any styles you need for the input text and button */
+}
+
+.btn {
+    margin-left:5px;
+}
