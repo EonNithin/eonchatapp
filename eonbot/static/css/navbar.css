@@ -1,0 +1,26 @@
+
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left:680px;
+}
+
+#dropdown-anchor{
+    font-size: 18px; /* Adjust the font size to your preference */
+}
+
+/* Add custom CSS to position the dropdown to the right */
+#dropdown {
+    /* position: absolute;
+    right: 0;
+    */
+    float:right;
+}
+
+/* Adjust the width and other styles of the dropdown menu */
+.dropdown-menu {
+    width:250px;
+    height:auto;
+}
