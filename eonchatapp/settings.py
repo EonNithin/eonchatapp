@@ -1,5 +1,7 @@
 import os
+import openai
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,12 +15,15 @@ SECRET_KEY = 'django-insecure-(x1euq)lbbm&j**qsx=l7(ex*)e$62e8vo6lx)_qrbdkg=30fy
 
 # fetch OpenAI secret-key from environment path variables
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
+# settings.py
+openai.api_key = OPENAI_API_KEY
+
 #print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.0.128"]
 
 # Application definition
 
@@ -110,6 +115,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'eonbot/static'),
     os.path.join(BASE_DIR, 'eonbot/static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

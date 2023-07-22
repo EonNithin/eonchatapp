@@ -12,18 +12,19 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     var submitButton = document.querySelector(".btn-primary");
     submitButton.disabled = true;
 
+
+/*  ====================================================================================
     // Simulate the loading delay (replace with your actual asynchronous request)
     setTimeout(function() {
         // Hide the progress bars
         progressBars.forEach(function(progressBar) {
            progressBar.style.display = "none";
         });
-
         // Enable the submit button
         submitButton.disabled = false;
+    }, 25000); // Adjust the timeout value or replace with your actual request
+    =====================================================================================
+*/
 
-
-    }, 5000); // Adjust the timeout value or replace with your actual request
 });
-
 
