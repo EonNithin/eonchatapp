@@ -1,8 +1,7 @@
 import os
 import openai
 from pathlib import Path
-# settings.py
-from .config import OPENAI_API_KEY
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
