@@ -21,7 +21,7 @@ OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "192.168.0.128"]
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.0.128", "192.168.110.175"]
 
 # Application definition
 
