@@ -12,7 +12,6 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     var submitButton = document.querySelector(".btn-primary");
     submitButton.disabled = true;
 
-
 /*  ====================================================================================
     // Simulate the loading delay (replace with your actual asynchronous request)
     setTimeout(function() {
