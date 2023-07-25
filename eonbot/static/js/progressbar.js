@@ -1,7 +1,10 @@
-document.getElementById("myForm").addEventListener("submit", function(event) {
-    // Prevent form submission
-    //event.preventDefault();
-
+function validateForm(event) {
+    var checkbox = document.getElementById("myCheckbox");
+    event.preventDefault();
+    if (!checkbox.checked) {
+        alert("Please select the checkbox.");
+        return false; // Prevent form submission
+    }
     // Show the progress bars
     var progressBars = document.querySelectorAll(".progress-bar");
     progressBars.forEach(function(progressBar) {
@@ -12,18 +15,11 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     var submitButton = document.querySelector(".btn-primary");
     submitButton.disabled = true;
 
-/*  ====================================================================================
-    // Simulate the loading delay (replace with your actual asynchronous request)
+    // Allow the form submission after a short delay
     setTimeout(function() {
-        // Hide the progress bars
-        progressBars.forEach(function(progressBar) {
-           progressBar.style.display = "none";
-        });
-        // Enable the submit button
-        submitButton.disabled = false;
-    }, 25000); // Adjust the timeout value or replace with your actual request
-    =====================================================================================
-*/
+        document.getElementById("myForm").submit();
+    }, 1000); // Adjust the delay as needed
 
-});
+}
 
+document.getElementById("myForm").addEventListener("submit", validateForm);
