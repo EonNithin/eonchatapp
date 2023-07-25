@@ -18,7 +18,7 @@ function validateForm(event) {
     // Allow the form submission after a short delay
     setTimeout(function() {
         document.getElementById("myForm").submit();
-    }, 1000); // Adjust the delay as needed
+    }, 500); // Adjust the delay as needed
 
 }
 

@@ -1,7 +1,7 @@
 
 /* CSS styles for the progress bars */
 .progress-bar {
-  width: 100%;
+  width: 90%;
   height: 22px;
   background-color: #2874A6;
   position: relative;
@@ -11,12 +11,18 @@
 
 .progress-fill {
   height: 100%;
-  background-color: #e0e2e2;
-  position: absolute;
+  width: calc(100% - 30px); /* Adjust width to exclude the margin-left */
+  background-color: #6A5ACD;
+  position: relative;
   top: 0;
   left: 0;
-  border-radius: 5px; /* Rounded edges */
+  border-radius: 8px; /* Rounded edges */
 }
+
+.progress-bar-container{
+    margin-left : 60px;
+}
+
 
 .progress-bar-striped .progress-fill {
   background-image: linear-gradient(
@@ -31,6 +37,8 @@
   );
   background-size: 1rem 1rem;
 }
+
+
 
 
 
