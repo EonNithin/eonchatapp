@@ -1,7 +1,10 @@
-document.getElementById("myForm").addEventListener("submit", function(event) {
-    // Prevent form submission
-    //event.preventDefault();
-
+function validateForm(event) {
+    var checkbox = document.getElementById("myCheckbox");
+    event.preventDefault();
+    if (!checkbox.checked) {
+        alert("Please select the checkbox.");
+        return false; // Prevent form submission
+    }
     // Show the progress bars
     var progressBars = document.querySelectorAll(".progress-bar");
     progressBars.forEach(function(progressBar) {
@@ -12,19 +15,21 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     var submitButton = document.querySelector(".btn-primary");
     submitButton.disabled = true;
 
-
-/*  ====================================================================================
-    // Simulate the loading delay (replace with your actual asynchronous request)
+    // Allow the form submission after a short delay
     setTimeout(function() {
-        // Hide the progress bars
-        progressBars.forEach(function(progressBar) {
-           progressBar.style.display = "none";
-        });
-        // Enable the submit button
-        submitButton.disabled = false;
-    }, 25000); // Adjust the timeout value or replace with your actual request
-    =====================================================================================
-*/
+        document.getElementById("myForm").submit();
+    }, 500); // Adjust the delay as needed
 
+}
+
+// Get the toggle switch checkbox and the hidden input field
+const toggleSwitch = document.getElementById('flexSwitchCheckChecked');
+const hiddenToggleSwitch = document.getElementById('hiddenToggleSwitch');
+
+// Add an event listener to detect changes in the toggle switch state
+toggleSwitch.addEventListener('change', () => {
+    // Update the value of the hidden input field based on the toggle switch state
+    hiddenToggleSwitch.value = toggleSwitch.checked ? 'checked' : 'unchecked';
 });
 
+document.getElementById("myForm").addEventListener("submit", validateForm);

@@ -1,18 +1,18 @@
 {% load static %}
 <div class="card" id="card" >
-
     <div class="card-header" style="display: flex; align-items: center; background-color: #ffffff;">
-        <div class="image-container">
-            <img src="{% static 'images/eonbotlogo1.png' %}" alt="eonbotlogo" style="max-width: 80%; max-height: 60px;">
-        </div>
-            <p style="margin-top:10px;">Hi there! How can I help you?</p>
+            <img class="card-header-img" src="{% static 'images/eonbotlogo1.png' %}" alt="eonbotlogo" >
+            <div class="card-header-msg">
+            <p class="card-header-p1" style="">EON AI Bot</p>
+            <p class="card-header-p2" style="">Hi there! How can I help you?</p>
+            </div>
     </div>
 
     <div class="card-body " id="cardBody">
         <div class="scrollable-content">
           {% for message in conversation_history %}
             {% if forloop.counter|divisibleby:2 %}
-              <pre>Eon: {{ message }}</pre><hr>
+              <pre class="custom-pre">Eon: {{ message }}</pre><hr>
             {% else %}
               <p>You: {{ message }}</p>
             {% endif %}
@@ -20,4 +20,8 @@
         </div>
     </div>
 
+    <div class="form-div">
+        {% include "form.html" %}
+    </div>
 </div>
+

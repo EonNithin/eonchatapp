@@ -12,8 +12,8 @@
 .right-div {
   flex: 60%; /* Set the right-div to cover 60% of the available width */
   display: flex;
+  align:center;
   flex-direction: column;
-
 }
 
 .right-div-card {

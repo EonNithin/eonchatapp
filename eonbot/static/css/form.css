@@ -6,8 +6,9 @@
 }
 
 .form-txt-btn{
-    display:flex;
+    padding:10px;
 }
+
 
 .form-control, .btn {
 
@@ -15,5 +16,7 @@
 }
 
 .btn {
-    margin-left:5px;
+    margin:5px;
+    float:right;
+    /*margin-left:5px;*/
 }

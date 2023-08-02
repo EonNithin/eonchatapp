@@ -3,6 +3,20 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="/staticfiles/CBSE SYllabus class 9&amp;10.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/staticfiles/CBSE Syllabus (Class 1-10).csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/staticfiles/CBSE Syllabus class9&amp;10.csv">
           <value>
             <Attribute>
