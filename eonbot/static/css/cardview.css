@@ -13,6 +13,12 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Modify the box shadow to create 3D-like effect */
     transition: box-shadow 0.3s ease; /* Add a smooth transition effect on the box shadow */
 }
+.custom-pre {
+  width:920px; /* Set the desired width for the <pre> element */
+  white-space: pre-wrap; /* Wrap text and preserve spaces */
+  word-wrap: break-word; /* Break long words to fit within the width */
+
+}
 
 .card-header-msg{
     display:flex;
@@ -29,8 +35,8 @@ p, pre{
 /* Card styles */
 
 .card {
-    width:900px;
-    max-height: 600px;
+    width:1000px;
+    max-height: 700px;
     overflow: hidden;
     align:center
     background-color: #ffffff;

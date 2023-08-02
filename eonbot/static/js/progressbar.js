@@ -22,4 +22,14 @@ function validateForm(event) {
 
 }
 
+// Get the toggle switch checkbox and the hidden input field
+const toggleSwitch = document.getElementById('flexSwitchCheckChecked');
+const hiddenToggleSwitch = document.getElementById('hiddenToggleSwitch');
+
+// Add an event listener to detect changes in the toggle switch state
+toggleSwitch.addEventListener('change', () => {
+    // Update the value of the hidden input field based on the toggle switch state
+    hiddenToggleSwitch.value = toggleSwitch.checked ? 'checked' : 'unchecked';
+});
+
 document.getElementById("myForm").addEventListener("submit", validateForm);
