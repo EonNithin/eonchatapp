@@ -47,6 +47,7 @@ p, pre{
 
 .card:hover {
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2); /* Modify the box shadow on hover to create the effect */
+
 }
 
 #cardBody {
