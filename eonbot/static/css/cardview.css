@@ -17,7 +17,7 @@
   width:920px; /* Set the desired width for the <pre> element */
   white-space: pre-wrap; /* Wrap text and preserve spaces */
   word-wrap: break-word; /* Break long words to fit within the width */
-
+  /*    overflow-y:auto;  does same work as word break      */
 }
 
 .card-header-msg{
@@ -37,8 +37,8 @@ p, pre{
 .card {
     width:1000px;
     max-height: 700px;
+    margin: 0 auto;
     overflow: hidden;
-    align:center
     background-color: #ffffff;
     border-radius: 8px; /* Add some border radius to create rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Modify the box shadow to create 3D-like effect */
