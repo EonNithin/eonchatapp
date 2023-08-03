@@ -1,6 +1,6 @@
 
 #myForm{
-    max-width:900px;
+    max-width:1000px;
     display:flex;
     flex-direction:column;
 }
@@ -13,6 +13,10 @@
 .form-control, .btn {
 
   /* Add any styles you need for the input text and button */
+}
+
+.text-area{
+    max-height:100px;
 }
 
 .btn {

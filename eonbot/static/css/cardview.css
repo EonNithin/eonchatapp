@@ -37,7 +37,6 @@ p, pre{
 .card {
     width:1000px;
     max-height: 700px;
-    margin: 0 auto;
     overflow: hidden;
     background-color: #ffffff;
     border-radius: 8px; /* Add some border radius to create rounded corners */
@@ -47,7 +46,6 @@ p, pre{
 
 .card:hover {
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2); /* Modify the box shadow on hover to create the effect */
-
 }
 
 #cardBody {

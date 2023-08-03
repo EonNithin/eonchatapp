@@ -12,7 +12,7 @@
         <div class="scrollable-content">
           {% for message in conversation_history %}
             {% if forloop.counter|divisibleby:2 %}
-              <pre class="custom-pre overflow-y-auto">Eon: {{ message|safe }}</pre><hr>
+              <pre class="custom-pre">Eon: {{ message|safe }}</pre><hr>
             {% else %}
               <p>You: {{ message }}</p>
             {% endif %}

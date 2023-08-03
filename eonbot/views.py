@@ -10,20 +10,58 @@ import pandas as pd
 
 from django.templatetags.static import static
 
-# CSV file data importing and processing
-csv_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE SYllabus class 9&10.csv')
-# Read the CSV file into a DataFrame
-df = pd.read_csv(csv_file_path)
-# Extract relevant information from the CSV data
+# excel file data importing and processing
+excel_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus-Class 9&10.xlsx')
+# Read the excel file into a DataFrame
+df = pd.read_excel(excel_file_path)
+
+# Extract relevant information from the Excel data
 df = df.stack().reset_index(drop=True).to_frame()
+
 # Handle missing values
-relevant_info = df.dropna() # Drop rows with missing values
+relevant_info = df.dropna()  # Drop rows with missing values
+
 # Convert the extracted information to a string
-relevant_info_str = ','.join(df.values.flatten())
+relevant_info_str = ','.join(relevant_info.values.flatten())
+
+''' ==================     try these other ways     ==================
+Eon: Yes, there are multiple ways to convert Excel data into a processed format like a list or dataframe. Here are a few options:
+
+1. Using pandas library: You can use the pandas library in Python to read the Excel file and convert it into a dataframe. Here's an example code snippet:
+
+```python
+import pandas as pd
+
+# Read the Excel file into a dataframe
+df = pd.read_excel('your_file.xlsx')
+
+# Convert the dataframe into a list
+data_list = df.values.tolist()
+```
+
+2. Using openpyxl library: Another option is to use the openpyxl library, which provides tools for working with Excel files. Here's an example code snippet:
+
+```python
+from openpyxl import load_workbook
+
+# Load the Excel file
+workbook = load_workbook(filename='your_file.xlsx')
+
+# Select the specific sheet
+sheet = workbook['Sheet1']
+
+# Convert the data into a list
+data_list = []
+for row in sheet.iter_rows(values_only=True):
+    data_list.append(list(row))
+```
+
+These are just a couple of examples, and there are other libraries and methods available depending on your specific requirements.
+
+'''
 
 syllabus_keywords = [
-    "hi", "hello", "Phoenix Greens School", "CBSE syllabus", "Class", "Grade", "Class 1", "Class 2", "Class 3",
-    "Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Maths", "Mathematics", "Science",
+    "hi", "hello", "Phoenix Greens School", "CBSE syllabus", "Class", "Grade", "Maths", "Mathematics", "Science",
     "Physics", "Chemistry", "Biology", "History", "Economics", "Geography", "Politics", "English", "Social",
     "Telugu", "Hindi", "EVS", "Computer Science","Chapter", "Chapters", "Unit", "Units","Subject", "Subjects",
     "Topic", "Topics", "describe", "elaborate", "more", "above", "from", "OK", "Thanks", "cool",
@@ -181,7 +219,7 @@ def home(request):
 
         # Get the value of the toggle switch
         print("Form data:", request.POST)
-        print("toggle is ")
+
         toggle_switch = request.POST.get('toggle_switch_checked')
         if toggle_switch == 'on':
             response, conversation_length = get_custom_chatgpt_response(question)

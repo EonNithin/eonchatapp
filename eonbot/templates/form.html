@@ -15,7 +15,7 @@
 
     <!-- This is input text and submit button -->
     <div class="form-txt-btn" >
-        <input type="text" id="myInput" class="form-control" name="question" placeholder="Ask your question here..." >
+        <textarea id="myInput" class="form-control text-area" name="question" placeholder="Ask your question here..." oninput="autoResize(this)" ></textarea>
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
     <div style="padding-left:8px;">
