@@ -1,0 +1,4217 @@
+[
+{"Class name": "Class 10","Subject name": "Mathematics","Unit name": "Unit 1: Number System","Chapter name": "Chapter-1 Real Numbers."},
+{"Class name": "Class 10","Subject name": "Mathematics","Unit name": "Unit 2: Algebra","Chapter name": "Chapter-2 Polynomials."},
+{"Class name": "Class 10","Subject name": "Mathematics","Unit name": "Unit 2: Algebra","Chapter name": "Chapter-3 Pair of Linear Equations in Two Variables."},
+{
+"Class name": "Class 10",
+"Subject name": "Mathematics",
+"Unit name": "Unit 2: Algebra",
+"Chapter name": "Chapter-4 Quadratic Equations."
+},
+{
+"Class name": "Class 10",
+"Subject name": "Mathematics",
+"Unit name": "Unit 2: Algebra",
+"Chapter name": "Chapter-5 Arithmetic Progressions."
+},
+{
+"Class name": "Class 10",
+"Subject name": "Mathematics",
+"Unit name": "Unit 4: Geometry",
+"Chapter name": "Chapter-6 Triangles."
+},
+{
+"Class name": "Class 10",
+"Subject name": "Mathematics",
+"Unit name": "Unit 3: Coordinate Geometry",
+"Chapter name": "Chapter-7 Coordinate Geometry."
+},
+{
+"Class name": "Class 10",
+"Subject name": "Mathematics",
+"Unit name": "Unit 5: Trigonometry",
+"Chapter name": "Chapter-8 Introduction to Trigonometry."
+},
+{
+"Class name": "Class 10",
+"Subject name": "Mathematics",
+"Unit name": "Unit 5: Trigonometry",
+"Chapter name": "Chapter-9  Applications of Trigonometry"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Mathematics",
+"Unit name": "Unit 4: Geometry",
+"Chapter name": "Chapter-10 circles"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Mathematics",
+"Unit name": "Unit 6: Mensuration",
+"Chapter name": "Chapter-11 Areas related to circles"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Mathematics",
+"Unit name": "Unit 6: Mensuration",
+"Chapter name": "Chapter-12 Surface area and volumes"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Mathematics",
+"Unit name": "Unit 7: Statistics and Probability",
+"Chapter name": "Chapter-13 Statistics"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Mathematics",
+"Unit name": "Unit 7: Statistics and Probability",
+"Chapter name": "Chapter-14 Probability"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Chemistry",
+"Chapter name": "Chapter- 1 Chemical Reactions"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Chemistry",
+"Chapter name": "Chapter-2 Acids, bases and salts"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Chemistry",
+"Chapter name": "Chapter-3 Metals & Non-metals"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Chemistry",
+"Chapter name": "Chapter-4 Carbon compounds"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Chemistry",
+"Chapter name": "Chapter 5- Periodic classification of elements"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Biology",
+"Chapter name": "Chapter-6 Life Processes"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Biology",
+"Chapter name": "Chapter-7 Control and co-ordination in animals and plants"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Biology",
+"Chapter name": "Chapter-8 How do organisms reproduce ?"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Biology",
+"Chapter name": "Chapter-9 Heredity and Evolution"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Biology",
+"Chapter name": "Chapter-10 Our Environment"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Physics",
+"Chapter name": "Chapter-11 Light"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Physics",
+"Chapter name": "Chapter-12 Human Eye"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Physics",
+"Chapter name": "Chapter-13 Electricity"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Physics",
+"Chapter name": "Chapter 14 Magnetic effects of electric current"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Science",
+"Unit name": "Physics",
+"Chapter name": "Chapter 15 Sources Of Energy"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "History",
+"Chapter name": "Chapter-1 The Rise of Nationalism in Europe"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "History",
+"Chapter name": "Chapter-2 Nationalism in India"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "History",
+"Chapter name": "Chapter-3 The Making of a Global World"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "History",
+"Chapter name": "Chapter-4 The Age of Industrialization"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "History",
+"Chapter name": "Chapter-5 Print Culture and the Modern World"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Geography",
+"Chapter name": "Resources and development"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Geography",
+"Chapter name": "Chapter-2 Forest and Wildlife"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Geography",
+"Chapter name": "Chapter-3 Water Resources"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Geography",
+"Chapter name": "Chapter-4 Agriculture"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Geography",
+"Chapter name": "Chapter-5 Minerals and Energy Resources"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Geography",
+"Chapter name": "Chapter-6 Manufacturing Industries"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Geography",
+"Chapter name": "Chapter- 7 Life Lines of National Economy"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Democratic Politics",
+"Chapter name": "Chapter-1 Power Sharing"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Democratic Politics",
+"Chapter name": "Chapter-2 Federalism"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Democratic Politics",
+"Chapter name": "Chapter 3 Democracy and Diversity (Deleted)"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Democratic Politics",
+"Chapter name": "Chapter-4 Gender, Religion, and Caste"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Democratic Politics",
+"Chapter name": "Chapter-5 Popular Struggles and Movements"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Democratic Politics",
+"Chapter name": "Chapter-6 Political Parties"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Democratic Politics",
+"Chapter name": "Chapter-7 Outcomes of Democracy"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Democratic Politics",
+"Chapter name": "Chapter-8 Challenges to Democracy"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Economics",
+"Chapter name": "Chapter-1 Development"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Economics",
+"Chapter name": "Chapter-2 Sectors of the Indian Economy"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Economics",
+"Chapter name": "Chapter-3 Money and Credit"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Economics",
+"Chapter name": "Chapter-4 Globalization and the Indian Economy"
+},
+{
+"Class name": "Class 10",
+"Subject name": "Social Science",
+"Unit name": "Economics",
+"Chapter name": "Chapter-5 Consumer Rights"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature- First Flight",
+"Chapter name": "Chapter 1 A letter to god\n1.Dust of Snow\n2.Fire and Ice\n3.A Tiger in the Zoo\n4.How to Tell Wild Animals"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature- First Flight",
+"Chapter name": "Chapter 2 Nelson Mandela"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature- First Flight",
+"Chapter name": "Chapter 3 Two Storie\nabout flying:\n(i). His First flight\n(ii). The Black Aeroplane\nPoem \n5. The ball poem"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature- First Flight",
+"Chapter name": "Chapter 4 From the diary of Anne Frank\nPoem 6 Amanda"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature- First Flight",
+"Chapter name": "Chapter 5 Deleted"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature- First Flight",
+"Chapter name": "Chapter 6 Deleted"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature- First Flight",
+"Chapter name": "Chapter 7.Glimpses Of\nIndia\n● Goa\n● Assam\n● Coorg"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature- First Flight",
+"Chapter name": "Chapter 8 Mijable the otter\nPoem 7 Trees"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature- First Flight",
+"Chapter name": "Chapter 9 Madam rides the bus\nPoem 8 Fog"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature- First Flight",
+"Chapter name": "Chapter 10 The sermon at benarus\nPoem 10 For Anne Greogory"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature- First Flight",
+"Chapter name": "Chapter 11 The Proposal\nPoem 9 The tale of custard the dragon"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature footprints without feet",
+"Chapter name": "Chapter 1 A triumph of surgery"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature footprints without feet",
+"Chapter name": "Chapter 2 The thief's story"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature footprints without feet",
+"Chapter name": "Chapter 3 The mid night visitor"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature footprints without feet",
+"Chapter name": "Chapter 4 A question of trust"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature footprints without feet",
+"Chapter name": "Chapter 5 Foot prints without feet"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature footprints without feet",
+"Chapter name": "Chapter 6 The making of a scientist"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature footprints without feet",
+"Chapter name": "Chapter 7 The necklace"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature footprints without feet",
+"Chapter name": "Chapter 8 Bholi"
+},
+{
+"Class name": "Class 10",
+"Subject name": "English",
+"Unit name": "Literature footprints without feet",
+"Chapter name": "Chapter 9 The book that saved the earth"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Mathematics",
+"Unit name": "Number Systems",
+"Chapter name": "1. REAL NUMBERS"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Mathematics",
+"Unit name": "Algebra",
+"Chapter name": "1. POLYNOMIALS"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Mathematics",
+"Unit name": "Algebra",
+"Chapter name": "2. LINEAR EQUATIONS IN TWO VARIABLES"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Mathematics",
+"Unit name": "Coordinate Geometry",
+"Chapter name": "COORDINATE GEOMETRY"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Mathematics",
+"Unit name": "Geometry",
+"Chapter name": "1. INTRODUCTION TO EUCLID'S GEOMETRY"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Mathematics",
+"Unit name": "Geometry",
+"Chapter name": "2. LINES AND ANGLES"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Mathematics",
+"Unit name": "Geometry",
+"Chapter name": "3. TRIANGLES"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Mathematics",
+"Unit name": "Geometry",
+"Chapter name": "4. QUADRILATERALS"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Mathematics",
+"Unit name": "Geometry",
+"Chapter name": "5. CIRCLES"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Mathematics",
+"Unit name": "Mensuration",
+"Chapter name": "1. HERON'S FORMULA\n"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Mathematics",
+"Unit name": "Mensuration",
+"Chapter name": "2. SURFACE AREAS AND VOLUMES"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Mathematics",
+"Unit name": "Statistics ",
+"Chapter name": "1. STATISTICS"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 1",
+"Chapter name": "Matter in our surroundings"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 2",
+"Chapter name": "Is matter around us pure?"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 3",
+"Chapter name": "Atoms and molecules"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 4",
+"Chapter name": "Structure of an atom"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 5",
+"Chapter name": "The fundamental unit of life- Cell"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 6",
+"Chapter name": "Tissues"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 7",
+"Chapter name": "Deleted (Diversity in living organism)"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 8",
+"Chapter name": "Motion"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 9",
+"Chapter name": "Force and laws of motion"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 10",
+"Chapter name": "Gravitation"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 11",
+"Chapter name": "Work and Energy"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 12",
+"Chapter name": "Sound"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 13",
+"Chapter name": "Deleted (Why do we fall?)"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 14",
+"Chapter name": "Natural Resources (for Internal Assessment)"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Science",
+"Unit name": "Chapter 15",
+"Chapter name": "Improvement in food resourses"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "History",
+"Chapter name": "Chapter 1 French Revolution"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "History",
+"Chapter name": "Chapter 2 Socialism in Europe"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "History",
+"Chapter name": "Chapter 3 Nazism and the rise of Hitler"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "History",
+"Chapter name": "Chapter 4 Forest, Society and Colonialism"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "History",
+"Chapter name": "Chapter 5 Pastoralists in the modern world"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Geography",
+"Chapter name": "Chapter 1 India- Size and Location"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Geography",
+"Chapter name": "Chapter 2 Physical features of India"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Geography",
+"Chapter name": "Chapter 3 Drainage"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Geography",
+"Chapter name": "Chapter 4 Climate"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Geography",
+"Chapter name": "Chapter 5 Natural Vegetation and Wild Life"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Geography",
+"Chapter name": "Chapter 6 Population"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Democratic Politics",
+"Chapter name": "Chapter 1 What is Democracy? Why Democracy?"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Democratic Politics",
+"Chapter name": "Chapter 2 Constitutional Design"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Democratic Politics",
+"Chapter name": "Chapter 3 Electoral Politics"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Democratic Politics",
+"Chapter name": "Chapter 4 Working of Instutions"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Democratic Politics",
+"Chapter name": "Chapter 5 Democratic Rights"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Economics",
+"Chapter name": "Chapter 1 The Story of Village Palampur"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Economics",
+"Chapter name": "Chapter 2 People as Resource"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Economics",
+"Chapter name": "Chapter 3 Poverty as a Challenge"
+},
+{
+"Class name": "Class 9",
+"Subject name": "Social Science",
+"Unit name": "Economics",
+"Chapter name": "Chapter 4 Food Security in India"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Course Book",
+"Chapter name": "Chapter 1The Fun they had\nPoem 1  The road not taken"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Course Book",
+"Chapter name": "Chapter 2 The Sound of music\nPoem 2 Wind"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Course Book",
+"Chapter name": "Chapter 3 The Little Girl"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Course Book",
+"Chapter name": "Chapter 4 A truely beautiful mind\nPoem 3 Rain on the roof"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Course Book",
+"Chapter name": "Chapter 5 The snake and the mirror\nPoem 4 The lake isle of innisfree"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Course Book",
+"Chapter name": "Chapter 6 My Childhood\nPoem 5 A legend of nothland"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Course Book",
+"Chapter name": "Chapter 7 Deleted"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Course Book",
+"Chapter name": "Chapter 8 Reach for the top"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Course Book",
+"Chapter name": "Chapter 9 Deleted"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Course Book",
+"Chapter name": "Chapter 10  Kathmandu\nPoem 6        No men are foreing"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Course Book",
+"Chapter name": "Chapter 11  If I were you\nPoem 8        On killing a tree\nPoem 10        A slumber did my spirit seal"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Supplementary- Reader",
+"Chapter name": "Chapter 1 The lost child"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Supplementary- Reader",
+"Chapter name": "Chapter 2 The adventures of toto"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Supplementary- Reader",
+"Chapter name": "Chapter 3 Iswaran the storyteller"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Supplementary- Reader",
+"Chapter name": "Chapter 4 In the kingdom of fools"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Supplementary- Reader",
+"Chapter name": "Chapter 5 The happy prince"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Supplementary- Reader",
+"Chapter name": "Chapter 6 Deleted"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Supplementary- Reader",
+"Chapter name": "Chapter 7 The last leaf"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Supplementary- Reader",
+"Chapter name": "Chapter 8 A house is not a home"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Supplementary- Reader",
+"Chapter name": "Chapter 9 Deleted"
+},
+{
+"Class name": "Class 9",
+"Subject name": "English",
+"Unit name": "Supplementary- Reader",
+"Chapter name": "Chapter 10 The beggar"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 1",
+"Chapter name": "Rational Numbers"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 2",
+"Chapter name": "Linear Equations in One Variable"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 3",
+"Chapter name": "Understanding Quadrilaterals"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 4",
+"Chapter name": "Practical Geometry"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 5",
+"Chapter name": "Data Handling"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 6",
+"Chapter name": "Squares and Square Roots"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 7",
+"Chapter name": "Cubes and Cube Roots"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 8",
+"Chapter name": "Comparing Quantities"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 9",
+"Chapter name": "Algebraic Expressions and Identities"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 10",
+"Chapter name": "Visualising Solid Shapes"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 11",
+"Chapter name": "Mensuration"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 12",
+"Chapter name": "Exponents and Powers"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 13",
+"Chapter name": "Direct and Inverse Proportions"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 14",
+"Chapter name": "Factorisation"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 15",
+"Chapter name": "Introduction to Graphs"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 16",
+"Chapter name": "Playing with Numbers"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 1",
+"Chapter name": "Crop Production and Management"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 2",
+"Chapter name": "Microorganisms: Friend and Foe"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 3",
+"Chapter name": "Synthetic Fibres and Plastics"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 4",
+"Chapter name": "Materials: Metals and Non-Metals"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 5",
+"Chapter name": "Coal and Petroleum"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 6",
+"Chapter name": "Combustion and Flame"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 7",
+"Chapter name": "Conservation of Plants and Animals"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 8",
+"Chapter name": "Cell - Structure and Functions"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 9",
+"Chapter name": "Reproduction in Animals"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 10",
+"Chapter name": "Reaching the Age of Adolescence"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 11",
+"Chapter name": "Force and Pressure"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 12",
+"Chapter name": "Friction"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 13",
+"Chapter name": "Sound"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 14",
+"Chapter name": "Chemical Effects of Electric Current"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 15",
+"Chapter name": "Some Natural Phenomena"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 16",
+"Chapter name": "Light"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 17",
+"Chapter name": "Stars and The Solar System"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Science",
+"Unit name": "Chapter 18",
+"Chapter name": "Pollution of Air and Water"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Social Science\nHistory",
+"Unit name": "Chapter 1",
+"Chapter name": "How, When and Where"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Social Science\nHistory",
+"Unit name": "Chapter 2",
+"Chapter name": "From Trade to Territory"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Social Science\nHistory",
+"Unit name": "Chapter 3",
+"Chapter name": "Ruling the Countryside"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Social Science\nHistory",
+"Unit name": "Chapter 4",
+"Chapter name": "Tribals, Dikus and the Vision of the Golden Age"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Social Science\nHistory",
+"Unit name": "Chapter 5",
+"Chapter name": "When People Rebel 1857 and After"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Social Science\nHistory",
+"Unit name": "Chapter 6",
+"Chapter name": "Weavers, Iron Smelters and Factory Owners"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Social Science\nHistory",
+"Unit name": "Chapter 7",
+"Chapter name": "Civilising the “Native”, Educating the Nation"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Social Science\nHistory",
+"Unit name": "Chapter 8",
+"Chapter name": "Women, Caste, and Reform"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Social Science\nHistory",
+"Unit name": "Chapter 9",
+"Chapter name": "The Making of the National Movement 1870s-1945"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Social Science\nHistory",
+"Unit name": "Chapter 10",
+"Chapter name": "India after Independence"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Geography",
+"Unit name": "Chapter 1",
+"Chapter name": "Resources"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Geography",
+"Unit name": "Chapter 2",
+"Chapter name": "Land, Soil, Water, Natural Vegetation and Wildlife Resources"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Geography",
+"Unit name": "Chapter 3",
+"Chapter name": "Mineral and Power Resources"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Geography",
+"Unit name": "Chapter 4",
+"Chapter name": "Agriculture"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Geography",
+"Unit name": "Chapter 5",
+"Chapter name": "Industries"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Geography",
+"Unit name": "Chapter 6",
+"Chapter name": "Human Resources"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Political Science",
+"Unit name": "Unit One: The Indian Constitution and Secularism",
+"Chapter name": "The Indian Constitution"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Political Science",
+"Unit name": "Unit One: The Indian Constitution and Secularism",
+"Chapter name": "Understanding Secularism"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Political Science",
+"Unit name": "Unit Two: Parliament and the Making of Laws",
+"Chapter name": "Why Do We Need a Parliament?"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Political Science",
+"Unit name": "Unit Two: Parliament and the Making of Laws",
+"Chapter name": "Understanding Laws"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Political Science",
+"Unit name": "Unit Three: The Judiciary",
+"Chapter name": "Judiciary"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Political Science",
+"Unit name": "Unit Three: The Judiciary",
+"Chapter name": "Understanding Our Criminal Justice System"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Political Science",
+"Unit name": "Unit Four: Social Justice and the Marginalised",
+"Chapter name": "Understanding Marginalism"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Political Science",
+"Unit name": "Unit Four: Social Justice and the Marginalised",
+"Chapter name": "Confronting Marginalism"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Political Science",
+"Unit name": "Unit Five: Economic Presence of the Government",
+"Chapter name": "Public Facilities"
+},
+{
+"Class name": "Class 8",
+"Subject name": "Political Science",
+"Unit name": "Unit Five: Economic Presence of the Government",
+"Chapter name": "Law and Social Justice"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Chapter 1",
+"Chapter name": "The Best Christmas Present in the World"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Poem",
+"Chapter name": "The Ant and the Cricket"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Chapter 2",
+"Chapter name": "The Tsunami"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Poem",
+"Chapter name": "Geography Lesson"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Chapter 3",
+"Chapter name": "Glimpses of the Past"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Poem",
+"Chapter name": "Macavity: The Mystery Cat"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Chapter 4",
+"Chapter name": "Bepin Choudhury's Lapse of Memory"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Poem",
+"Chapter name": "The Last Bargain"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Chapter 5",
+"Chapter name": "The Summit Within"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Poem",
+"Chapter name": "The School Boy"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Chapter 6",
+"Chapter name": "This is Jody’s Fawn"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Poem",
+"Chapter name": "The Duck and the Kangaroos"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Chapter 7",
+"Chapter name": "A Visit to Cambridge"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Poem",
+"Chapter name": "When I set out for Lyonnesse"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Chapter 8",
+"Chapter name": "A Short Monsoon Diary"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Poem",
+"Chapter name": "On the Grasshopper and Cricket"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Chapter 9",
+"Chapter name": "The Great Stone Face - I"
+},
+{
+"Class name": "Class 8",
+"Subject name": "English",
+"Unit name": "Chapter 10",
+"Chapter name": "The Great Stone Face - II"
+},
+{
+"Class name": "Class 8",
+"Subject name": "It So Happened – Supplementary Reader in English for Class VIII",
+"Unit name": "Chapter 1",
+"Chapter name": "How the Camel got his Hump"
+},
+{
+"Class name": "Class 8",
+"Subject name": "It So Happened – Supplementary Reader in English for Class VIII",
+"Unit name": "Chapter 2",
+"Chapter name": "Children at work"
+},
+{
+"Class name": "Class 8",
+"Subject name": "It So Happened – Supplementary Reader in English for Class VIII",
+"Unit name": "Chapter 3",
+"Chapter name": "The Selfish Giant"
+},
+{
+"Class name": "Class 8",
+"Subject name": "It So Happened – Supplementary Reader in English for Class VIII",
+"Unit name": "Chapter 4",
+"Chapter name": "The Treasure Within"
+},
+{
+"Class name": "Class 8",
+"Subject name": "It So Happened – Supplementary Reader in English for Class VIII",
+"Unit name": "Chapter 5",
+"Chapter name": "Princess September"
+},
+{
+"Class name": "Class 8",
+"Subject name": "It So Happened – Supplementary Reader in English for Class VIII",
+"Unit name": "Chapter 6",
+"Chapter name": "The Fight"
+},
+{
+"Class name": "Class 8",
+"Subject name": "It So Happened – Supplementary Reader in English for Class VIII",
+"Unit name": "Chapter 7",
+"Chapter name": "The Open Window"
+},
+{
+"Class name": "Class 8",
+"Subject name": "It So Happened – Supplementary Reader in English for Class VIII",
+"Unit name": "Chapter 8",
+"Chapter name": "Jalebis"
+},
+{
+"Class name": "Class 8",
+"Subject name": "It So Happened – Supplementary Reader in English for Class VIII",
+"Unit name": "Chapter 9",
+"Chapter name": "The Comet - I"
+},
+{
+"Class name": "Class 8",
+"Subject name": "It So Happened – Supplementary Reader in English for Class VIII",
+"Unit name": "Chapter 10",
+"Chapter name": "The Comet - II"
+},
+{
+"Class name": "Class 8",
+"Subject name": "It So Happened – Supplementary Reader in English for Class VIII",
+"Unit name": "Chapter 11",
+"Chapter name": "Ancient Education System of India"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 1",
+"Chapter name": "Integers"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 2",
+"Chapter name": "Fractions and Decimals"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 3",
+"Chapter name": "Data Handling"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 4",
+"Chapter name": "Simple Equations"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 5",
+"Chapter name": "Lines and Angles"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 6",
+"Chapter name": "The Triangle and its Properties"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 7",
+"Chapter name": "Congruence of Triangles"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 8",
+"Chapter name": "Comparing Quantities"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 9",
+"Chapter name": "Rational Numbers"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 10",
+"Chapter name": "Practical Geometry"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 11",
+"Chapter name": "Perimeter and Area"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 12",
+"Chapter name": "Algebraic Expressions"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 13",
+"Chapter name": "Exponents and Powers"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 14",
+"Chapter name": "Symmetry"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 15",
+"Chapter name": "Visualizing Solid Shapes"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 1",
+"Chapter name": "Nutrition in Plants"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 2",
+"Chapter name": "Nutrition in Animals"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 3",
+"Chapter name": "Fibre to Fabric"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 4",
+"Chapter name": "Heat"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 5",
+"Chapter name": "Acids, Bases, and Salts"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 6",
+"Chapter name": "Physical and Chemical Changes"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 7",
+"Chapter name": "Weather, Climate and Adaptation of Animals to Climate"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 8",
+"Chapter name": "Winds, Storms, and Cyclones"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 9",
+"Chapter name": "Soil"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 10",
+"Chapter name": "Respiration in Organisms"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 11",
+"Chapter name": "Transportation in Animals and Plants"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 12",
+"Chapter name": "Reproduction in Plants"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 13",
+"Chapter name": "Motion and Time"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 14",
+"Chapter name": "Electric Current and Its Effects"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 15",
+"Chapter name": "Light"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 16",
+"Chapter name": "Water: A Precious Resource"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 17",
+"Chapter name": "Forest: Our Lifeline"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Science",
+"Unit name": "Chapter 18",
+"Chapter name": "Waste Water Story"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Social Science\nSocial and Political Life",
+"Unit name": "Chapter 1",
+"Chapter name": "On Equality"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Social Science\nSocial and Political Life",
+"Unit name": "Chapter 2",
+"Chapter name": "Role of Government in Health"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Social Science\nSocial and Political Life",
+"Unit name": "Chapter 3",
+"Chapter name": "How the State Government Works"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Social Science\nSocial and Political Life",
+"Unit name": "Chapter 4",
+"Chapter name": "Growing Up as Boys and Girls"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Social Science\nSocial and Political Life",
+"Unit name": "Chapter 5",
+"Chapter name": "Women Change the World"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Social Science\nSocial and Political Life",
+"Unit name": "Chapter 6",
+"Chapter name": "Understanding Media"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Social Science\nSocial and Political Life",
+"Unit name": "Chapter 7",
+"Chapter name": "Markets Around Us"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Social Science\nSocial and Political Life",
+"Unit name": "Chapter 8",
+"Chapter name": "A Shirt in the Market"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Social Science\nSocial and Political Life",
+"Unit name": "Chapter 9",
+"Chapter name": "Struggles for equality"
+},
+{
+"Class name": "Class 7",
+"Subject name": "History",
+"Unit name": "Chapter 10",
+"Chapter name": "Tracing Changes Through a Thousand Years"
+},
+{
+"Class name": "Class 7",
+"Subject name": "History",
+"Unit name": "Chapter 11",
+"Chapter name": "New Kings and Kingdoms"
+},
+{
+"Class name": "Class 7",
+"Subject name": "History",
+"Unit name": "Chapter 12",
+"Chapter name": "The Delhi Sultans"
+},
+{
+"Class name": "Class 7",
+"Subject name": "History",
+"Unit name": "Chapter 13",
+"Chapter name": "The Mughal Empire"
+},
+{
+"Class name": "Class 7",
+"Subject name": "History",
+"Unit name": "Chapter 14",
+"Chapter name": "Rulers and Buildings"
+},
+{
+"Class name": "Class 7",
+"Subject name": "History",
+"Unit name": "Chapter 15",
+"Chapter name": "Towns, Traders, and Craftsperson"
+},
+{
+"Class name": "Class 7",
+"Subject name": "History",
+"Unit name": "Chapter 16",
+"Chapter name": "Tribes, Nomads, and Settled Communities"
+},
+{
+"Class name": "Class 7",
+"Subject name": "History",
+"Unit name": "Chapter 17",
+"Chapter name": "Devotional Paths to the Divine"
+},
+{
+"Class name": "Class 7",
+"Subject name": "History",
+"Unit name": "Chapter 18",
+"Chapter name": "The Making of Regional Cultures"
+},
+{
+"Class name": "Class 7",
+"Subject name": "History",
+"Unit name": "Chapter 19",
+"Chapter name": "Eighteenth-Century Political Formations"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Geography",
+"Unit name": "Chapter 20",
+"Chapter name": "Environment"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Geography",
+"Unit name": "Chapter 21",
+"Chapter name": "Inside Our Earth"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Geography",
+"Unit name": "Chapter 22",
+"Chapter name": "Our Changing Earth"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Geography",
+"Unit name": "Chapter 23",
+"Chapter name": "Air"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Geography",
+"Unit name": "Chapter 24",
+"Chapter name": "Water"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Geography",
+"Unit name": "Chapter 25",
+"Chapter name": "Natural Vegetation and Wildlife"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Geography",
+"Unit name": "Chapter 26",
+"Chapter name": "Human Environment Settlement, Transport and Communication."
+},
+{
+"Class name": "Class 7",
+"Subject name": "Geography",
+"Unit name": "Chapter 27",
+"Chapter name": "Human Environment and Interaction – The Tropical and Subtropical Region"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Geography",
+"Unit name": "Chapter 28",
+"Chapter name": "Life in Temperate Grasslands"
+},
+{
+"Class name": "Class 7",
+"Subject name": "Geography",
+"Unit name": "Chapter 29",
+"Chapter name": "Life in the Deserts"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English \nHoneycomb",
+"Unit name": "Chapter 1",
+"Chapter name": "Three Questions"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English \nHoneycomb",
+"Unit name": "Chapter 2",
+"Chapter name": "A Gift of Chappals"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English \nHoneycomb",
+"Unit name": "Chapter 3",
+"Chapter name": "Gopal and the Hilsa Fish"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English \nHoneycomb",
+"Unit name": "Chapter 4",
+"Chapter name": "The Ashes that Made Trees Bloom"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English \nHoneycomb",
+"Unit name": "Chapter 5",
+"Chapter name": "Quality"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English \nHoneycomb",
+"Unit name": "Chapter 6",
+"Chapter name": "Expert Detectives"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English \nHoneycomb",
+"Unit name": "Chapter 7",
+"Chapter name": "The Invention of Vita–Wonk"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English \nHoneycomb",
+"Unit name": "Chapter 8",
+"Chapter name": "Fire Friend and Foe"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English \nHoneycomb",
+"Unit name": "Chapter 9",
+"Chapter name": "A Bicycle in Good Repair"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English \nHoneycomb",
+"Unit name": "Chapter10",
+"Chapter name": "The Story of Cricket"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English\nAn Alien Hand",
+"Unit name": "Chapter 1",
+"Chapter name": "The Tiny Teacher"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English\nAn Alien Hand",
+"Unit name": "Chapter 2",
+"Chapter name": "Bringing Up Kari"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English\nAn Alien Hand",
+"Unit name": "Chapter 3",
+"Chapter name": "The Desert"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English\nAn Alien Hand",
+"Unit name": "Chapter 4",
+"Chapter name": "The Cop and the Anthem"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English\nAn Alien Hand",
+"Unit name": "Chapter 5",
+"Chapter name": "Golu Grows a Nose"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English\nAn Alien Hand",
+"Unit name": "Chapter 6",
+"Chapter name": "I Want Something in the Cage"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English\nAn Alien Hand",
+"Unit name": "Chapter 7",
+"Chapter name": "Chandni"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English\nAn Alien Hand",
+"Unit name": "Chapter 8",
+"Chapter name": "The Bear Story"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English\nAn Alien Hand",
+"Unit name": "Chapter 9",
+"Chapter name": "A Tiger in the House"
+},
+{
+"Class name": "Class 7",
+"Subject name": "English\nAn Alien Hand",
+"Unit name": "Chapter 10",
+"Chapter name": "An Alien Hand"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 1",
+"Chapter name": "Knowing Our Numbers"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 2",
+"Chapter name": "Whole Numbers"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 3",
+"Chapter name": "Playing With Numbers"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 4",
+"Chapter name": "Basic Geometrical Ideas"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 5",
+"Chapter name": "Understanding Elementary Shapes"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 6",
+"Chapter name": "Integers"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 7",
+"Chapter name": "Fractions"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 8",
+"Chapter name": "Decimals"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 9",
+"Chapter name": "Data Handling"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 10",
+"Chapter name": "Mensuration"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 11",
+"Chapter name": "Algebra"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 12",
+"Chapter name": "Ratio and Proportion"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 13",
+"Chapter name": "Symmetry"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 14",
+"Chapter name": "Practical Geometry"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Science\nBiology",
+"Unit name": "Chapter 1",
+"Chapter name": "Food: Where Does it Come From?"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Science\nBiology",
+"Unit name": "Chapter 2",
+"Chapter name": "Components of Food"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Chemistry",
+"Unit name": "Chapter 3",
+"Chapter name": "Fiber to Fabric"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Chemistry",
+"Unit name": "Chapter 4",
+"Chapter name": "Sorting Materials into Groups"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Chemistry",
+"Unit name": "Chapter 5",
+"Chapter name": "Separation of Substances"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Chemistry",
+"Unit name": "Chapter 6",
+"Chapter name": "Changes Around Us"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Biology",
+"Unit name": "Chapter 7",
+"Chapter name": "Getting to Know Plants"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Biology",
+"Unit name": "Chapter 8",
+"Chapter name": "Body Movements"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Biology",
+"Unit name": "Chapter 9",
+"Chapter name": "The Living Organisms - Characterstics and Habitats"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Biology",
+"Unit name": "Chapter 10",
+"Chapter name": "Garbage In, Garbage Out"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Physics",
+"Unit name": "Chapter 11",
+"Chapter name": "Motion and Measurement of Distances"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Physics",
+"Unit name": "Chapter 12",
+"Chapter name": "Light, Shadows and Reflections"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Physics",
+"Unit name": "Chapter 13",
+"Chapter name": "Electricity and Circuits"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Physics",
+"Unit name": "Chapter 14",
+"Chapter name": "Fun With Magnets"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Chemistry",
+"Unit name": "Chapter 15",
+"Chapter name": "Water"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Chemistry",
+"Unit name": "Chapter 16",
+"Chapter name": "Air Around Us"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social Science \nHistory",
+"Unit name": "Chapter 1",
+"Chapter name": "What, Where, How, and When?"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social Science \nHistory",
+"Unit name": "Chapter 2",
+"Chapter name": "From Hunting-gathering to Growing Food"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social Science \nHistory",
+"Unit name": "Chapter 3",
+"Chapter name": "In the Earliest Cities"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social Science \nHistory",
+"Unit name": "Chapter 4",
+"Chapter name": "What Books and Burials Tell Us?"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social Science \nHistory",
+"Unit name": "Chapter 5",
+"Chapter name": "Kingdoms, Kings, and an Early Republic"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social Science \nHistory",
+"Unit name": "Chapter 6",
+"Chapter name": "New Questions and Ideas"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social Science \nHistory",
+"Unit name": "Chapter 7",
+"Chapter name": "Ashoka the Emperor who Gave up War"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social Science \nHistory",
+"Unit name": "Chapter 8",
+"Chapter name": "Vital Villages, Thriving Towns"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social Science \nHistory",
+"Unit name": "Chapter 9",
+"Chapter name": "Traders, Kings, and Pilgrims"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social Science \nHistory",
+"Unit name": "Chapter 10",
+"Chapter name": "New Empires and Kingdoms"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social Science \nHistory",
+"Unit name": "Chapter 11",
+"Chapter name": "Buildings, Paintings, and Books"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Geography",
+"Unit name": "Chapter 1",
+"Chapter name": "The Earth in the Solar System"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Geography",
+"Unit name": "Chapter 2",
+"Chapter name": "Globe: Latitudes and Longitudes"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Geography",
+"Unit name": "Chapter 3",
+"Chapter name": "Motions of the Earth"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Geography",
+"Unit name": "Chapter 4",
+"Chapter name": "Maps"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Geography",
+"Unit name": "Chapter 5",
+"Chapter name": "Major Domains of the Earth"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Geography",
+"Unit name": "Chapter 6",
+"Chapter name": "Major Landforms of the Earth"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Geography",
+"Unit name": "Chapter 7",
+"Chapter name": "Our Country- India"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Geography",
+"Unit name": "Chapter 8",
+"Chapter name": "India - Climate, Vegetation, and Wildlife"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social and Political Life",
+"Unit name": "Chapter 1",
+"Chapter name": "Understanding Diversity"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social and Political Life",
+"Unit name": "Chapter 2",
+"Chapter name": "Diversity and Discrimination"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social and Political Life",
+"Unit name": "Chapter 3",
+"Chapter name": "What is Government?"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social and Political Life",
+"Unit name": "Chapter 4",
+"Chapter name": "Key Elements of a Democratic Government"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social and Political Life",
+"Unit name": "Chapter 5",
+"Chapter name": "Panchayati Raj"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social and Political Life",
+"Unit name": "Chapter 6",
+"Chapter name": "Rural Administration"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social and Political Life",
+"Unit name": "Chapter 7",
+"Chapter name": "Urban Administration"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social and Political Life",
+"Unit name": "Chapter 8",
+"Chapter name": "Rural Livelihoods"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Social and Political Life",
+"Unit name": "Chapter 9",
+"Chapter name": "Urban Livelihoods"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Chapter 1",
+"Chapter name": "Who Did Patrick’s Homework?"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Poem 1",
+"Chapter name": "A House, A Home"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Chapter 2",
+"Chapter name": "How the Dog Found Himself a New Master!"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Poem 2",
+"Chapter name": "The Kite"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Chapter 3",
+"Chapter name": "Taro’s Reward"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Poem 3",
+"Chapter name": "The Quarrel"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "chapter 4",
+"Chapter name": "An Indian – American Woman in Space: Kalpana Chawla"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Poem 4",
+"Chapter name": "Beauty"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Chapter 5",
+"Chapter name": "A Different Kind of School"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Poem 5",
+"Chapter name": "Where Do All the Teachers Go?"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Chapter 6",
+"Chapter name": "Who I Am"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Poem 6",
+"Chapter name": "The Wonderful Words"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Chapter 7",
+"Chapter name": "Fair Play"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Chapter 8",
+"Chapter name": "A Game of Chance"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Poem 7",
+"Chapter name": "Vocation"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Chapter 9",
+"Chapter name": "Desert Animals"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Poem 8",
+"Chapter name": "What if"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nHoneysuckle(Main book)",
+"Unit name": "Chapter 10",
+"Chapter name": "The Banyan Tree"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nA Pact With The Sun(Supplementary)",
+"Unit name": "Chapter 1",
+"Chapter name": "A Tale of Two Birds"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nA Pact With The Sun(Supplementary)",
+"Unit name": "Chapter 2",
+"Chapter name": "The Friendly Mongoose"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nA Pact With The Sun(Supplementary)",
+"Unit name": "Chapter 3",
+"Chapter name": "The Shepherd’s Treasure"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nA Pact With The Sun(Supplementary)",
+"Unit name": "Chapter 4",
+"Chapter name": "The Old-Clock Shop"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nA Pact With The Sun(Supplementary)",
+"Unit name": "Chapter 5",
+"Chapter name": "Tansen"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nA Pact With The Sun(Supplementary)",
+"Unit name": "Chapter 6",
+"Chapter name": "The Monkey and the Crocodile"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nA Pact With The Sun(Supplementary)",
+"Unit name": "Chapter 7",
+"Chapter name": "The Wonder Called Sleep"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nA Pact With The Sun(Supplementary)",
+"Unit name": "Chapter 8",
+"Chapter name": "A Pact with the Sun"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nA Pact With The Sun(Supplementary)",
+"Unit name": "Chapter 9",
+"Chapter name": "What Happened to the Reptiles"
+},
+{
+"Class name": "Class 6",
+"Subject name": "English\nA Pact With The Sun(Supplementary)",
+"Unit name": "Chapter 10",
+"Chapter name": "A Strange Wrestling Match"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Computer Science",
+"Unit name": "Chapter 1",
+"Chapter name": "Computer Languages"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Computer Science",
+"Unit name": "Chapter 2",
+"Chapter name": "More on Windows"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Computer Science",
+"Unit name": "Chapter 3",
+"Chapter name": "Fun with Powerpoint"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Computer Science",
+"Unit name": "Chapter 4",
+"Chapter name": "More on Powerpoint"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Computer Science",
+"Unit name": "Chapter 5",
+"Chapter name": "Working with Spreadsheets"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Computer Science",
+"Unit name": "Chapter 6",
+"Chapter name": "Internet Service"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Computer Science",
+"Unit name": "Chapter 7",
+"Chapter name": "Introduction to Python"
+},
+{
+"Class name": "Class 6",
+"Subject name": "Computer Science",
+"Unit name": "Chapter 8",
+"Chapter name": "Creating Web Pages Using HTML 5"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 1",
+"Chapter name": "The fish Tale"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 2",
+"Chapter name": "Shapes and Angles"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 3",
+"Chapter name": "How Many Squares?"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 4",
+"Chapter name": "Parts and Wholes"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 5",
+"Chapter name": "Does it Look the Same?"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 6",
+"Chapter name": "Be My Multiple, I’ll be Your Factor"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 7",
+"Chapter name": "Can You See the Pattern?"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 8",
+"Chapter name": "Mapping Your Way"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 9",
+"Chapter name": "Boxes and Sketches"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 10",
+"Chapter name": "Tenths and Hundredths"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 11",
+"Chapter name": "Area and its Boundary"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 12",
+"Chapter name": "Smart Charts"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 13",
+"Chapter name": "Ways to Multiply and Divide"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 14",
+"Chapter name": "How Big? How Heavy?"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 1",
+"Chapter name": "Super Senses"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 2",
+"Chapter name": "A Snake Charmer’s Story"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 3",
+"Chapter name": "From Tasting To Digesting"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 4",
+"Chapter name": "Mangoes Round The Year"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 5",
+"Chapter name": "Seeds And Seeds"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 6",
+"Chapter name": "Every Drop Counts"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 7",
+"Chapter name": "Experiments With Water"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 8",
+"Chapter name": "A Treat For Mosquitoes"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 9",
+"Chapter name": "Up You Go!"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 10",
+"Chapter name": " Walls Tell Stories"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 11",
+"Chapter name": "Sunita In Space"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 12",
+"Chapter name": "What If It Finishes?"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 13",
+"Chapter name": "A Shelter So High!"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 14",
+"Chapter name": "When The Earth Shook!"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 15",
+"Chapter name": "Blow Hot, Blow Cold"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 16",
+"Chapter name": "Who Will Do This Work?"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 17",
+"Chapter name": "Across The Wall"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 18",
+"Chapter name": "No Place For Us?"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 19",
+"Chapter name": "A Seed Tells A Farmers Story"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 20",
+"Chapter name": "Whose Forests?"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 21",
+"Chapter name": "Like Father, Like Daughter"
+},
+{
+"Class name": "Class 5",
+"Subject name": "EVS",
+"Unit name": "Chapter 22",
+"Chapter name": "On The Move Again"
+},
+{
+"Class name": "Class 5",
+"Subject name": "English",
+"Unit name": "Unit 1",
+"Chapter name": "Ice Cream Man\nWonderful Waste!"
+},
+{
+"Class name": "Class 5",
+"Subject name": "English",
+"Unit name": "Unit 2",
+"Chapter name": "Teamwork\nFlying Together"
+},
+{
+"Class name": "Class 5",
+"Subject name": "English",
+"Unit name": "Unit 3",
+"Chapter name": "My Shadow\nRobinson Crusoe Discovers a Footprint"
+},
+{
+"Class name": "Class 5",
+"Subject name": "English",
+"Unit name": "Unit 4",
+"Chapter name": "Crying\nMy Elder Brother"
+},
+{
+"Class name": "Class 5",
+"Subject name": "English",
+"Unit name": "Unit 5",
+"Chapter name": "The Lazy Frog\nRip Van Winkle"
+},
+{
+"Class name": "Class 5",
+"Subject name": "English",
+"Unit name": "Unit 6",
+"Chapter name": "Class Discussion\nThe Talkative Barber"
+},
+{
+"Class name": "Class 5",
+"Subject name": "English",
+"Unit name": "Unit 7",
+"Chapter name": "Topsy-turvy Land\nGulliver’s Travels"
+},
+{
+"Class name": "Class 5",
+"Subject name": "English",
+"Unit name": "Unit 8",
+"Chapter name": "Nobody’s Friend\nThe Little Bully"
+},
+{
+"Class name": "Class 5",
+"Subject name": "English",
+"Unit name": "Unit 9",
+"Chapter name": "Sing a Song of People"
+},
+{
+"Class name": "Class 5",
+"Subject name": "English",
+"Unit name": "Unit 10",
+"Chapter name": "Malu-Bhalu\nWho will be Ningthou?"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "अपनी-अपनी रंगतें",
+"Chapter name": "पाठ 1: राख की रस्सी (लोककथा)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "अपनी-अपनी रंगतें",
+"Chapter name": "पाठ 2: फसलों के त्योहार (लेख)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "अपनी-अपनी रंगतें",
+"Chapter name": "पाठ 3: खिलौनेवाला (कविता)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "अपनी-अपनी रंगतें",
+"Chapter name": "पाठ 4: नन्हा फनकार (कहानी)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "अपनी-अपनी रंगतें",
+"Chapter name": "पाठ 5: जहाँ चाह वहाँ राह (लेख)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "बात का सफ़र",
+"Chapter name": "पाठ 6: चिट्ठी का सफ़र (लेख)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "बात का सफ़र",
+"Chapter name": "पाठ 7: डाकिए की कहानी, कुँवरसिंह की जुबानी (भेंटवार्ता)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "बात का सफ़र",
+"Chapter name": "पाठ 8: वे दिन भी क्या दिन थे (विज्ञान कथा)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "बात का सफ़र",
+"Chapter name": "पाठ 9: एक माँ की बेबसी (कविता)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "मजाखटोला",
+"Chapter name": "पाठ 10: एक दिन की बादशाहत (कहानी)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "मजाखटोला",
+"Chapter name": "पाठ 11: चावल की रोटियाँ (नाटक)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "मजाखटोला",
+"Chapter name": "पाठ 12: गुरु और चेला (कविता)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "मजाखटोला",
+"Chapter name": "पाठ 13: स्वामी की दादी (कहानी)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "आस-पास",
+"Chapter name": "पाठ 14: बाघ आया उस रात (कविता)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "आस-पास",
+"Chapter name": "पाठ 15: बिशन की दिलेरी (कहानी)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "आस-पास",
+"Chapter name": "पाठ 16: पानी रे पानी (लेख)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "आस-पास",
+"Chapter name": "पाठ 17: छोटी-सी हमारी नदी (कविता)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "आस-पास",
+"Chapter name": "पाठ 18: चुनौती हिमालय की (यात्रा वर्णन)"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "भाषा और व्याकरण"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "वर्ण विचार"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "संज्ञा"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "लिंग, वचन और कारक"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "सर्वनाम"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "विशेषण"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "क्रिया"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "काल"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "अविकारी शब्द"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "शुद्ध वर्तनी"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "वाक्य"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "शब्द निर्माण"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "पर्यायवाची शब्द"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "विलोम शब्द"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "श्रुतिसमभिन्नार्थक शब्द"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "अनेक शब्दों के लिए एक शब्द"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "विराम-चिह्न"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Grammar",
+"Chapter name": "मुहावरे"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Reading skills",
+"Chapter name": "अपठित गद्यांश"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Writing skills",
+"Chapter name": "पत्र लेखन"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Writing skills",
+"Chapter name": "अनुच्छेद लेखन"
+},
+{
+"Class name": "Class 5",
+"Subject name": "Hindi",
+"Unit name": "Writing skills",
+"Chapter name": "कहानी लेखन"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 1",
+"Chapter name": "Building with Bricks"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 2",
+"Chapter name": "Long and Short"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 3",
+"Chapter name": "A Trip to Bhopal"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 4",
+"Chapter name": "Tick-Tick-Tick"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 5",
+"Chapter name": "The Way The World Looks"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 6",
+"Chapter name": "The Junk Seller"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 7",
+"Chapter name": "Jugs and Mugs"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 8",
+"Chapter name": "Carts and Wheels"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 9",
+"Chapter name": "Halves and Quarters"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 10",
+"Chapter name": "Play with Patterns"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 11",
+"Chapter name": "Tables and Shares"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 12",
+"Chapter name": "How Heavy? How Light?"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 13",
+"Chapter name": "Fields and Fences"
+},
+{
+"Class name": "Class 4",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 14",
+"Chapter name": " Smart Charts"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 1",
+"Chapter name": "Going to School"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 2",
+"Chapter name": "Ear to Ear"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 3",
+"Chapter name": "A Day with Nandu"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 4",
+"Chapter name": "The Story of Amrita"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 5",
+"Chapter name": "Anita and the Honeybees"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 6",
+"Chapter name": "Omana’s Journey"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 7",
+"Chapter name": "From the Window"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 8",
+"Chapter name": "Reaching Grandmother’s House"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 9",
+"Chapter name": "Changing Families"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 10",
+"Chapter name": "Hu Tu Tu, Hu Tu Tu"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 11",
+"Chapter name": "The Valley of Flowers"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 12",
+"Chapter name": "Changing Times"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 13",
+"Chapter name": "A River’s Tale"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 14",
+"Chapter name": "Basva’s Farm"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 15",
+"Chapter name": "From Market to Home"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 16",
+"Chapter name": "A busy Month"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 17",
+"Chapter name": "Nandita in Mumbai"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 18",
+"Chapter name": "Too Much Water, Too Little Water"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 19",
+"Chapter name": "Abdul in the Garden"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 20",
+"Chapter name": "Eating Together"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 21",
+"Chapter name": "Food and Fun"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 22",
+"Chapter name": "The World in my Home"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 23",
+"Chapter name": "Pochampalli"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 24",
+"Chapter name": "Home and Abroad"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 25",
+"Chapter name": "Spicy Riddles"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 26",
+"Chapter name": "Defence Officer: Wahida"
+},
+{
+"Class name": "Class 4",
+"Subject name": "EVS",
+"Unit name": "Chapter 27",
+"Chapter name": "Chuskit Goes to School"
+},
+{
+"Class name": "Class 4",
+"Subject name": "English",
+"Unit name": "Unit 1",
+"Chapter name": "Wake Up!\nNeha’s Alarm Clock"
+},
+{
+"Class name": "Class 4",
+"Subject name": "English",
+"Unit name": "Unit 2",
+"Chapter name": "Noses\nThe Little Fir Tree"
+},
+{
+"Class name": "Class 4",
+"Subject name": "English",
+"Unit name": "Unit 3",
+"Chapter name": "Run!\nNasruddin’s Aim"
+},
+{
+"Class name": "Class 4",
+"Subject name": "English",
+"Unit name": "Unit 4",
+"Chapter name": "Why?\nAlice in Wonderland"
+},
+{
+"Class name": "Class 4",
+"Subject name": "English",
+"Unit name": "Unit 5",
+"Chapter name": "Don’t be Afraid of the Dark\nHelen Keller"
+},
+{
+"Class name": "Class 4",
+"Subject name": "English",
+"Unit name": "Unit 6",
+"Chapter name": "Hiawatha\nThe Scholar’s Mother Tongue"
+},
+{
+"Class name": "Class 4",
+"Subject name": "English",
+"Unit name": "Unit 7",
+"Chapter name": "A Watering Rhyme\nThe Giving Tree\nThe Donkey"
+},
+{
+"Class name": "Class 4",
+"Subject name": "English",
+"Unit name": "Unit 8",
+"Chapter name": "Books\nGoing to Buy a Book"
+},
+{
+"Class name": "Class 4",
+"Subject name": "English",
+"Unit name": "Unit 9",
+"Chapter name": "The Naughty Boy\nPinocchio"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 1",
+"Chapter name": "Where to Look From"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 2",
+"Chapter name": "Fun With Numbers"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 3",
+"Chapter name": "Give and Take"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 4",
+"Chapter name": "Long and Short"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 5",
+"Chapter name": "Shapes and Designs"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 6",
+"Chapter name": "Fun With Give and Take"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 7",
+"Chapter name": "Time Goes On"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 8",
+"Chapter name": "Who is Heavier?"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 9",
+"Chapter name": "How Many Times?"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 10",
+"Chapter name": "Play With Patterns"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 11",
+"Chapter name": "Jugs and Mugs"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 12",
+"Chapter name": "Can We Share?"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 13",
+"Chapter name": "Smart Charts!"
+},
+{
+"Class name": "Class 3",
+"Subject name": "Mathematics",
+"Unit name": "Chapter 14",
+"Chapter name": "Rupees and Paise"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 1",
+"Chapter name": "Poonam’s Day out"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 2",
+"Chapter name": "The Plant Fairy"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 3",
+"Chapter name": "Water O’ Water!"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 4",
+"Chapter name": "Our First School"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 5",
+"Chapter name": "Chhotu’s House"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 6",
+"Chapter name": "Foods We Eat"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 7",
+"Chapter name": "Saying without Speaking"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 8",
+"Chapter name": "Flying High"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 9",
+"Chapter name": "It’s Raining"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 10",
+"Chapter name": " What is Cooking"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 11",
+"Chapter name": "From Here to There"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 12",
+"Chapter name": "Work We Do"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 13",
+"Chapter name": "Sharing Our Feelings"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 14",
+"Chapter name": "The Story of Food"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 15",
+"Chapter name": "Making Pots"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 16",
+"Chapter name": "Games We Play"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 17",
+"Chapter name": "Here comes a Letter"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 18",
+"Chapter name": "A House Like This"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 19",
+"Chapter name": "Our Friends – Animals"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 20",
+"Chapter name": "Drop by Drop"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 21",
+"Chapter name": "Families can be Different"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 22",
+"Chapter name": "Left-Right"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 23",
+"Chapter name": "A Beautiful Cloth"
+},
+{
+"Class name": "Class 3",
+"Subject name": "EVS",
+"Unit name": "Chapter 24",
+"Chapter name": "Web of Life"
+},
+{
+"Class name": "Class 3",
+"Subject name": "English",
+"Unit name": "Unit 1",
+"Chapter name": "Good Morning\nThe Magic Garden"
+},
+{
+"Class name": "Class 3",
+"Subject name": "English",
+"Unit name": "Unit 2",
+"Chapter name": "Bird Talk\nNina and the Baby Sparrows"
+},
+{
+"Class name": "Class 3",
+"Subject name": "English",
+"Unit name": "Unit 3",
+"Chapter name": "Little by Little\nThe Enormous Turnip"
+},
+{
+"Class name": "Class 3",
+"Subject name": "English",
+"Unit name": "Unit 4",
+"Chapter name": "Sea Song\nA Little Fish Story"
+},
+{
+"Class name": "Class 3",
+"Subject name": "English",
+"Unit name": "Unit 5",
+"Chapter name": "The Balloon Man\nThe Yellow Butterfly"
+},
+{
+"Class name": "Class 3",
+"Subject name": "English",
+"Unit name": "Unit 6",
+"Chapter name": "Trains\nThe Story of the Road"
+},
+{
+"Class name": "Class 3",
+"Subject name": "English",
+"Unit name": "Unit 7",
+"Chapter name": "Puppy and I\nLittle Tiger, Big Tiger"
+},
+{
+"Class name": "Class 3",
+"Subject name": "English",
+"Unit name": "Unit 8",
+"Chapter name": "What’s in the Mailbox?\nMy Silly Sister"
+},
+{
+"Class name": "Class 3",
+"Subject name": "English",
+"Unit name": "Unit 9",
+"Chapter name": "Don’t Tell\nHe is My Brother"
+},
+{
+"Class name": "Class 3",
+"Subject name": "English",
+"Unit name": "Unit 10",
+"Chapter name": "How Creatures Move\nThe Ship of the Desert"
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Course Book - Lesson 1 ",
+"Chapter name": "Goldilocks and the three bears, poem - what is pink grammar? "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Work Book - Lesson 1 ",
+"Chapter name": "Worksheet- Goldilocks and the 3 bears "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Grammar Lesson 1 ",
+"Chapter name": "Naming Words that are Nouns"
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "CourseBook - Lesson 2",
+"Chapter name": "The Ant and the Grasshopper "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Workbook - Lesson 2",
+"Chapter name": "The Ant and the Grasshopper "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Grammar Lesson 2",
+"Chapter name": "Singular and Plural"
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Coursebook - Lesson 3",
+"Chapter name": "Tina's books"
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "CourseBook - Lesson 4",
+"Chapter name": "Echo"
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Workbook - worksheet 3",
+"Chapter name": "The test "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Grammar - Lesson 4",
+"Chapter name": "Articles "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "CourseBook - Lesson 5 ",
+"Chapter name": "The spiders lesson, poem - My hat"
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Grammar Lesson 5",
+"Chapter name": "Pronouns "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Grammar Lesson 6",
+"Chapter name": "Describing words are adjectives "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Coursebook - Lesson 8",
+"Chapter name": "The hidden gift, poem - come little leaves"
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Grammar Lesson 7 ",
+"Chapter name": "Actions words are verbs "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Coursebook Lesson 9 ",
+"Chapter name": "Things are Puzzling "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Grammar Lesson 8 &9",
+"Chapter name": "Verbs Present and past, Helping Verbs "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Coursebook Lesson 20",
+"Chapter name": "The Beach, Poem - The Moon "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Grammar Lesson 10 ",
+"Chapter name": "Verb+ing "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Grammar Lesson 11",
+"Chapter name": "Prepositions "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Grammar Lesson 12",
+"Chapter name": "Sentences "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Grammar Lesson 13",
+"Chapter name": "Linking Words "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Grammar Lesson 14",
+"Chapter name": "Comprehension "
+},
+{
+"Class name": "Class 2",
+"Subject name": "English",
+"Unit name": "Grammer Lesson 15 ",
+"Chapter name": "Composition "
+},
+{
+"Class name": "Class 2",
+"Subject name": "MATHS",
+"Unit name": "Chapter 1",
+"Chapter name": "Numbers 100-200"
+},
+{
+"Class name": "Class 2",
+"Subject name": "MATHS",
+"Unit name": "Chapter 2",
+"Chapter name": "Numbers 201-1000"
+},
+{
+"Class name": "Class 2",
+"Subject name": "MATHS",
+"Unit name": "Chapter 3 ",
+"Chapter name": "Additon"
+},
+{
+"Class name": "Class 2",
+"Subject name": "MATHS",
+"Unit name": "Chapter 4 ",
+"Chapter name": "Subtraction "
+},
+{
+"Class name": "Class 2",
+"Subject name": "MATHS",
+"Unit name": "chapter 5 ",
+"Chapter name": "Multiplication "
+},
+{
+"Class name": "Class 2",
+"Subject name": "MATHS",
+"Unit name": "Chapter 6",
+"Chapter name": "Divison"
+},
+{
+"Class name": "Class 2",
+"Subject name": "MATHS",
+"Unit name": "Chapter 7 ",
+"Chapter name": "Basic Geometry"
+},
+{
+"Class name": "Class 2",
+"Subject name": "MATHS",
+"Unit name": "Chapter 8 ",
+"Chapter name": "time"
+},
+{
+"Class name": "Class 2",
+"Subject name": "MATHS",
+"Unit name": "Chapter 9",
+"Chapter name": "Money"
+},
+{
+"Class name": "Class 2",
+"Subject name": "MATHS",
+"Unit name": "Chapter 10 ",
+"Chapter name": "Measurement "
+},
+{
+"Class name": "Class 2",
+"Subject name": "MATHS",
+"Unit name": "Chapter 11",
+"Chapter name": "Data Handling "
+},
+{
+"Class name": "Class 2",
+"Subject name": "MATHS",
+"Unit name": "Chapter 12 ",
+"Chapter name": "Patterns "
+},
+{
+"Class name": "Class 2",
+"Subject name": "EVS",
+"Unit name": "Lesson 1",
+"Chapter name": "My family and i"
+},
+{
+"Class name": "Class 2",
+"Subject name": "EVS",
+"Unit name": "Lesson 2",
+"Chapter name": "Inside our Body"
+},
+{
+"Class name": "Class 2",
+"Subject name": "EVS",
+"Unit name": "Lesson 3",
+"Chapter name": "Food and Health"
+},
+{
+"Class name": "Class 2",
+"Subject name": "EVS",
+"Unit name": "Lesson 4",
+"Chapter name": "Houses we live in "
+},
+{
+"Class name": "Class 2",
+"Subject name": "EVS",
+"Unit name": "Lesson 5",
+"Chapter name": "Being healthy and strong "
+},
+{
+"Class name": "Class 2",
+"Subject name": "EVS",
+"Unit name": "Lesson 6 ",
+"Chapter name": "Games we play"
+},
+{
+"Class name": "Class 2",
+"Subject name": "EVS",
+"Unit name": "Lesson 8",
+"Chapter name": "Things around us"
+},
+{
+"Class name": "Class 2",
+"Subject name": "EVS",
+"Unit name": "Lesson 9",
+"Chapter name": "The plants "
+},
+{
+"Class name": "Class 2",
+"Subject name": "COMPUTER SCIENCE ",
+"Unit name": "Lesson 1",
+"Chapter name": "Computer a smart machine"
+},
+{
+"Class name": "Class 2",
+"Subject name": "COMPUTER SCIENCE ",
+"Unit name": "Lesson 2 ",
+"Chapter name": "Parts of a computer "
+},
+{
+"Class name": "Class 2",
+"Subject name": "COMPUTER SCIENCE ",
+"Unit name": "Lesson 7",
+"Chapter name": "Introduction to Scratch junior"
+},
+{
+"Class name": "Class 2",
+"Subject name": "COMPUTER SCIENCE ",
+"Unit name": "Lesson 8",
+"Chapter name": "Animation in Scratch junior "
+},
+{
+"Class name": "Class 2",
+"Subject name": "SPECIAL TELUGU",
+"Unit name": "Lesson 1",
+"Chapter name": "Family Members"
+},
+{
+"Class name": "Class 2",
+"Subject name": "SPECIAL TELUGU",
+"Unit name": "Lesson 2",
+"Chapter name": "Varnmala "
+},
+{
+"Class name": "Class 2",
+"Subject name": "SPECIAL TELUGU",
+"Unit name": "Lesson 3",
+"Chapter name": "Names of Fruits\/ Vegetabes\/Flowers"
+},
+{
+"Class name": "Class 2",
+"Subject name": "SPECIAL TELUGU",
+"Unit name": "Lesson 4",
+"Chapter name": "Names of week days"
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Coursebook - Lesson 1",
+"Chapter name": "Meet my family "
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Coursebook - Lesson 2",
+"Chapter name": "Off to school, poem - wake up time"
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Coursebook - Lesson 3",
+"Chapter name": "Making new friends "
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Grammar ",
+"Chapter name": "1. Naming Words"
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Grammar ",
+"Chapter name": "2. Common Noun and Exact Noun (proper noun) "
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Coursebook - Lesson 3",
+"Chapter name": "Making new friends "
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Coursebook - Lesson 4",
+"Chapter name": "Let's have lunch (OTBA)"
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Grammar",
+"Chapter name": "1. Singular\/ Plural (one\/many)"
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Grammar",
+"Chapter name": "2. Action words "
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Coursebook - Lesson 5",
+"Chapter name": "The rabbit and the turtle, poem - the shell"
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Grammar ",
+"Chapter name": "1. Articles: a\/an"
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Grammar ",
+"Chapter name": "2. Pronouns "
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Coursebook - Lesson 6",
+"Chapter name": "Picnic in the woods, poem - save each drop "
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Grammar",
+"Chapter name": "Describing words  (adjectives)"
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Coursebook - Lesson 8",
+"Chapter name": "Thank you "
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Coursebook Lesson 7",
+"Chapter name": "The New Watchman (OTBA)"
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Grammar",
+"Chapter name": "1. Simple Present "
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Grammar",
+"Chapter name": "2. Demonstrative Pronouns (This, that, These, Those)"
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Coursebook - Lesson 9",
+"Chapter name": "Brave Debby, Poem: Things I do "
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Grammar ",
+"Chapter name": "1. Place words"
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Grammar ",
+"Chapter name": "2. Punctuation "
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Coursebook - Lesson 10",
+"Chapter name": "Come, let us play, poem - Ice cream time "
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Grammar ",
+"Chapter name": "1. Recap of punctuation"
+},
+{
+"Class name": "Class 1",
+"Subject name": "ENGLISH",
+"Unit name": "Grammar ",
+"Chapter name": "2. Sentences "
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 1",
+"Chapter name": "Numbers 1-9"
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 2",
+"Chapter name": "Addition"
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 3",
+"Chapter name": "Subtraction"
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 4",
+"Chapter name": "Positions"
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 5",
+"Chapter name": "Shapres "
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 6",
+"Chapter name": "Numbers 10--20"
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 7",
+"Chapter name": "Numbers 21-99"
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 8",
+"Chapter name": "Addition and subtraction "
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 9",
+"Chapter name": "Patterns "
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 10",
+"Chapter name": "Time "
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 11",
+"Chapter name": "Money"
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 12",
+"Chapter name": "Measurement "
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 13",
+"Chapter name": "Data Handling "
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 14",
+"Chapter name": "Ordinal Numbers "
+},
+{
+"Class name": "Class 1",
+"Subject name": "MATHEMATICS",
+"Unit name": "Chapter 15",
+"Chapter name": "Multiplication "
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 1",
+"Chapter name": "This is me"
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 2",
+"Chapter name": "My body"
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 3",
+"Chapter name": "Sense Organs "
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 4",
+"Chapter name": "My family"
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 5",
+"Chapter name": "Clothes we wear"
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 6",
+"Chapter name": "My neighbourhood"
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 7",
+"Chapter name": "Our helping hands "
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 8",
+"Chapter name": "Our festivals "
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 9",
+"Chapter name": "Building habits "
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 10",
+"Chapter name": "Air and water \/ safety rules "
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 11",
+"Chapter name": "Plants around us"
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 12",
+"Chapter name": "Transport "
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 13",
+"Chapter name": "Plants around us"
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 14",
+"Chapter name": "Animals around us "
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 15",
+"Chapter name": "The earth"
+},
+{
+"Class name": "Class 1",
+"Subject name": "EVS",
+"Unit name": "Lesson 16",
+"Chapter name": "Weather and seasons "
+},
+{
+"Class name": "Class 1",
+"Subject name": "COMPUTER SCIENCE ",
+"Unit name": "Lesson 1",
+"Chapter name": "Computer my friend "
+},
+{
+"Class name": "Class 1",
+"Subject name": "COMPUTER SCIENCE ",
+"Unit name": "Lesson 2",
+"Chapter name": "Computer A machine "
+},
+{
+"Class name": "Class 1",
+"Subject name": "COMPUTER SCIENCE ",
+"Unit name": "Lesson 3",
+"Chapter name": "Uses of computer "
+},
+{
+"Class name": "Class 1",
+"Subject name": "COMPUTER SCIENCE ",
+"Unit name": "Lesson 4",
+"Chapter name": "Parts of computer "
+},
+{
+"Class name": "Class 1",
+"Subject name": "COMPUTER SCIENCE ",
+"Unit name": "Lesson 5",
+"Chapter name": "The Keyboard"
+},
+{
+"Class name": "Class 1",
+"Subject name": "COMPUTER SCIENCE ",
+"Unit name": "Lesson 6",
+"Chapter name": "Using a mouse"
+},
+{
+"Class name": "Class 1",
+"Subject name": "COMPUTER SCIENCE ",
+"Unit name": "Lesson 7",
+"Chapter name": "Data and storage"
+}
+]

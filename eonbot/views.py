@@ -7,11 +7,12 @@ import eonchatapp
 from eonchatapp import settings
 from eonchatapp.settings import OPENAI_API_KEY
 import pandas as pd
-
 from django.templatetags.static import static
 
+
 # excel file data importing and processing
-excel_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus-Class 9&10.xlsx')
+excel_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus (Class 1-10)-sheet1.xlsx')
+'''
 # Read the excel file into a DataFrame
 df = pd.read_excel(excel_file_path)
 
@@ -23,45 +24,56 @@ relevant_info = df.dropna()  # Drop rows with missing values
 
 # Convert the extracted information to a string
 relevant_info_str = ','.join(relevant_info.values.flatten())
+'''
 
-''' ==================     try these other ways     ==================
-Eon: Yes, there are multiple ways to convert Excel data into a processed format like a list or dataframe. Here are a few options:
 
-1. Using pandas library: You can use the pandas library in Python to read the Excel file and convert it into a dataframe. Here's an example code snippet:
+# Read the Excel file into a DataFrame
+df = pd.read_excel(excel_file_path)
 
-```python
-import pandas as pd
+# Get the column names
+column_names = df.columns
 
-# Read the Excel file into a dataframe
-df = pd.read_excel('your_file.xlsx')
+# Create a dictionary to store the data with labels
+data_dict = {}
 
-# Convert the dataframe into a list
-data_list = df.values.tolist()
-```
+# Loop through each row in the DataFrame and populate the data_dict dictionary
+for _, row in df.iterrows():
+    class_name = row['Class name']
+    subject_name = row['Subject name']
+    unit_name = row['Unit name']
+    chapter_name = row['Chapter name']
 
-2. Using openpyxl library: Another option is to use the openpyxl library, which provides tools for working with Excel files. Here's an example code snippet:
+    # Add the class, subject, unit, and chapter to the data_dict dictionary
+    if class_name not in data_dict:
+        data_dict[class_name] = {}
 
-```python
-from openpyxl import load_workbook
+    if subject_name not in data_dict[class_name]:
+        data_dict[class_name][subject_name] = {}
 
-# Load the Excel file
-workbook = load_workbook(filename='your_file.xlsx')
+    if unit_name not in data_dict[class_name][subject_name]:
+        data_dict[class_name][subject_name][unit_name] = []
 
-# Select the specific sheet
-sheet = workbook['Sheet1']
+    data_dict[class_name][subject_name][unit_name].append(chapter_name)
 
-# Convert the data into a list
-data_list = []
-for row in sheet.iter_rows(values_only=True):
-    data_list.append(list(row))
-```
+# Print the hierarchical data_dict dictionary to see the format
+#print(data_dict)
 
-These are just a couple of examples, and there are other libraries and methods available depending on your specific requirements.
+# Convert the data_dict dictionary to a JSON-formatted string
+data_dict_str = json.dumps(data_dict)
+#print(data_dict_str)
 
+'''
+give api key static
+json_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE_Syllabus.jsonl')
+file_path = json_file_path  # Replace with the actual path of your file
+file_name = 'CBSE Syllabus.jsonl'  # Replace with the desired file name
+
+with open(file_path, 'rb') as file:
+    response = openai.File.create(file=file, purpose='fine-tune')
 '''
 
 syllabus_keywords = [
-    "hi", "hello", "Phoenix Greens School", "CBSE syllabus", "Class", "Grade", "Maths", "Mathematics", "Science",
+    "hi", "hey", "hello", "Phoenix Greens School", "CBSE syllabus", "Class", "Grade", "Maths", "Mathematics", "Science",
     "Physics", "Chemistry", "Biology", "History", "Economics", "Geography", "Politics", "English", "Social",
     "Telugu", "Hindi", "EVS", "Computer Science","Chapter", "Chapters", "Unit", "Units","Subject", "Subjects",
     "Topic", "Topics", "describe", "elaborate", "more", "above", "from", "OK", "Thanks", "cool",
@@ -72,7 +84,6 @@ syllabus_keywords = [
 # Combine csv_syllabus_keywords and syllabus_keywords into a single list
 #syllabus_keywords = csv_syllabus_keywords.split(',') + basic_keywords
 
-
 # Variable to store the conversation history
 conversation_history = []
 
@@ -82,7 +93,6 @@ def is_syllabus_related_question(question):
         if keyword.lower() in question_lower:
             return True
     return False
-
 
 def get_custom_chatgpt_response(question):
     global conversation_history
@@ -102,14 +112,22 @@ def get_custom_chatgpt_response(question):
         # print(prev_question+" : "+prev_response+"\n"+"***")
 
         # Construct the prompt using previous question and response
-        prompt = f"{prev_question}\n{prev_response}"
+        prompt = f"Use this information to understand what was the previous question asked by user \
+                    {prev_question}\n{prev_response}"
         #print(prompt)
 
         # Append the current question to the conversation history
         conversation_history.append(question)
 
         # send relevant info as prompt to openai completion
-        prompt_data = 'please provide information only related to '+relevant_info_str
+        #prompt_data = 'please provide information only related to ' + relevant_info_str
+
+        # send relevant info as prompt to openai completion
+        prompt_data = f"""Available CBSE syllabus for Phoenix Greens School is : (data_dict_str).\
+        Always consider this syllabus data information to answer to user questions,\
+        Answer relevantly by giving optimised solution to user question based on this syllabus,\
+        for users to learn better.\
+        """
 
         # Make a Completion
         response = openai.ChatCompletion.create(
@@ -119,8 +137,8 @@ def get_custom_chatgpt_response(question):
                 {"role": "assistant", "content": prompt},
                 {"role": "user", "content": question}
             ],
-            temperature=0.5,
-            max_tokens=500,
+            temperature=0.8,
+            max_tokens=1200,
             top_p=0,
             frequency_penalty=0,
             presence_penalty=0
