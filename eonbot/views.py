@@ -9,23 +9,8 @@ from eonchatapp.settings import OPENAI_API_KEY
 import pandas as pd
 from django.templatetags.static import static
 
-
 # excel file data importing and processing
 excel_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus (Class 1-10)-sheet1.xlsx')
-'''
-# Read the excel file into a DataFrame
-df = pd.read_excel(excel_file_path)
-
-# Extract relevant information from the Excel data
-df = df.stack().reset_index(drop=True).to_frame()
-
-# Handle missing values
-relevant_info = df.dropna()  # Drop rows with missing values
-
-# Convert the extracted information to a string
-relevant_info_str = ','.join(relevant_info.values.flatten())
-'''
-
 
 # Read the Excel file into a DataFrame
 df = pd.read_excel(excel_file_path)
@@ -62,16 +47,6 @@ for _, row in df.iterrows():
 data_dict_str = json.dumps(data_dict)
 #print(data_dict_str)
 
-'''
-give api key static
-json_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE_Syllabus.jsonl')
-file_path = json_file_path  # Replace with the actual path of your file
-file_name = 'CBSE Syllabus.jsonl'  # Replace with the desired file name
-
-with open(file_path, 'rb') as file:
-    response = openai.File.create(file=file, purpose='fine-tune')
-'''
-
 syllabus_keywords = [
     "hi", "hey", "hello", "Phoenix Greens School", "CBSE syllabus", "Class", "Grade", "Maths", "Mathematics", "Science",
     "Physics", "Chemistry", "Biology", "History", "Economics", "Geography", "Politics", "English", "Social",
@@ -106,7 +81,6 @@ def get_custom_chatgpt_response(question):
         #print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
 
         # Get the previous question and response from the conversation history
-        # Get the previous question and response from the conversation history
         prev_question = conversation_history[-2] if len(conversation_history) >= 2 else ""
         prev_response = conversation_history[-1] if len(conversation_history) >= 1 else ""
         # print(prev_question+" : "+prev_response+"\n"+"***")
@@ -115,16 +89,13 @@ def get_custom_chatgpt_response(question):
         prompt = f"Use this information to understand what was the previous question asked by user \
                     {prev_question}\n{prev_response}"
         #print(prompt)
-
         # Append the current question to the conversation history
         conversation_history.append(question)
 
         # send relevant info as prompt to openai completion
-        #prompt_data = 'please provide information only related to ' + relevant_info_str
-
-        # send relevant info as prompt to openai completion
         prompt_data = f"""Available CBSE syllabus for Phoenix Greens School is : (data_dict_str).\
         Always consider this syllabus data information to answer to user questions,\
+        Give external resources links to help students to understand more on that specified topic,\
         Answer relevantly by giving optimised solution to user question based on this syllabus,\
         for users to learn better.\
         """
@@ -138,7 +109,7 @@ def get_custom_chatgpt_response(question):
                 {"role": "user", "content": question}
             ],
             temperature=0.8,
-            max_tokens=1200,
+            max_tokens=1500,
             top_p=0,
             frequency_penalty=0,
             presence_penalty=0
@@ -181,7 +152,6 @@ def get_chatgpt_response(question):
     openai.api_key = OPENAI_API_KEY
     # print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
 
-    # Get the previous question and response from the conversation history
     # Get the previous question and response from the conversation history
     prev_question = conversation_history[-2] if len(conversation_history) >= 2 else ""
     prev_response = conversation_history[-1] if len(conversation_history) >= 1 else ""
