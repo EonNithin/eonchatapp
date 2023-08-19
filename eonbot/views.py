@@ -95,7 +95,7 @@ def get_custom_chatgpt_response(question):
         # send relevant info as prompt to openai completion
         prompt_data = f"""Available CBSE syllabus for Phoenix Greens School is : (data_dict_str).\
         Always consider this syllabus data information to answer to user questions,\
-        Give external resources links to help students to understand more on that specified topic,\
+        Give external resources links related to CBSE Syllabus to help students to understand more on that specified topic,\
         Answer relevantly by giving optimised solution to user question based on this syllabus,\
         for users to learn better.\
         """

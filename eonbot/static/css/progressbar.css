@@ -1,44 +1,22 @@
+/* Additional CSS for Mixed Blue and Ash Colored Striped Progress Bar */
+.progress-bar-container {
+  margin-left: 30px;
+  margin-right: 30px;
+}
 
-/* CSS styles for the progress bars */
 .progress-bar {
-  width: 90%;
-  height: 22px;
-  background-color: #2874A6;
   position: relative;
-  border-radius: 8px; /* Rounded edges */
-  margin-bottom: 5px; /* Spacing between progress bars */
+  height: 20px; /* Adjust this value to set the desired height */
+  border-radius: 8px;
 }
 
-.progress-fill {
-  height: 100%;
-  width: calc(100% - 30px); /* Adjust width to exclude the margin-left */
-  background-color: #6A5ACD;
-  position: relative;
-  top: 0;
-  left: 0;
-  border-radius: 8px; /* Rounded edges */
+.progress {
+  height: 100%; /* Ensure the progress bar fills its container */
 }
 
-.progress-bar-container{
-    margin-left : 60px;
+.progress-bar-striped .progress-bar-animated {
+  font-size: 16px; /* Adjust this value to set the desired font size */
+  font-family: "Arial", sans-serif; /* Use your preferred font family */
+  font-weight: bold;
+  font-style: italic;
 }
-
-
-.progress-bar-striped .progress-fill {
-  background-image: linear-gradient(
-    -45deg,
-    rgba(255, 255, 255, 0.15) 25%,
-    transparent 5%,
-    transparent 15%,
-    rgba(255, 255, 255, 0.15) 50%,
-    rgba(255, 255, 255, 0.15) 75%,
-    transparent 25%,
-    transparent
-  );
-  background-size: 1rem 1rem;
-}
-
-
-
-
-
