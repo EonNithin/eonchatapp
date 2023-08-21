@@ -14,10 +14,8 @@ excel_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus (
 
 # Read the Excel file into a DataFrame
 df = pd.read_excel(excel_file_path)
-
 # Get the column names
 column_names = df.columns
-
 # Create a dictionary to store the data with labels
 data_dict = {}
 
@@ -57,7 +55,7 @@ syllabus_keywords = [
 ]
 
 # Combine csv_syllabus_keywords and syllabus_keywords into a single list
-#syllabus_keywords = csv_syllabus_keywords.split(',') + basic_keywords
+# syllabus_keywords = csv_syllabus_keywords.split(',') + basic_keywords
 
 # Variable to store the conversation history
 conversation_history = []
@@ -160,7 +158,7 @@ def get_chatgpt_response(question):
     # Construct the prompt using previous question and response
     prompt = f"{prev_question}\n{prev_response}"
     # print(prompt)
-    prompt_data = "Answer as consisely as possible"
+    prompt_data = "Answer as consisely and relevantly as possible"
     # Append the current question to the conversation history
     conversation_history.append(question)
     response = openai.ChatCompletion.create(
