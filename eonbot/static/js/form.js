@@ -1,5 +1,4 @@
 
-
 // Event listener for the "Enter" key press in the input field
 document.getElementById("myInput").addEventListener("keydown", function(event) {
   if (event.keyCode == 13) {

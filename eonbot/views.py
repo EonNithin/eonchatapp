@@ -1,16 +1,20 @@
 import json
 import os
+import markdown
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import openai
+from django.utils.safestring import mark_safe
 import eonchatapp
 from eonchatapp import settings
 from eonchatapp.settings import OPENAI_API_KEY
 import pandas as pd
 from django.templatetags.static import static
+import html
+import re
 
 # excel file data importing and processing
-excel_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus (Class 1-10)-sheet1.xlsx')
+excel_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus-Class 9&10.xlsx')
 
 # Read the Excel file into a DataFrame
 df = pd.read_excel(excel_file_path)
@@ -39,7 +43,7 @@ for _, row in df.iterrows():
     data_dict[class_name][subject_name][unit_name].append(chapter_name)
 
 # Print the hierarchical data_dict dictionary to see the format
-#print(data_dict)
+print(data_dict)
 
 # Convert the data_dict dictionary to a JSON-formatted string
 data_dict_str = json.dumps(data_dict)
@@ -91,9 +95,9 @@ def get_custom_chatgpt_response(question):
         conversation_history.append(question)
 
         # send relevant info as prompt to openai completion
-        prompt_data = f"""Available CBSE syllabus for Phoenix Greens School is : (data_dict_str).\
+        prompt_data = f"""Available CBSE syllabus for Phoenix Greens School is : {data_dict_str}.\
         Always consider this syllabus data information to answer to user questions,\
-        Give external resources links related to CBSE Syllabus to help students to understand more on that specified topic,\
+        Give additional external resources links related to asked question,\
         Answer relevantly by giving optimised solution to user question based on this syllabus,\
         for users to learn better.\
         """
@@ -106,10 +110,10 @@ def get_custom_chatgpt_response(question):
                 {"role": "assistant", "content": prompt},
                 {"role": "user", "content": question}
             ],
-            temperature=0.8,
+            temperature=0.5,
             max_tokens=1500,
             top_p=0,
-            frequency_penalty=0,
+            frequency_penalty=1,
             presence_penalty=0
         )
         # Check if response exists and has 'choices' list
@@ -189,14 +193,40 @@ def get_chatgpt_response(question):
     return response, conversation_length
 
 def response_view(request):
-    # Your code to generate the context for the response_view.html template
-    # For example:
-    if request.method == "POST":
-        question = request.POST.get('question')
-        response, conversation_length = get_chatgpt_response(question)
-        return render(request, "response_view.html", {"question": question, "response": response, "conversation_history": conversation_history})
+    response = request.session.get('response', '')  # Retrieve the response from the session
 
-    return render(request, "response_view.html", {})
+    def convert_to_html(text):
+        def convert_links_to_html(line):
+            pattern = r'https://\S+'
+            urls = re.findall(pattern, line)
+            for url in urls:
+                line = line.replace(url, f'<a href="{html.escape(url)}">{html.escape(url)}</a>')
+            return line
+
+        lines = text.split('\n')
+        html_lines = []
+
+        for line in lines:
+            if re.match(r'^\s*Subject\s*:\s*(.+)\s*$', line):
+                subject_value = re.match(r'^\s*Subject\s*:\s*(.+)\s*$', line).group(1)
+                html_lines.append(f"<h2>Subject: {subject_value}</h2>")
+            elif re.match(r'^\s*Class\s*:\s*(.+)\s*$', line):
+                class_value = re.match(r'^\s*Class\s*:\s*(.+)\s*$', line).group(1)
+                html_lines.append(f"<h2>Class: {class_value}</h2>")
+            elif line.strip().startswith("Unit"):
+                html_lines.append(f"<h2>{line.strip()}</h2>")
+            elif line.strip().endswith(":"):
+                html_lines.append(f"<h2>{line.strip()[:-1]}</h2>")
+            elif line.strip().startswith("- "):
+                html_lines.append(f"<li>{line.strip()[2:]}</li>")
+            else:
+                html_lines.append(convert_links_to_html(line))  # Applying link conversion here
+
+        html_text = '<br>\n'.join(html_lines)
+        return html_text
+    html_output = convert_to_html(response)
+    html_page = f"<html><body>{html_output}</body></html>"
+    return render(request, "response_view.html", {"response": html_page})
 
 def home(request):
     # Check for form submission
@@ -212,8 +242,21 @@ def home(request):
         else :
             response, conversation_length = get_chatgpt_response(question)
 
+        #Store the response in the session
+        request.session['response'] = response
 
-        return render(request, "home.html", {"question": question, "response": response, "conversation_history": conversation_history})
+        # Convert the response to Markdown format
+        markdown_response = f"## Response\n\n{response}"
+        # Convert Markdown to HTML
+        html_response = markdown.markdown(markdown_response)
+
+        return redirect('response_view')
 
     return render(request, "home.html", {})
+
+'''
+        return redirect('response_view')
+
+    return render(request, "home.html", {})
+'''
 
