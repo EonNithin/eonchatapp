@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Add your head content here -->
+</head>
+<body>
+<div style="display: flex; justify-content: center; align-items: flex-start; height: 100vh; margin: 0 auto; min-width: 100%;">
+    <div style="min-width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 100vh; margin: 0 auto;">
+        <div class="container-scrollable" style="max-height: 70vh; overflow-y: auto; width:90%;padding: 12px;margin-top:50px; border: 1px solid #ccc; border-radius: 10px; background-color: #FDFEFE;">
+            {{ response|safe }}<br>
+        </div>
+        <div style="text-align: center; margin-top: 20px; width: 100%;">
+            <a href="{% url 'home' %}" class="btn btn-primary" style="font-size: 20px; padding: 10px 20px; text-align: center; text-decoration: none; border: none; border-radius: 5px; background-color: #007bff; color: white;">Ask Another Question</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

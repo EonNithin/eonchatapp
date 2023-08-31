@@ -1,29 +1,56 @@
 import json
 import os
+import markdown
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import openai
+from django.utils.safestring import mark_safe
 import eonchatapp
 from eonchatapp import settings
 from eonchatapp.settings import OPENAI_API_KEY
 import pandas as pd
-
 from django.templatetags.static import static
+import html
+import re
 
-# CSV file data importing and processing
-csv_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE SYllabus class 9&10.csv')
-# Read the CSV file into a DataFrame
-df = pd.read_csv(csv_file_path)
-# Extract relevant information from the CSV data
-df = df.stack().reset_index(drop=True).to_frame()
-# Handle missing values
-relevant_info = df.dropna() # Drop rows with missing values
-# Convert the extracted information to a string
-relevant_info_str = ','.join(df.values.flatten())
+# excel file data importing and processing
+excel_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus-Class 9&10.xlsx')
+
+# Read the Excel file into a DataFrame
+df = pd.read_excel(excel_file_path)
+# Get the column names
+column_names = df.columns
+# Create a dictionary to store the data with labels
+data_dict = {}
+
+# Loop through each row in the DataFrame and populate the data_dict dictionary
+for _, row in df.iterrows():
+    class_name = row['Class name']
+    subject_name = row['Subject name']
+    unit_name = row['Unit name']
+    chapter_name = row['Chapter name']
+
+    # Add the class, subject, unit, and chapter to the data_dict dictionary
+    if class_name not in data_dict:
+        data_dict[class_name] = {}
+
+    if subject_name not in data_dict[class_name]:
+        data_dict[class_name][subject_name] = {}
+
+    if unit_name not in data_dict[class_name][subject_name]:
+        data_dict[class_name][subject_name][unit_name] = []
+
+    data_dict[class_name][subject_name][unit_name].append(chapter_name)
+
+# Print the hierarchical data_dict dictionary to see the format
+print(data_dict)
+
+# Convert the data_dict dictionary to a JSON-formatted string
+data_dict_str = json.dumps(data_dict)
+#print(data_dict_str)
 
 syllabus_keywords = [
-    "hi", "hello", "Phoenix Greens School", "CBSE syllabus", "Class", "Grade", "Class 1", "Class 2", "Class 3",
-    "Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Maths", "Mathematics", "Science",
+    "hi", "hey", "hello", "Phoenix Greens School", "CBSE syllabus", "Class", "Grade", "Maths", "Mathematics", "Science",
     "Physics", "Chemistry", "Biology", "History", "Economics", "Geography", "Politics", "English", "Social",
     "Telugu", "Hindi", "EVS", "Computer Science","Chapter", "Chapters", "Unit", "Units","Subject", "Subjects",
     "Topic", "Topics", "describe", "elaborate", "more", "above", "from", "OK", "Thanks", "cool",
@@ -32,8 +59,7 @@ syllabus_keywords = [
 ]
 
 # Combine csv_syllabus_keywords and syllabus_keywords into a single list
-#syllabus_keywords = csv_syllabus_keywords.split(',') + basic_keywords
-
+# syllabus_keywords = csv_syllabus_keywords.split(',') + basic_keywords
 
 # Variable to store the conversation history
 conversation_history = []
@@ -44,7 +70,6 @@ def is_syllabus_related_question(question):
         if keyword.lower() in question_lower:
             return True
     return False
-
 
 def get_custom_chatgpt_response(question):
     global conversation_history
@@ -58,20 +83,24 @@ def get_custom_chatgpt_response(question):
         #print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
 
         # Get the previous question and response from the conversation history
-        # Get the previous question and response from the conversation history
         prev_question = conversation_history[-2] if len(conversation_history) >= 2 else ""
         prev_response = conversation_history[-1] if len(conversation_history) >= 1 else ""
         # print(prev_question+" : "+prev_response+"\n"+"***")
 
         # Construct the prompt using previous question and response
-        prompt = f"{prev_question}\n{prev_response}"
+        prompt = f"Use this information to understand what was the previous question asked by user \
+                    {prev_question}\n{prev_response}"
         #print(prompt)
-
         # Append the current question to the conversation history
         conversation_history.append(question)
 
         # send relevant info as prompt to openai completion
-        prompt_data = 'please provide information only related to '+relevant_info_str
+        prompt_data = f"""Available CBSE syllabus for Phoenix Greens School is : {data_dict_str}.\
+        Always consider this syllabus data information to answer to user questions,\
+        Give additional external resources links related to asked question,\
+        Answer relevantly by giving optimised solution to user question based on this syllabus,\
+        for users to learn better.\
+        """
 
         # Make a Completion
         response = openai.ChatCompletion.create(
@@ -82,9 +111,9 @@ def get_custom_chatgpt_response(question):
                 {"role": "user", "content": question}
             ],
             temperature=0.5,
-            max_tokens=500,
+            max_tokens=1500,
             top_p=0,
-            frequency_penalty=0,
+            frequency_penalty=1,
             presence_penalty=0
         )
         # Check if response exists and has 'choices' list
@@ -126,7 +155,6 @@ def get_chatgpt_response(question):
     # print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
 
     # Get the previous question and response from the conversation history
-    # Get the previous question and response from the conversation history
     prev_question = conversation_history[-2] if len(conversation_history) >= 2 else ""
     prev_response = conversation_history[-1] if len(conversation_history) >= 1 else ""
     # print(prev_question+" : "+prev_response+"\n"+"***")
@@ -134,7 +162,7 @@ def get_chatgpt_response(question):
     # Construct the prompt using previous question and response
     prompt = f"{prev_question}\n{prev_response}"
     # print(prompt)
-    prompt_data = "Answer as consisely as possible"
+    prompt_data = "Answer as consisely and relevantly as possible"
     # Append the current question to the conversation history
     conversation_history.append(question)
     response = openai.ChatCompletion.create(
@@ -165,14 +193,40 @@ def get_chatgpt_response(question):
     return response, conversation_length
 
 def response_view(request):
-    # Your code to generate the context for the response_view.html template
-    # For example:
-    if request.method == "POST":
-        question = request.POST.get('question')
-        response, conversation_length = get_chatgpt_response(question)
-        return render(request, "response_view.html", {"question": question, "response": response, "conversation_history": conversation_history})
+    response = request.session.get('response', '')  # Retrieve the response from the session
 
-    return render(request, "response_view.html", {})
+    def convert_to_html(text):
+        def convert_links_to_html(line):
+            pattern = r'https://\S+'
+            urls = re.findall(pattern, line)
+            for url in urls:
+                line = line.replace(url, f'<a href="{html.escape(url)}">{html.escape(url)}</a>')
+            return line
+
+        lines = text.split('\n')
+        html_lines = []
+
+        for line in lines:
+            if re.match(r'^\s*Subject\s*:\s*(.+)\s*$', line):
+                subject_value = re.match(r'^\s*Subject\s*:\s*(.+)\s*$', line).group(1)
+                html_lines.append(f"<h2>Subject: {subject_value}</h2>")
+            elif re.match(r'^\s*Class\s*:\s*(.+)\s*$', line):
+                class_value = re.match(r'^\s*Class\s*:\s*(.+)\s*$', line).group(1)
+                html_lines.append(f"<h2>Class: {class_value}</h2>")
+            elif line.strip().startswith("Unit"):
+                html_lines.append(f"<h2>{line.strip()}</h2>")
+            elif line.strip().endswith(":"):
+                html_lines.append(f"<h2>{line.strip()[:-1]}</h2>")
+            elif line.strip().startswith("- "):
+                html_lines.append(f"<li>{line.strip()[2:]}</li>")
+            else:
+                html_lines.append(convert_links_to_html(line))  # Applying link conversion here
+
+        html_text = '<br>\n'.join(html_lines)
+        return html_text
+    html_output = convert_to_html(response)
+    html_page = f"<html><body>{html_output}</body></html>"
+    return render(request, "response_view.html", {"response": html_page})
 
 def home(request):
     # Check for form submission
@@ -181,15 +235,28 @@ def home(request):
 
         # Get the value of the toggle switch
         print("Form data:", request.POST)
-        print("toggle is ")
+
         toggle_switch = request.POST.get('toggle_switch_checked')
         if toggle_switch == 'on':
             response, conversation_length = get_custom_chatgpt_response(question)
         else :
             response, conversation_length = get_chatgpt_response(question)
 
+        #Store the response in the session
+        request.session['response'] = response
 
-        return render(request, "home.html", {"question": question, "response": response, "conversation_history": conversation_history})
+        # Convert the response to Markdown format
+        markdown_response = f"## Response\n\n{response}"
+        # Convert Markdown to HTML
+        html_response = markdown.markdown(markdown_response)
+
+        return redirect('response_view')
 
     return render(request, "home.html", {})
+
+'''
+        return redirect('response_view')
+
+    return render(request, "home.html", {})
+'''
 

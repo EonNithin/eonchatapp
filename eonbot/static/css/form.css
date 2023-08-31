@@ -15,6 +15,10 @@
   /* Add any styles you need for the input text and button */
 }
 
+.text-area{
+    max-height:100px;
+}
+
 .btn {
     margin:5px;
     float:right;

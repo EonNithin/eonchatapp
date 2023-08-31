@@ -1,3 +1,19 @@
+
+// Event listener for the "Enter" key press in the input field
+document.getElementById("myInput").addEventListener("keydown", function(event) {
+  if (event.keyCode == 13) {
+     if (!event.shiftKey) {
+        event.preventDefault();
+        validateForm(event); // Call the validateForm function with the event
+    }
+  }
+});
+
+function autoResize(textarea) {
+  textarea.style.height = "auto"; // Reset height to auto
+  textarea.style.height = textarea.scrollHeight + "px"; // Set height based on scrollHeight
+}
+
 function validateForm(event) {
     var checkbox = document.getElementById("myCheckbox");
     event.preventDefault();
@@ -21,15 +37,5 @@ function validateForm(event) {
     }, 500); // Adjust the delay as needed
 
 }
-
-// Get the toggle switch checkbox and the hidden input field
-const toggleSwitch = document.getElementById('flexSwitchCheckChecked');
-const hiddenToggleSwitch = document.getElementById('hiddenToggleSwitch');
-
-// Add an event listener to detect changes in the toggle switch state
-toggleSwitch.addEventListener('change', () => {
-    // Update the value of the hidden input field based on the toggle switch state
-    hiddenToggleSwitch.value = toggleSwitch.checked ? 'checked' : 'unchecked';
-});
 
 document.getElementById("myForm").addEventListener("submit", validateForm);
