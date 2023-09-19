@@ -7,7 +7,6 @@ import openai
 from django.utils.safestring import mark_safe
 import eonchatapp
 from eonchatapp import settings
-from eonchatapp.settings import OPENAI_API_KEY
 import pandas as pd
 from django.templatetags.static import static
 import html
@@ -43,7 +42,6 @@ for _, row in df.iterrows():
     data_dict[class_name][subject_name][unit_name].append(chapter_name)
 
 # Print the hierarchical data_dict dictionary to see the format
-print(data_dict)
 
 # Convert the data_dict dictionary to a JSON-formatted string
 data_dict_str = json.dumps(data_dict)
@@ -79,7 +77,7 @@ def get_custom_chatgpt_response(question):
         # create openai instance
         openai.Model.list()
         # Set the API key -- Get OpenAI api key from environment variables path(eonchatapp-m3) done in settings.py file.
-        openai.api_key = OPENAI_API_KEY
+        openai.api_key = os.getenv("OPENAI_API_KEY")
         #print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
 
         # Get the previous question and response from the conversation history
@@ -224,6 +222,7 @@ def response_view(request):
 
         html_text = '<br>\n'.join(html_lines)
         return html_text
+
     html_output = convert_to_html(response)
     html_page = f"<html><body>{html_output}</body></html>"
     return render(request, "response_view.html", {"response": html_page})

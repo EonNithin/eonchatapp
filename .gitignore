@@ -1,6 +1,10 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+
 apikey.py
 __pycache__/*
-
+eonbot/__pycache__/*
+eonchatapp/__pycache__/*
+eonbot/migrations/__pycache__/*
+.env
