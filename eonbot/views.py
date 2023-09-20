@@ -13,7 +13,7 @@ import html
 import re
 
 # excel file data importing and processing
-excel_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus-Class 9&10.xlsx')
+excel_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus-Class10-Maths&Science.xlsx')
 
 # Read the Excel file into a DataFrame
 df = pd.read_excel(excel_file_path)
@@ -21,6 +21,7 @@ df = pd.read_excel(excel_file_path)
 column_names = df.columns
 # Create a dictionary to store the data with labels
 data_dict = {}
+print(df.head())  # Print the first few rows to see the column names
 
 # Loop through each row in the DataFrame and populate the data_dict dictionary
 for _, row in df.iterrows():
@@ -28,6 +29,7 @@ for _, row in df.iterrows():
     subject_name = row['Subject name']
     unit_name = row['Unit name']
     chapter_name = row['Chapter name']
+    reference_video = row['Reference video']  # New column: "Reference Video"
 
     # Add the class, subject, unit, and chapter to the data_dict dictionary
     if class_name not in data_dict:
@@ -39,10 +41,13 @@ for _, row in df.iterrows():
     if unit_name not in data_dict[class_name][subject_name]:
         data_dict[class_name][subject_name][unit_name] = []
 
-    data_dict[class_name][subject_name][unit_name].append(chapter_name)
+    data_dict[class_name][subject_name][unit_name].append({
+        "chapter_name": chapter_name,
+        "reference_video": reference_video  # Include reference video in the hierarchy
+    })
+
 
 # Print the hierarchical data_dict dictionary to see the format
-
 # Convert the data_dict dictionary to a JSON-formatted string
 data_dict_str = json.dumps(data_dict)
 #print(data_dict_str)
@@ -95,9 +100,7 @@ def get_custom_chatgpt_response(question):
         # send relevant info as prompt to openai completion
         prompt_data = f"""Available CBSE syllabus for Phoenix Greens School is : {data_dict_str}.\
         Always consider this syllabus data information to answer to user questions,\
-        Give additional external resources links related to asked question,\
         Answer relevantly by giving optimised solution to user question based on this syllabus,\
-        for users to learn better.\
         """
 
         # Make a Completion
@@ -109,7 +112,7 @@ def get_custom_chatgpt_response(question):
                 {"role": "user", "content": question}
             ],
             temperature=0.5,
-            max_tokens=1500,
+            max_tokens=600,
             top_p=0,
             frequency_penalty=1,
             presence_penalty=0
@@ -193,14 +196,31 @@ def get_chatgpt_response(question):
 def response_view(request):
     response = request.session.get('response', '')  # Retrieve the response from the session
 
-    def convert_to_html(text):
-        def convert_links_to_html(line):
-            pattern = r'https://\S+'
-            urls = re.findall(pattern, line)
-            for url in urls:
-                line = line.replace(url, f'<a href="{html.escape(url)}">{html.escape(url)}</a>')
-            return line
+    def generate_youtube_iframe(video_url):
+        # Assuming video_url is in the format "https://www.youtube.com/watch?v=VIDEO_ID"
+        video_id = video_url.split('v=')[1]
+        # Generate the iframe HTML code with HTTPS and the correct YouTube video URL
+        iframe_code = f'<iframe width="560" height="315" src="https://www.youtube.com/embed/{video_id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+        
+        return iframe_code
 
+    def convert_links_to_html(line):
+        # Pattern to match YouTube URLs
+        youtube_pattern = r"(https?://www\.youtube\.com/watch\?v=[\w-]+)"
+
+        # Replace YouTube URLs with embedded videos
+        line = re.sub(youtube_pattern, lambda x: generate_youtube_iframe(x.group(0)), line)
+
+        # Pattern to match other URLs
+        '''
+        pattern = r'https?://\S+'
+        urls = re.findall(pattern, line)
+        for url in urls:
+            line = line.replace(url, f'<a href="{html.escape(url)}">{html.escape(url)}</a>')
+        '''
+        return line
+
+    def convert_to_html(text):
         lines = text.split('\n')
         html_lines = []
 
@@ -223,7 +243,8 @@ def response_view(request):
         html_text = '<br>\n'.join(html_lines)
         return html_text
 
-    html_output = convert_to_html(response)
+    processed_response = convert_to_html(response)
+    html_output = convert_to_html(processed_response)
     html_page = f"<html><body>{html_output}</body></html>"
     return render(request, "response_view.html", {"response": html_page})
 
@@ -243,6 +264,7 @@ def home(request):
 
         #Store the response in the session
         request.session['response'] = response
+        #print(response)
 
         # Convert the response to Markdown format
         markdown_response = f"## Response\n\n{response}"
@@ -252,10 +274,4 @@ def home(request):
         return redirect('response_view')
 
     return render(request, "home.html", {})
-
-'''
-        return redirect('response_view')
-
-    return render(request, "home.html", {})
-'''
 
