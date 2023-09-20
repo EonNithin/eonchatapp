@@ -13,7 +13,7 @@ check-terms-cond{
 
 /* Set the width of the first form-check (Switch) */
 .form-switch {
-  width: 600px; /* Subtract the space for the checkbox */
+  width: 700px; /* Subtract the space for the checkbox */
   flex-grow: 1; /* Allow the form-check to grow to fill the remaining space */
 }
 
