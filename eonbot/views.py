@@ -204,7 +204,7 @@ def response_view(request):
         # Assuming video_url is in the format "https://www.youtube.com/watch?v=VIDEO_ID"
         video_id = video_url.split('v=')[1]
         # Generate the iframe HTML code with HTTPS and the correct YouTube video URL
-        iframe_code = f'<iframe style="margin: 30px 0; display: block;" width="560" height="315" src="https://www.youtube.com/embed/{video_id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+        iframe_code = f'\n<br><iframe style="margin: 30px 0; display: block;" width="560" height="315" src="https://www.youtube.com/embed/{video_id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br><br>'
         
         return iframe_code
 
