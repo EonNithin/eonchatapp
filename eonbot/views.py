@@ -100,6 +100,7 @@ def get_custom_chatgpt_response(question):
         # send relevant info as prompt to openai completion
         prompt_data = f"""Available CBSE syllabus for Phoenix Greens School is : {data_dict_str}.\
         Always consider this syllabus data information to answer to user questions,\
+        Always provide reference video for asked syllabus related question,\
         Answer relevantly by giving optimised solution to user question based on this syllabus,\
         """
 
@@ -112,7 +113,7 @@ def get_custom_chatgpt_response(question):
                 {"role": "user", "content": question}
             ],
             temperature=0.5,
-            max_tokens=600,
+            max_tokens=1000,
             top_p=0,
             frequency_penalty=1,
             presence_penalty=0
@@ -195,12 +196,15 @@ def get_chatgpt_response(question):
 
 def response_view(request):
     response = request.session.get('response', '')  # Retrieve the response from the session
+    print('='*100)
+    print("\n",response,"\n")
+    print('='*100)
 
     def generate_youtube_iframe(video_url):
         # Assuming video_url is in the format "https://www.youtube.com/watch?v=VIDEO_ID"
         video_id = video_url.split('v=')[1]
         # Generate the iframe HTML code with HTTPS and the correct YouTube video URL
-        iframe_code = f'<iframe width="560" height="315" src="https://www.youtube.com/embed/{video_id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+        iframe_code = f'<iframe style="margin: 30px 0; display: block;" width="560" height="315" src="https://www.youtube.com/embed/{video_id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
         
         return iframe_code
 
@@ -243,9 +247,9 @@ def response_view(request):
         html_text = '<br>\n'.join(html_lines)
         return html_text
 
-    processed_response = convert_to_html(response)
-    html_output = convert_to_html(processed_response)
+    html_output = convert_to_html(response)
     html_page = f"<html><body>{html_output}</body></html>"
+    #print(html_page)
     return render(request, "response_view.html", {"response": html_page})
 
 def home(request):
