@@ -110,7 +110,7 @@ def get_custom_chatgpt_response(question):
             messages=[
                 {"role": "system", "content": prompt_data},
                 {"role": "assistant", "content": prompt},
-                {"role": "user", "content": question}
+                {"role": "user", "content": question+" using markdown format"}
             ],
             temperature=0.5,
             max_tokens=1000,
@@ -200,55 +200,24 @@ def response_view(request):
     print("\n",response,"\n")
     print('='*100)
 
-    def generate_youtube_iframe(video_url):
-        # Assuming video_url is in the format "https://www.youtube.com/watch?v=VIDEO_ID"
-        video_id = video_url.split('v=')[1]
-        # Generate the iframe HTML code with HTTPS and the correct YouTube video URL
-        iframe_code = f'\n<br><iframe style="margin: 30px 0; display: block;" width="560" height="315" src="https://www.youtube.com/embed/{video_id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br><br>'
-        
-        return iframe_code
+    def convert_to_markdown(plain_text):
+    # Function to replace YouTube links with embeds
+        def replace_youtube_links(match):
+            video_id = match.group(2)
+            return f'\n<iframe width="560" height="315" src="https://www.youtube.com/embed/{video_id}" frameborder="0" allowfullscreen></iframe>\n<br><br>'
 
-    def convert_links_to_html(line):
-        # Pattern to match YouTube URLs
-        youtube_pattern = r"(https?://www\.youtube\.com/watch\?v=[\w-]+)"
+        # Regular expression to find YouTube video links
+        youtube_link_pattern = r'\[([^]]+)\]\(https:\/\/www\.youtube\.com\/watch\?v=([^\)]+)\)'
 
-        # Replace YouTube URLs with embedded videos
-        line = re.sub(youtube_pattern, lambda x: generate_youtube_iframe(x.group(0)), line)
+        # Replace YouTube video links with embeds
+        markdown_text = re.sub(youtube_link_pattern, replace_youtube_links, plain_text)
 
-        # Pattern to match other URLs
-        '''
-        pattern = r'https?://\S+'
-        urls = re.findall(pattern, line)
-        for url in urls:
-            line = line.replace(url, f'<a href="{html.escape(url)}">{html.escape(url)}</a>')
-        '''
-        return line
-
-    def convert_to_html(text):
-        lines = text.split('\n')
-        html_lines = []
-
-        for line in lines:
-            if re.match(r'^\s*Subject\s*:\s*(.+)\s*$', line):
-                subject_value = re.match(r'^\s*Subject\s*:\s*(.+)\s*$', line).group(1)
-                html_lines.append(f"<h2>Subject: {subject_value}</h2>")
-            elif re.match(r'^\s*Class\s*:\s*(.+)\s*$', line):
-                class_value = re.match(r'^\s*Class\s*:\s*(.+)\s*$', line).group(1)
-                html_lines.append(f"<h2>Class: {class_value}</h2>")
-            elif line.strip().startswith("Unit"):
-                html_lines.append(f"<h2>{line.strip()}</h2>")
-            elif line.strip().endswith(":"):
-                html_lines.append(f"<h2>{line.strip()[:-1]}</h2>")
-            elif line.strip().startswith("- "):
-                html_lines.append(f"<li>{line.strip()[2:]}</li>")
-            else:
-                html_lines.append(convert_links_to_html(line))  # Applying link conversion here
-
-        html_text = '<br>\n'.join(html_lines)
-        return html_text
-
-    html_output = convert_to_html(response)
-    html_page = f"<html><body>{html_output}</body></html>"
+        # Convert plain text to Markdown
+        markdown_text = markdown.markdown(markdown_text)
+        return markdown_text
+    
+    markdown_output = convert_to_markdown(response)
+    html_page = f"<html><body>{markdown_output}</body></html>"
     #print(html_page)
     return render(request, "response_view.html", {"response": html_page})
 
