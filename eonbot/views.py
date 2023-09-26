@@ -153,14 +153,13 @@ def get_chatgpt_response(question):
     # create openai instance
     openai.Model.list()
     # Set the API key -- Get OpenAI api key from environment variables path(eonchatapp-m3) done in settings.py file.
-    openai.api_key = OPENAI_API_KEY
+    #openai.api_key = OPENAI_API_KEY
     # print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
 
     # Get the previous question and response from the conversation history
     prev_question = conversation_history[-2] if len(conversation_history) >= 2 else ""
     prev_response = conversation_history[-1] if len(conversation_history) >= 1 else ""
     # print(prev_question+" : "+prev_response+"\n"+"***")
-
     # Construct the prompt using previous question and response
     prompt = f"{prev_question}\n{prev_response}"
     # print(prompt)
