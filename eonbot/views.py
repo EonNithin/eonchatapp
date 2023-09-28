@@ -74,7 +74,27 @@ def is_syllabus_related_question(question):
             return True
     return False
 
-def get_custom_chatgpt_response(question):
+def construct_prompt(data_dict, selected_class, selected_subject):
+    # Extract the rows for the selected class and subject
+    relevant_rows = data_dict.get(selected_class, {}).get(selected_subject, [])
+    print("\n",'='*100,"\n")
+    print("relevant_rows:\n",relevant_rows)
+    print("\n",'='*100,"\n")
+    
+    # Convert the relevant rows to JSON string
+    relevant_rows_json = json.dumps(relevant_rows)
+
+    # Construct the prompt using the JSON string and the user's question
+    prompt = f"User selected class: {selected_class}\nUser selected subject: {selected_subject}\n"
+    prompt += f"Relevant Rows (units):\n{relevant_rows_json}\n"
+    print("\n",'='*100,"\n")
+    print("Relavant rows to json:\n",prompt)
+    print("\n",'='*100,"\n")
+    
+    return prompt
+
+
+def get_custom_chatgpt_response(question, selected_class, selected_subject):
     global conversation_history
     if is_syllabus_related_question(question):
 
@@ -97,27 +117,33 @@ def get_custom_chatgpt_response(question):
         # Append the current question to the conversation history
         conversation_history.append(question)
 
+        '''
         # send relevant info as prompt to openai completion
         prompt_data = f"""Available CBSE syllabus for Phoenix Greens School is : {data_dict_str}.\
         Always consider this syllabus data information to answer to user questions,\
-        Always provide reference video for asked syllabus related question,\
-        Answer relevantly by giving optimised solution to user question based on this syllabus,\
-        """
-
+        Always provide reference video for asked syllabus related question,\"""
+        '''
+        # Construct the dynamic prompt based on selected class and subject
+        prompt_data= construct_prompt(data_dict, selected_class, selected_subject)
+        print("\n",'='*100,"\n")
+        print("Prompt data:\n",prompt_data)
+        print("\n",'='*100,"\n")
+        
         # Make a Completion
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": prompt_data},
                 {"role": "assistant", "content": prompt},
-                {"role": "user", "content": question+" using markdown format"}
+                {"role": "user", "content": question+", apply markdown format for each and every line"}
             ],
             temperature=0.5,
-            max_tokens=1000,
+            max_tokens=1500,
             top_p=0,
             frequency_penalty=1,
             presence_penalty=0
         )
+        
         # Check if response exists and has 'choices' list
         if response and 'choices' in response and response['choices']:
             response_content = response['choices'][0]['message']['content']
@@ -196,7 +222,7 @@ def get_chatgpt_response(question):
 def response_view(request):
     response = request.session.get('response', '')  # Retrieve the response from the session
     print('='*100)
-    print("\n",response,"\n")
+    print("\nResponse:\n",response,"\n")
     print('='*100)
 
     def convert_to_markdown(plain_text):
@@ -213,8 +239,24 @@ def response_view(request):
 
         # Convert plain text to Markdown
         markdown_text = markdown.markdown(markdown_text)
+
+        print("\n",'='*100,"\n")
+        print("Raw Markdown:\n",markdown_text)
+        print("\n",'='*100,"\n")
+        markdown_text=fix_markdown_format(markdown_text)
         return markdown_text
     
+    def fix_markdown_format(markdown_text):
+        # Remove extra spaces around links
+        markdown_text = re.sub(r'\]\s+\(', '](', markdown_text)
+
+        print("\n",'='*100,"\n")
+        print("Filtered Markdown:\n",markdown_text)
+        print("\n",'='*100,"\n")
+
+        return markdown_text
+
+
     markdown_output = convert_to_markdown(response)
     html_page = f"<html><body>{markdown_output}</body></html>"
     #print(html_page)
@@ -224,13 +266,16 @@ def home(request):
     # Check for form submission
     if request.method == "POST":
         question = request.POST.get('question')
+        selected_class = request.POST.get('selected_class')  # Retrieve selected class
+        selected_subject = request.POST.get('selected_subject')  # Retrieve selected subject
+        print(selected_subject,selected_class)
 
         # Get the value of the toggle switch
         print("Form data:", request.POST)
 
         toggle_switch = request.POST.get('toggle_switch_checked')
         if toggle_switch == 'on':
-            response, conversation_length = get_custom_chatgpt_response(question)
+            response, conversation_length = get_custom_chatgpt_response(question,selected_class=selected_class,selected_subject=selected_subject)
         else :
             response, conversation_length = get_chatgpt_response(question)
 

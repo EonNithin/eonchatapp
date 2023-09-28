@@ -5,14 +5,18 @@
     flex-direction:column;
 }
 
-.form-txt-btn{
-    padding:10px;
+.flex-container {
+    display: flex;
+    justify-content: center;
 }
 
+.flex-item {
+    flex: 1;
+    margin: 10px;
+}
 
-.form-control, .btn {
-
-  /* Add any styles you need for the input text and button */
+.form-txt-btn{
+    padding:10px;
 }
 
 .text-area{
@@ -24,3 +28,4 @@
     float:right;
     /*margin-left:5px;*/
 }
+
