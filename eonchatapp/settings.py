@@ -2,7 +2,6 @@ import os
 import openai
 from pathlib import Path
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -14,7 +13,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(x1euq)lbbm&j**qsx=l7(ex*)e$62e8vo6lx)_qrbdkg=30fy'
 
 # fetch OpenAI secret-key from environment path variables
+
 #OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
+
 
 #print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
 
