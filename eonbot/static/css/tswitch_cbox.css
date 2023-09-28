@@ -1,0 +1,29 @@
+/* Set the width of the container */
+.form-switch-check {
+  width: 540px; /* Adjust this width as needed */
+  /* Center the container horizontally */
+  display: flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+}
+
+check-terms-cond{
+    text-decoration:hyperlink;
+}
+
+/* Set the width of the first form-check (Switch) */
+.form-switch {
+  width: 700px; /* Subtract the space for the checkbox */
+  flex-grow: 1; /* Allow the form-check to grow to fill the remaining space */
+}
+
+/* Set the width of the second form-check (Checkbox) */
+.form-checkbox {
+
+  width: 600px; /* Adjust this width as needed */
+}
+
+/* Optional: Add some margin between the form-checks */
+.form-check {
+  margin-bottom: 10px;
+}
