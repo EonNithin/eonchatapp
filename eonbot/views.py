@@ -53,7 +53,7 @@ data_dict_str = json.dumps(data_dict)
 #print(data_dict_str)
 
 syllabus_keywords = [
-    "hi", "hey", "hello", "Phoenix Greens School", "CBSE syllabus", "Class", "Grade", "Maths", "Mathematics", "Science",
+    "Phoenix Greens School", "CBSE syllabus", "Class", "Grade", "Maths", "Mathematics", "Science",
     "Physics", "Chemistry", "Biology", "History", "Economics", "Geography", "Politics", "English", "Social",
     "Telugu", "Hindi", "EVS", "Computer Science","Chapter", "Chapters", "Unit", "Units","Subject", "Subjects",
     "Topic", "Topics", "describe", "elaborate", "more", "above", "from", "OK", "Thanks", "cool",

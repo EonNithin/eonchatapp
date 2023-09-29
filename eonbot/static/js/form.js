@@ -1,5 +1,5 @@
 
-// Event listener for the "Enter" key press in the input field
+/* Event listener for the "Enter" key press in the input field
 document.getElementById("myInput").addEventListener("keydown", function(event) {
   if (event.keyCode == 13) {
      if (!event.shiftKey) {
@@ -8,6 +8,7 @@ document.getElementById("myInput").addEventListener("keydown", function(event) {
     }
   }
 });
+*/
 
 function autoResize(textarea) {
   textarea.style.height = "auto"; // Reset height to auto
