@@ -82,7 +82,7 @@ def get_custom_chatgpt_response(question):
         # create openai instance
         openai.Model.list()
         # Set the API key -- Get OpenAI api key from environment variables path(eonchatapp-m3) done in settings.py file.
-        openai.api_key = os.getenv("OPENAI_API_KEY")
+        #openai.api_key 
         #print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
 
         # Get the previous question and response from the conversation history
