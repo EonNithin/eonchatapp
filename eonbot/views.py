@@ -135,7 +135,7 @@ def get_custom_chatgpt_response(question, selected_class, selected_subject):
             messages=[
                 {"role": "system", "content": prompt_data},
                 {"role": "assistant", "content": prompt},
-                {"role": "user", "content": question+", apply markdown format for each and every line"}
+                {"role": "user", "content": question+", using markdown format"}
             ],
             temperature=0.5,
             max_tokens=1500,
