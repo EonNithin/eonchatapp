@@ -205,6 +205,7 @@ def get_chatgpt_response(question):
         frequency_penalty=0,
         presence_penalty=0
     )
+    
     # Check if response exists and has 'choices' list
     if response and 'choices' in response and response['choices']:
         response_content = response['choices'][0]['message']['content']
