@@ -16,7 +16,7 @@
       <div class="flex-item">
         <div class="col-md-3">
           <label for="validationCustom04" class="form-label">Select Class</label>
-          <select class="form-select" id="validationCustom04" name="selected_class" required>
+          <select class="form-select" id="validationCustom04" name="selected_class">
             <option selected disabled value="">Choose...</option>
             <option>Class 10</option>
             <option>Class 9</option>
@@ -32,7 +32,7 @@
       <div class="flex-item">
         <div class="col-md-3">
           <label for="validationCustom04" class="form-label">Select Subject</label>
-          <select class="form-select" id="validationCustom04" name="selected_subject" required>
+          <select class="form-select" id="validationCustom04" name="selected_subject">
             <option selected disabled value="">Choose...</option>
             <option>Mathematics</option>
             <option>Science</option>
@@ -48,8 +48,8 @@
 
     <!-- This is input text and submit button -->
     <div class="form-txt-btn" >
-        <textarea id="myInput" class="form-control text-area" name="question" placeholder="Ask your question here..." oninput="autoResize(this)" ></textarea>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <textarea id="myInput" class="form-control text-area" name="question" placeholder="Ask your question here..." oninput="autoResize(this)" required></textarea>
+        <button type="submit" class="btn btn-primary" id="btn btn-primary">Submit</button>
     </div>
     <div style="padding-left:8px;">
         {% include "tswitch_cbox.html" %}

@@ -1,5 +1,5 @@
 
-/* Event listener for the "Enter" key press in the input field
+// Event listener for the "Enter" key press in the input field
 document.getElementById("myInput").addEventListener("keydown", function(event) {
   if (event.keyCode == 13) {
      if (!event.shiftKey) {
@@ -7,8 +7,25 @@ document.getElementById("myInput").addEventListener("keydown", function(event) {
         validateForm(event); // Call the validateForm function with the event
     }
   }
+  else if(event.keyCode == 13 && event.shiftKey){
+     // Prevent the default behavior (newline)
+     event.preventDefault();
+
+     // Move cursor to the next line
+     var textarea = event.target;
+     var startPos = textarea.selectionStart;
+     var endPos = textarea.selectionEnd;
+     var value = textarea.value;
+ 
+     // Insert a newline character at the cursor position
+     textarea.value = value.substring(0, startPos) + "\n" + value.substring(endPos, value.length);
+ 
+     // Move the cursor to the next line
+     textarea.selectionStart = startPos + 1;
+     textarea.selectionEnd = startPos + 1;
+  }
 });
-*/
+
 
 function autoResize(textarea) {
   textarea.style.height = "auto"; // Reset height to auto
