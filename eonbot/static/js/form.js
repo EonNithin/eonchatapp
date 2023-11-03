@@ -26,10 +26,26 @@ document.getElementById("myInput").addEventListener("keydown", function(event) {
   }
 });
 
+document.getElementById("myForm").addEventListener("submit", validateForm);
+document.getElementById("flexSwitchCheckChecked").addEventListener("change", toggleDropdowns);
+
+function toggleDropdowns() {
+    var toggleSwitch = document.getElementById("flexSwitchCheckChecked");
+    var dropdownClass = document.querySelector(".Classdropdown-container");
+    var dropdownSubject = document.querySelector(".Subjectdropdown-container");
+
+    if (toggleSwitch.checked) {
+        dropdownClass.style.display = "block";
+        dropdownSubject.style.display = "block";
+    } else {
+        dropdownClass.style.display = "none";
+        dropdownSubject.style.display = "none";
+    }
+}
 
 function autoResize(textarea) {
-  textarea.style.height = "auto"; // Reset height to auto
-  textarea.style.height = textarea.scrollHeight + "px"; // Set height based on scrollHeight
+    textarea.style.height = "auto"; // Reset height to auto
+    textarea.style.height = textarea.scrollHeight + "px"; // Set height based on scrollHeight
 }
 
 function validateForm(event) {
@@ -39,9 +55,22 @@ function validateForm(event) {
         alert("Please select the checkbox.");
         return false; // Prevent form submission
     }
+
+    var toggleSwitch = document.getElementById("flexSwitchCheckChecked");
+    var dropdownClass = document.querySelector(".Classdropdown");
+    var dropdownSubject = document.querySelector(".Subjectdropdown");
+
+    if (toggleSwitch.checked) {
+        // Toggle switch is checked, so we need to validate class and subject dropdowns
+        if (!dropdownClass.value || !dropdownSubject.value) {
+            alert("Please select both Class and Subject.");
+            return false;
+        }
+    }
+
     // Show the progress bars
     var progressBars = document.querySelectorAll(".progress-bar");
-    progressBars.forEach(function(progressBar) {
+    progressBars.forEach(function (progressBar) {
         progressBar.style.display = "block";
     });
 
@@ -50,10 +79,7 @@ function validateForm(event) {
     submitButton.disabled = true;
 
     // Allow the form submission after a short delay
-    setTimeout(function() {
+    setTimeout(function () {
         document.getElementById("myForm").submit();
     }, 500); // Adjust the delay as needed
-
 }
-
-document.getElementById("myForm").addEventListener("submit", validateForm);
