@@ -106,7 +106,7 @@ def get_custom_chatgpt_response(question):
 
         # Make a Completion
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-3.5-turbo-1106",
             messages=[
                 {"role": "system", "content": prompt_data},
                 {"role": "assistant", "content": prompt},
