@@ -1,3 +1,4 @@
+/*
 
 // Scroll to the bottom of the card body
 function scrollToBottom() {
@@ -12,4 +13,5 @@ document.addEventListener("DOMContentLoaded", function() {
   scrollToBottom();
 });
 
+*/
 

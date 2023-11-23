@@ -1,5 +1,4 @@
 import os
-import markdown
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.utils.safestring import mark_safe
@@ -11,6 +10,8 @@ import re
 import openai
 from openai import OpenAI
 import time
+import markdown
+
 
 # Retrieve the OpenAI API key from the environment variable
 openai_api_key = os.environ.get("OPENAI_API_KEY")
@@ -22,137 +23,80 @@ if not openai_api_key:
 # Initialize the OpenAI client with the API key
 # API key set inside basch file
 client = OpenAI()
+import time
+import time
 
-
-def upload_file():
-    file = client.files.create(
-    file=open("/content/X MATHS NCERT TEXTBOOK 2023-24 EDITION.pdf", "rb"),
-    purpose='assistants'
-    )
-
-    file_id=file.id
-    file_name=file.filename
-    print(file_id,"="*3,file_name)
-    return file_id, file_name
-
-
-def retrieve_uploaded_files():
-
-    files_dict = {}
-    files_list = client.files.list()
-    for file in files_list:
-        files_dict[file.id] = file.filename
-
-    print("File Information Dictionary:", files_dict)
-
-
-
-def createAssistant():
-    assistant = client.beta.assistants.create(
-    instructions="""
-    You are an educational assistant for an Edutech platform. 
-    You can assist teachers, students, and management with various educational queries.
-    you can perform below tasks:
-    For teachers:
-    - Provide lesson plans for specific classes.
-    - Suggest teaching strategies for a particular subject.
-    - Help with grading and assessment methods.
-    For students:
-    - Offer assistance with homework or specific subjects.
-    - Provide explanations for challenging concepts.
-    - Recommend study resources and learning strategies.
-    For management:
-    - Generate reports on student performance.
-    - Assist in scheduling and managing classes.
-    - Provide insights into educational trends and improvements.
-    Remember to provide detailed and context-specific responses. 
-    If the user asks for a lesson plan, include relevant details like the subject, class, and any specific requirements. 
-    If the question is about a challenging concept, explain it in a way that is easy for the user to understand.
-    Feel free to ask for clarification if needed, and always prioritize providing helpful and accurate information to enhance the educational experience.
-    """,
-    name="chatbot test",
-    tools=[{"type": "code_interpreter"},{"type": "retrieval"}],
-    model="gpt-3.5-turbo-1106",
-    file_ids=[file.id]
-    )
-
-    assistant_id=assistant.id
-    file_id=file.id
-    print(assistant.id, "="*3, file.id)
-    return assistant_id, file_id
-
-
-thread_id=""
+assistant_id = "asst_ZB8ScuNwWCsMybVQ7Ao6zjhg"
+file_id = "file-zPCEr1BM0Y3Oy6sTyLHAmu0s"  # file that assistant is having
+thread_id = None  # Use None instead of an empty string
 
 def get_assistant_response(question):
+    global thread_id, assistant_id, file_id
 
-    assistant_id = "asst_ZB8ScuNwWCsMybVQ7Ao6zjhg"
-    file_id = "file-zPCEr1BM0Y3Oy6sTyLHAmu0s" #file that assistant is having
-
-    # Retirieving existing assistant
-    assistant = client.beta.assistants.retrieve("asst_ZB8ScuNwWCsMybVQ7Ao6zjhg")
-
-    if thread_id == "":
+    # Retrieving existing thread or creating a new one
+    if thread_id is None:
+        print("Creating new thread")
         # Creating empty thread
-        thread = client.beta.threads.create(
-            # file_ids=[file.id] === this file ids we can use if user is uploading some files from frontend for that session or thread
-        )
+        thread = client.beta.threads.create()
         curr_thread = thread
-        curr_thread_id = curr_thread.id
+        thread_id = curr_thread.id  # Update thread_id with the new thread ID
     else:
-        curr_thread = client.beta.threads.retrieve(curr_thread.id)
+        print("Retrieving existing thread")
+        # Retrieve existing thread
+        curr_thread = client.beta.threads.retrieve(thread_id)
 
     # Add a message to thread
     message = client.beta.threads.messages.create(
-    thread_id=curr_thread.id,
-    role="user",
-    content=question, # user question
+        thread_id=curr_thread.id,
+        role="user",
+        content=question,  # user question
     )
 
     # Run thread
     run = client.beta.threads.runs.create(
-    thread_id=curr_thread.id,
-    assistant_id=assistant_id, #assistant.id
-    instructions="Please address User as Learner."
+        thread_id=curr_thread.id,
+        assistant_id=assistant_id,
+        instructions="Please address User as Pal."
     )
 
     start_time = time.time()
 
     # Poll the run status until it's completed, failed, or 40 seconds have passed
     while run.status not in ["completed", "failed"]:
-        time.sleep(10)  # Adjust the sleep duration as needed
+        time.sleep(10)
         elapsed_time = time.time() - start_time
         print(f"Current run status: {run.status}, Elapsed time: {elapsed_time} seconds")
-
-        if elapsed_time >= 100:
-            response = "There is heavy traffic. Please try again later."
-            return response
-
         run = client.beta.threads.runs.retrieve(thread_id=curr_thread.id, run_id=run.id)
 
     # Check if run status is completed and retrieve messages
     if run.status == "completed":
+        # Update the global thread_id with the current thread ID
+        thread_id = curr_thread.id
+
         messages = client.beta.threads.messages.list(
             thread_id=curr_thread.id,
             order="asc"
         )
+        print("\n",messages,"\n")
         response = ""
         for msg in messages:
             if msg.content[0].type == "text":
                 if msg.role == "user":
-                    msg.role = "User"
+                    msg.role = "YOU"
+                    response += "<hr>" + "\n"
                 elif msg.role == "assistant":
-                    msg.role = "Maths Teacher"
-                response += f"{msg.role}: {msg.content[0].text.value}\n"
-            elif msg.content[0].type == "image":
-                response += f"{msg.role}: [Image]\n"
-            # Add more conditions for other content types as needed
+                    msg.role = "EON"
 
-        print("Response :",response)
+                response += f"{msg.role}: {msg.content[0].text.value} \n"
+
+            elif msg.content[0].type == "image":
+                # Handle images
+                image_url = msg.content[0].image.url
+                response += f"{msg.role}: <img src='{image_url}' alt='Image'>\n"
         return response
     else:
         response = f"Assistant run failed with status: {run.status}. Please try after sometime."
-
+    print(response)
     return response
 
 
@@ -161,8 +105,13 @@ def response_view(request):
     print('='*100)
     print("\nResponse:\n",response,"\n")
     print('='*100)
-
-    return render(request, "response_view.html", {"response": response})
+    # Convert Markdown to HTML
+    html_response = markdown.markdown(response)
+    # Mark the HTML content as safe
+    safe_html_response = mark_safe(html_response)
+    print(safe_html_response)
+    # Pass the safe HTML content to the template
+    return render(request, "response_view.html", {"response": safe_html_response})
 
 
 def home(request):
@@ -186,3 +135,6 @@ def home(request):
 
     return render(request, "home.html", {})
 
+# Run project : python3 manage.py runserver SERVER-IP:PORT
+# SERVER-IP and PORT are optional parameters. 127.0.0.1:8000 will be used by default if you don’t specify any of them. 
+# If you plan to remotely access the server, you should use the IP address 0.0.0.0, or the actual server IP address.
