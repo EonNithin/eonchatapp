@@ -11,7 +11,8 @@ import openai
 from openai import OpenAI
 import time
 import markdown
-
+import time
+from django.conf import settings
 
 # Retrieve the OpenAI API key from the environment variable
 openai_api_key = os.environ.get("OPENAI_API_KEY")
@@ -23,12 +24,41 @@ if not openai_api_key:
 # Initialize the OpenAI client with the API key
 # API key set inside basch file
 client = OpenAI()
-import time
-import time
+
+'''
+asst_ZB8ScuNwWCsMybVQ7Ao6zjhg === ['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1hQ8fCDDDuQUPvkvqV4', 'file-iRsXYA4MDzxIgURI7dqYWueu', 'file-NFruvcolPoPvxASsD5wcgTlr', 'file-Z9aYtYYzB26Jzr3myoeznxa3', 'file-O4HyAHeBTbnYpmB2oSHxSx0n', 'file-SoGo3TxBFR25fX2yk6KwC9pr']
+
+'''
 
 assistant_id = "asst_ZB8ScuNwWCsMybVQ7Ao6zjhg"
-file_id = "file-zPCEr1BM0Y3Oy6sTyLHAmu0s"  # file that assistant is having
+assistant_file_ids = "['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1hQ8fCDDDuQUPvkvqV4', 'file-iRsXYA4MDzxIgURI7dqYWueu', 'file-NFruvcolPoPvxASsD5wcgTlr', 'file-Z9aYtYYzB26Jzr3myoeznxa3', 'file-O4HyAHeBTbnYpmB2oSHxSx0n', 'file-SoGo3TxBFR25fX2yk6KwC9pr']"  # file that assistant is having
 thread_id = None  # Use None instead of an empty string
+
+def get_imageFileContent(image_file_id):
+    image_file = openai.files.content(image_file_id)
+
+    # Generate a unique filename for the image
+    image_filename = f"{image_file_id}.png"
+
+    # Build the path to the 'images' subdirectory
+    # MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+    images_directory = os.path.join(eonchatapp.settings.MEDIA_ROOT,"images")
+    print("Images_diretory:",images_directory)
+
+    # Create the 'images' subdirectory if it doesn't exist
+    os.makedirs(images_directory, exist_ok=True)
+
+    # Build the full path to the file within the 'images' subdirectory
+    image_file_path = os.path.join(images_directory, image_filename)
+    print("image file path:",image_file_path)
+
+    # Write the image content to the file
+    with open(image_file_path, "wb") as f:
+        f.write(image_file.content)
+
+
+    return image_filename
+
 
 def get_assistant_response(question):
     global thread_id, assistant_id, file_id
@@ -81,6 +111,7 @@ def get_assistant_response(question):
         response = ""
         for msg in messages:
             if msg.content[0].type == "text":
+                print("hi, Iam inside if msg.content[0].type == text")
                 if msg.role == "user":
                     msg.role = "YOU"
                     response += "<hr>" + "\n"
@@ -88,17 +119,30 @@ def get_assistant_response(question):
                     msg.role = "EON"
 
                 response += f"{msg.role}: {msg.content[0].text.value} \n"
-
-            elif msg.content[0].type == "image":
+            
+            elif msg.content[0].type == "image_file":
                 # Handle images
-                image_url = msg.content[0].image.url
-                response += f"{msg.role}: <img src='{image_url}' alt='Image'>\n"
+                print("hi, Iam inside elif msg.content[0].type == image_file")
+                if msg.role == "user":
+                    msg.role = "YOU"
+                    response += "<hr>" + "\n"
+                elif msg.role == "assistant":
+                    msg.role = "EON"
+
+                image_file_id = msg.content[0].image_file.file_id
+                image_filename = get_imageFileContent(image_file_id)
+            
+                # Construct the image URL using MEDIA_URL and the image filename
+                image_url = f"{settings.MEDIA_URL}/images/{image_filename}"
+                print("final image url is :\n",image_url)
+
+                response += f'{msg.role}:\n<div style=""><img src="{image_url}" alt="Image file" style="max-width:40%; max-height:40%;"></div>\n'
+            
         return response
     else:
         response = f"Assistant run failed with status: {run.status}. Please try after sometime."
     print(response)
     return response
-
 
 def response_view(request):
     response = request.session.get('response', '')  # Retrieve the response from the session
@@ -112,7 +156,6 @@ def response_view(request):
     print(safe_html_response)
     # Pass the safe HTML content to the template
     return render(request, "response_view.html", {"response": safe_html_response})
-
 
 def home(request):
     # Check for form submission
