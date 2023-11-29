@@ -35,6 +35,7 @@ assistant_file_ids = "['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1hQ8fCDDDuQUP
 thread_id = None  # Use None instead of an empty string
 
 def get_imageFileContent(image_file_id):
+
     image_file = openai.files.content(image_file_id)
 
     # Generate a unique filename for the image
@@ -56,12 +57,17 @@ def get_imageFileContent(image_file_id):
     with open(image_file_path, "wb") as f:
         f.write(image_file.content)
 
-
     return image_filename
 
+'''
+def get_file_content(files_id):
+    content = client.files.retrieve_content("files_id")
+    print("content inside files:\n",content)
+    return content
+'''
 
 def get_assistant_response(question):
-    global thread_id, assistant_id, file_id
+    global thread_id, assistant_id, assistant_file_idsS
 
     # Retrieving existing thread or creating a new one
     if thread_id is None:
@@ -117,9 +123,18 @@ def get_assistant_response(question):
                     response += "<hr>" + "\n"
                 elif msg.role == "assistant":
                     msg.role = "EON"
-
+                '''
+                Here add code for text message extraction ( {msg.content[0].text.value} ).
+                then extract keywords from whole text message.
+                send that keywords as input for extracting top 1 youtube video.
+                '''
                 response += f"{msg.role}: {msg.content[0].text.value} \n"
-            
+                '''
+                if(msg.content[0].text.annotations[0].file_path.file_id):
+                    files_id = msg.content[0].text.annotations[0].file_path.file_id
+                    file_content = get_file_content(files_id)
+                '''
+                
             elif msg.content[0].type == "image_file":
                 # Handle images
                 print("hi, Iam inside elif msg.content[0].type == image_file")
@@ -131,13 +146,14 @@ def get_assistant_response(question):
 
                 image_file_id = msg.content[0].image_file.file_id
                 image_filename = get_imageFileContent(image_file_id)
-            
+                
                 # Construct the image URL using MEDIA_URL and the image filename
                 image_url = f"{settings.MEDIA_URL}/images/{image_filename}"
                 print("final image url is :\n",image_url)
 
                 response += f'{msg.role}:\n<div style=""><img src="{image_url}" alt="Image file" style="max-width:40%; max-height:40%;"></div>\n'
-            
+                response += f"{msg.role}: {msg.content[1].text.value} \n"
+
         return response
     else:
         response = f"Assistant run failed with status: {run.status}. Please try after sometime."
