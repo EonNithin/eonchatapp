@@ -59,12 +59,33 @@ def get_imageFileContent(image_file_id):
 
     return image_filename
 
-'''
-def get_file_content(files_id):
-    content = client.files.retrieve_content("files_id")
-    print("content inside files:\n",content)
-    return content
-'''
+
+def get_file_content(file_ids):
+    pdf_filenames = []
+    for file_id in file_ids:
+        # Generate a unique filename for the image
+        pdf_filename = f"{file_id}.pdf"
+        pdf_filenames.append(pdf_filename)
+
+        pdf_data = client.files.content(file_id)
+        pdf_data_bytes = pdf_data.read()
+
+        pdf_files_directory = os.path.join(eonchatapp.settings.MEDIA_ROOT,"pdf files")
+        print("PDF files diretory:",pdf_files_directory)
+
+        # Create the 'pdf files' subdirectory if it doesn't exist
+        os.makedirs(pdf_files_directory, exist_ok=True)
+
+        # Build the full path to the file within the 'images' subdirectory
+        pdf_file_path = os.path.join(pdf_files_directory, pdf_filename)
+        print("PDF file path:",pdf_file_path)
+
+        with open(pdf_file_path, "wb") as file:
+            file.write(pdf_data_bytes)
+
+    print("PDF file names are:",pdf_filenames)
+    return pdf_filenames
+
 
 def get_assistant_response(question):
     global thread_id, assistant_id, assistant_file_idsS
@@ -115,7 +136,9 @@ def get_assistant_response(question):
         )
         print("\n",messages,"\n")
         response = ""
+        file_ids = []
         for msg in messages:
+            
             if msg.content[0].type == "text":
                 print("hi, Iam inside if msg.content[0].type == text")
                 if msg.role == "user":
@@ -129,12 +152,25 @@ def get_assistant_response(question):
                 send that keywords as input for extracting top 1 youtube video.
                 '''
                 response += f"{msg.role}: {msg.content[0].text.value} \n"
-                '''
-                if(msg.content[0].text.annotations[0].file_path.file_id):
-                    files_id = msg.content[0].text.annotations[0].file_path.file_id
-                    file_content = get_file_content(files_id)
-                '''
-                
+
+                # Code to extract all file ids 
+                file_ids = msg.file_ids
+                if file_ids:
+                    print("Iam inside if type == text and trying to retrieve file ids :\n",file_ids)
+                    '''length_file_ids = len(msg.file_ids)
+                    if msg.file_ids and len(msg.file_ids) > 0:
+                        for i in range(length_file_ids):
+                            file_ids.append(msg.file_ids[i])'''
+                    print("file_ids are :\n",file_ids)
+                    pdf_filenames = get_file_content(file_ids)
+                    
+                    for pdf_filename in pdf_filenames:
+                        # Construct the image URL using MEDIA_URL and the image filename
+                        pdf_file_url = f"{settings.MEDIA_URL}/pdf files/{pdf_filename}"
+                        print("final pdf path url is :\n",pdf_file_url)
+                    
+                    response += f'{msg.role}:\n<a href="{pdf_file_url}" download >Please Click Me! To Download PDF File \n'
+                    
             elif msg.content[0].type == "image_file":
                 # Handle images
                 print("hi, Iam inside elif msg.content[0].type == image_file")
