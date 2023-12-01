@@ -151,8 +151,10 @@ def get_assistant_response(question):
                 then extract keywords from whole text message.
                 send that keywords as input for extracting top 1 youtube video.
                 '''
-                response += f"{msg.role}: {msg.content[0].text.value} \n"
-
+                if msg.role == "YOU":
+                    response += f"{msg.role}: {msg.content[0].text.value} \n"
+                elif msg.role == "EON":
+                    response += f"{msg.role}: {msg.content[0].text.value} \n"
                 # Code to extract all file ids 
                 file_ids = msg.file_ids
                 if file_ids:
@@ -165,7 +167,7 @@ def get_assistant_response(question):
                         pdf_file_url = f"{settings.MEDIA_URL}/pdf files/{pdf_filename}"
                         print("final pdf path url is :\n",pdf_file_url)
                     
-                        response += f'{msg.role}:\n<a href="{pdf_file_url}" download >Click Me! To Download PDF File : "{pdf_filename}" \n'
+                        response += f'<div>{msg.role}:\n<a href="{pdf_file_url}" download > Click Here To Download PDF File:{pdf_filename} </a></div>\n'
                     
             elif msg.content[0].type == "image_file":
                 # Handle images
