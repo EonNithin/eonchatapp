@@ -166,7 +166,6 @@ def get_assistant_response(question):
                         # Construct the image URL using MEDIA_URL and the image filename
                         pdf_file_url = f"{settings.MEDIA_URL}/pdf files/{pdf_filename}"
                         print("final pdf path url is :\n",pdf_file_url)
-                    
                         response += f'<div>{msg.role}:\n<a href="{pdf_file_url}" download > Click Here To Download PDF File:{pdf_filename} </a></div>\n'
                     
             elif msg.content[0].type == "image_file":
