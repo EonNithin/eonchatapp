@@ -86,12 +86,30 @@ def get_file_content(file_ids):
     print("PDF file names are:",pdf_filenames)
     return pdf_filenames
 
+def get_uploaded_files():
+    uploaded_files = []
+
+    return uploaded_files
 
 def get_assistant_response(question):
-    global thread_id, assistant_id, assistant_file_idsS
+    global thread_id, assistant_id, assistant_file_ids
 
     # Retrieving existing thread or creating a new one
     if thread_id is None:
+        # Delete files with names starting with "file-" in the specified paths
+        pdf_files_directory = os.path.join(eonchatapp.settings.MEDIA_ROOT, "pdf files")
+        image_files_directory = os.path.join(eonchatapp.settings.MEDIA_ROOT, "images")
+
+        for filename in os.listdir(pdf_files_directory):
+            if filename.startswith("file-"):
+                file_path = os.path.join(pdf_files_directory, filename)
+                os.remove(file_path)
+
+        for filename in os.listdir(image_files_directory):
+            if filename.startswith("file-"):
+                file_path = os.path.join(image_files_directory, filename)
+                os.remove(file_path)
+
         print("Creating new thread")
         # Creating empty thread
         thread = client.beta.threads.create()
@@ -118,7 +136,7 @@ def get_assistant_response(question):
 
     start_time = time.time()
 
-    # Poll the run status until it's completed, failed, or 40 seconds have passed
+    # Poll the run status until it's completed, failed, or few seconds have passed
     while run.status not in ["completed", "failed"]:
         time.sleep(10)
         elapsed_time = time.time() - start_time
@@ -213,6 +231,8 @@ def home(request):
 
         # Get the value of the toggle switch
         print("Form data:", request.POST)
+        # Get the uploaded files
+        uploaded_files = request.FILES.getlist('attachment')
 
         toggle_switch = request.POST.get('toggle_switch_checked')
         if toggle_switch == 'on':

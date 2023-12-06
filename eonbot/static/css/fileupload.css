@@ -1,0 +1,55 @@
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 8px;
+    background-color: #f0f0f0; /* Set your desired background color here */
+    width: 500px; /* Set the fixed width for each div */
+}
+
+#fileList {
+    display: flex;
+    flex-direction: column;
+    max-height: 200px; /* Adjust the maximum height as needed */
+    overflow-y: auto;
+    margin: 30px;
+  
+}
+
+/* Style the container div */
+.file-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+    /* Adjust as needed based on your context */
+    border: 2px dashed #cccccc; /* Add a dashed border for visual appeal */
+    border-radius: 10px; /* Add rounded corners for visual appeal */
+}
+
+/* Style the input file element */
+#upload {
+    display: none; /* Hide the default file input */
+}
+
+/* Style the label */
+.uploadlabel {
+    cursor: pointer;
+    color: #007bff; /* Set the text color to a clickable color */
+}
+
+/* Optional: Style the label when hovering over it */
+.uploadlabel:hover {
+    text-decoration: underline;
+}
+
+.file-name {
+    flex-grow: 1; /* Allow the file name to take up the available space */
+}
+
+.remove-button {
+    cursor: pointer;
+}
+
