@@ -22,7 +22,7 @@ function displayUploadedFiles(input) {
         // Assign a unique identifier to each file item
         var fileId = 'file_' + i;
         listItem.setAttribute('id', fileId);
-    
+    /*
         // Add a remove button
         var removeButton = document.createElement('button');
         removeButton.textContent = 'x';
@@ -35,9 +35,8 @@ function displayUploadedFiles(input) {
                 itemToRemove.remove();
             }
         });
-    
         listItem.appendChild(removeButton);
-    
+    */
         fileListContainer.appendChild(listItem);
     }
 }
