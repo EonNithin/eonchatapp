@@ -134,7 +134,6 @@ def get_assistant_response(question):
         thread_id=curr_thread.id,
         role="user",
         content=question,  # user question
-        #file_ids=user_file_ids
     )
 
     # Run thread
