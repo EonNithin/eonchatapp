@@ -265,16 +265,26 @@ def home(request):
         file_ids = []
         for file_path in uploaded_file_paths:
             file = client.files.create(
-                file=open("file_path","rb"),
+                file=open(file_path,"rb"),
                 purpose='assistants'
             )
             file_ids.append(file.id)
         user_file_ids = file_ids
-
+        
+        thread = client.beta.threads.create(
+            messages=[
+                {
+                "role": "user",
+                "content": question,
+                "file_ids": [file.id]
+                }
+            ]
+        )
+        '''
         # Calling a function to upload files to openai
         #user_file_ids = upload_files_to_openai(uploaded_file_paths)
         #print("iam retrieving file ids at home User uploaded file ids are:\n",user_file_ids)
-        '''
+        
 
         toggle_switch = request.POST.get('toggle_switch_checked')
         if toggle_switch == 'on':
