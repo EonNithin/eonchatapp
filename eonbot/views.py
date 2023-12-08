@@ -59,7 +59,6 @@ def get_imageFileContent(image_file_id):
 
     return image_filename
 
-
 def get_file_content(file_ids):
     pdf_filenames = []
     for file_id in file_ids:
@@ -231,9 +230,19 @@ def home(request):
 
         # Get the value of the toggle switch
         print("Form data:", request.POST)
+
         # Get the uploaded files
         uploaded_files = request.FILES.getlist('attachment')
-
+        print("uploaded files:\n",uploaded_files)
+        # Process the uploaded files if needed
+        for uploaded_file in uploaded_files:
+            # Save the file to the STATIC_ROOT directory
+            static_file_path = os.path.join(settings.STATIC_ROOT, uploaded_file.name)
+            with open(static_file_path, 'wb+') as destination:
+                for chunk in uploaded_file.chunks():
+                    destination.write(chunk)
+            print("file saved in local path successfully")
+            
         toggle_switch = request.POST.get('toggle_switch_checked')
         if toggle_switch == 'on':
             response = get_assistant_response(question)
@@ -242,7 +251,7 @@ def home(request):
 
         #Store the response in the session
         request.session['response'] = response
-
+        request.session['uploaded_files'] = [uploaded_file.name for uploaded_file in uploaded_files]
         return redirect('response_view')
 
     return render(request, "home.html", {})
