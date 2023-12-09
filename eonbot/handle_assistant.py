@@ -8,7 +8,7 @@ from openai import OpenAI
 
 client = OpenAI()
 
-# uplaod files
+# upload files
 
 file = client.files.create(
   file=open("/content/X MATHS NCERT TEXTBOOK 2023-24 EDITION.pdf", "rb"),
@@ -29,8 +29,9 @@ assistant = client.beta.assistants.create(
     instructions="""
     You are an educational assistant for an Edutech platform.
     You can assist teachers, students, and management with various educational queries.
+    Answer to user question as concisely as possible. Interact with user by prompting user and try to give hints to user to get answer from user also.
     """,
-    name="Maths Tutor",
+    name="Eon Courses Assistant",
     tools=[{"type": "code_interpreter"},{"type": "retrieval"}],
     model="gpt-3.5-turbo-1106",
     file_ids=[file.id]
@@ -87,7 +88,8 @@ print(thread)
 message = client.beta.threads.messages.create(
   thread_id=thread.id,
   role="user",
-  content="Explain abour linear equations and quadratic equations.", # user question
+  content="Explain about linear equations and quadratic equations.", # user question
+  file_ids=""
 )
 print(message)
 
@@ -236,3 +238,24 @@ if run.status == "completed":
     for msg in messages:
         print(msg.role, ":", msg.content[0].text.value)
 
+
+#Images or Files content retrieving using file_id
+#PDF Files:
+#file-zNBWSLBSMo37dGzVXju5BY2J
+#file-qnLwxSRvdYsCJAGNnPvxlcgH
+pdf_data = client.files.content("file-qnLwxSRvdYsCJAGNnPvxlcgH")
+pdf_data_bytes = pdf_data.read()
+
+with open("./Reflection and Refraction of Light.pdf", "wb") as file:
+    file.write(pdf_data_bytes)
+
+#Images files:
+# file-nA0hwreuXEBP8xZ8HPayQ4vq
+# file-JfrTwUGbcKmU8MeJuiA37QHA
+# file-fkEbmwUdC5NMijzJyaZFeZ7k
+image_data = client.files.content("file-JfrTwUGbcKmU8MeJuiA37QHA")
+image_data_bytes = image_data.read()
+
+with open("./my-image.png", "wb") as file:
+    file.write(image_data_bytes)
+    
