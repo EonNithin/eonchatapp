@@ -13,6 +13,7 @@ import time
 import markdown
 import time
 from django.conf import settings
+from difflib import get_close_matches
 
 # Retrieve the OpenAI API key from the environment variable
 openai_api_key = os.environ.get("OPENAI_API_KEY")
@@ -31,21 +32,6 @@ asst_ZB8ScuNwWCsMybVQ7Ao6zjhg === ['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1
 
 assistant_id = "asst_ZB8ScuNwWCsMybVQ7Ao6zjhg"
 assistant_file_ids = "['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1hQ8fCDDDuQUPvkvqV4', 'file-iRsXYA4MDzxIgURI7dqYWueu', 'file-NFruvcolPoPvxASsD5wcgTlr', 'file-Z9aYtYYzB26Jzr3myoeznxa3', 'file-O4HyAHeBTbnYpmB2oSHxSx0n', 'file-SoGo3TxBFR25fX2yk6KwC9pr']"  # file that assistant is having
-
-'''
-def upload_files_to_openai(uploaded_file_paths):
-    file_ids = []
-    uploaded_file_paths=uploaded_file_paths
-    print("I am inside upload files to openai function:\n",uploaded_file_paths)
-    for uploaded_file_path in uploaded_file_paths:
-        file = client.files.create(
-        file=open(uploaded_file_path, "rb"),
-        purpose='assistants_output'
-        )
-        file_ids.append(file.id)
-    print("I am inside upload files to openai function:\n",file_ids)
-    return file_ids
-'''
 
 thread_id = None  # Use None instead of an empty string
 
@@ -247,39 +233,7 @@ def home(request):
         # Get the uploaded files
         uploaded_files = request.FILES.getlist('attachment')
         print("uploaded files:\n",uploaded_files)
-        '''
-        # Process the uploaded files if needed
-        for uploaded_file in uploaded_files:
-            # Save the file to the STATIC_ROOT directory
-            static_file_path = os.path.join(settings.STATIC_ROOT, 'user uploads', uploaded_file.name)
-            with open(static_file_path, 'wb+') as destination:
-                for chunk in uploaded_file.chunks():
-                    destination.write(chunk)
-            print("file saved in local path successfully")
-            
-            # Append the path to the list
-            uploaded_file_paths.append(static_file_path)
-        print("Uploaded file paths:\n",uploaded_file_paths)
 
-        file_ids = []
-        for file_path in uploaded_file_paths:
-            file = client.files.create(
-                file=open(file_path,"rb"),
-                purpose='assistants'
-            )
-            file_ids.append(file.id)
-        user_file_ids = file_ids
-        
-        thread = client.beta.threads.create(
-            messages=[
-                {
-                "role": "user",
-                "content": question,
-                "file_ids": [file.id]
-                }
-            ]
-        )
-        '''
         # Calling a function to upload files to openai
         #user_file_ids = upload_files_to_openai(uploaded_file_paths)
         #print("iam retrieving file ids at home User uploaded file ids are:\n",user_file_ids)
