@@ -13,7 +13,7 @@ import time
 import markdown
 import time
 from django.conf import settings
-from difflib import get_close_matches
+
 
 # Retrieve the OpenAI API key from the environment variable
 openai_api_key = os.environ.get("OPENAI_API_KEY")
@@ -34,6 +34,33 @@ assistant_id = "asst_ZB8ScuNwWCsMybVQ7Ao6zjhg"
 assistant_file_ids = "['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1hQ8fCDDDuQUPvkvqV4', 'file-iRsXYA4MDzxIgURI7dqYWueu', 'file-NFruvcolPoPvxASsD5wcgTlr', 'file-Z9aYtYYzB26Jzr3myoeznxa3', 'file-O4HyAHeBTbnYpmB2oSHxSx0n', 'file-SoGo3TxBFR25fX2yk6KwC9pr']"  # file that assistant is having
 
 thread_id = None  # Use None instead of an empty string
+
+def get_video_url(selected_topic):
+    # Implement a function to get the video URL based on the selected topic
+    video_urls = {
+        'Boiling Point of Water - Class 9 Chemistry': 'https://drive.google.com/uc?id=1Lhjkiw-IyAjCYeX_5Eg-HNEZlJepI-tG',
+        'Law of Conservation of Mass - Class 9 Chemistry': 'https://drive.google.com/uc?id=1kw8B88Tmsx4YC2t3RXEJzT34N1A9L3mg',
+        'Melting Point of Ice - Class 9 Chemistry': 'https://drive.google.com/uc?id=1MJKeZmJu3iGDyuKRPho-3Teq7QZjyhgC',
+        'Mixtures_and_Compounds- Class 9 Chemistry': 'https://drive.google.com/uc?id=1njCIyq4Z561ezBMeSuMJ4YnMDuwrGQWU',
+        'Separation_of_Components_of_a_Mixture- Class 9 Chemistry': 'https://drive.google.com/uc?id=1GXaLd1I88Fzui9XTC-Kyr3AinEVDJXTh',
+        'True_solutions_suspensions_colloids- Class 9 Chemistry': 'https://drive.google.com/uc?id=1YGrJVgapEpNqClszOewsrpeOT8VTS3WJ',
+        'Types_of_chemical_reactions- Class 9 Chemistry': 'https://drive.google.com/uc?id=1CBDG_RTZknyfnBoBRdsiyG0X_4GXyyVs',
+        # Add more mappings as needed
+    }
+    return video_urls.get(selected_topic, '')
+
+def generate_drive_videos_embed_code(selected_topic,video_url):
+    # Generating HTML code for embedding Google Drive videos in an iframe
+    video_name = selected_topic
+    video_url = video_url
+    embed_code = "<html><body>"
+    embed_code += f"<h3>{video_name}</h3>"
+    embed_code += f"<video width='700' height='480' controls>\n"
+    embed_code += f"  <source src='{video_url}' type='video/mp4'>\n"
+    embed_code += f"  Your browser does not support the video tag.\n"
+    embed_code += f"</video><br>"
+    embed_code += "</body></html>"
+    return embed_code
 
 def get_imageFileContent(image_file_id):
 
@@ -211,10 +238,20 @@ def response_view(request):
     print('='*100)
     print("\nResponse:\n",response,"\n")
     print('='*100)
+    video_embedings = request.session.get('video_embedings', [])  # Retrieve video references from the session
+    # Remove square brackets and double quotes
+    video_embedings = video_embedings[0].strip('[]"')
+    print("Iam in response view, video embedings are:",video_embedings)
+    print('='*100)
+    print("\nResponse:\n",response,"\n")
+    print('='*100)
+
     # Convert Markdown to HTML
     html_response = markdown.markdown(response)
+    # Concatenate your additional HTML code with the response HTML and video references HTML
+    full_html_response = f"{html_response}{video_embedings}"
     # Mark the HTML content as safe
-    safe_html_response = mark_safe(html_response)
+    safe_html_response = mark_safe(full_html_response)
     print(safe_html_response)
     # Pass the safe HTML content to the template
     return render(request, "response_view.html", {"response": safe_html_response})
@@ -224,7 +261,13 @@ def home(request):
     # Check for form submission
     if request.method == "POST":
         question = request.POST.get('question')
-
+        selected_topic = request.POST.get('selectedTopic', '')
+        
+        print("selected topic is:\n",selected_topic)
+        video_url = get_video_url(selected_topic)  # Implement a function to get the video URL based on the selected topic
+        print("videourl:\n",video_url)
+        video_embedings = generate_drive_videos_embed_code(selected_topic,video_url)
+        print("Iam in home page, video embedings are:",video_embedings)
         # Get the value of the toggle switch
         print("Form data:", request.POST)
 
@@ -248,6 +291,8 @@ def home(request):
         #Store the response in the session
         request.session['response'] = response
         request.session['uploaded_files'] = [uploaded_file.name for uploaded_file in uploaded_files]
+        request.session['video_embedings'] = [video_embedings]
+
         return redirect('response_view')
 
     return render(request, "home.html", {})
