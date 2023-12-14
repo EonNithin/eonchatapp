@@ -39,7 +39,7 @@ function validateForm(event) {
     var checkbox = document.getElementById("myCheckbox");
     var selectOption = document.getElementById("selectOption");
     var labActivityField = document.getElementById("labActivityField");
-
+    
     event.preventDefault();
     if (!checkbox.checked) {
         alert("Please select the checkbox.");
@@ -49,7 +49,7 @@ function validateForm(event) {
         alert("Please select a topic from dropdown.");
         return false; // Prevent form submission
     }
-    if (labActivityField.value === "" ){
+    if (selectOption.value === "Lab Activity" && labActivityField.value === "" ){
         alert("Please select an activity from list of lab activities.");
         return false; // Prevent form submission
     }

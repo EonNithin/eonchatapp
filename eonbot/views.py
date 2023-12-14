@@ -234,6 +234,9 @@ def get_assistant_response(question):
     return response
 
 def response_view(request):
+    #retrieve required vaues from session
+    selected_topic = request.session.get('selected_topic','')
+    selected_lab_topic = request.session.get('selected_lab_topic','')
     response = request.session.get('response', '')  # Retrieve the response from the session
     print('='*100)
     print("\nResponse:\n",response,"\n")
@@ -286,11 +289,6 @@ def home(request):
         uploaded_files = request.FILES.getlist('attachment')
         print("uploaded files:\n",uploaded_files)
 
-        # Calling a function to upload files to openai
-        #user_file_ids = upload_files_to_openai(uploaded_file_paths)
-        #print("iam retrieving file ids at home User uploaded file ids are:\n",user_file_ids)
-        
-
         toggle_switch = request.POST.get('toggle_switch_checked')
         if toggle_switch == 'on':
             response = get_assistant_response(question)
@@ -298,7 +296,10 @@ def home(request):
             response = get_assistant_response(question)
 
         #Store the response in the session
+        request.session['question'] = question
         request.session['response'] = response
+        request.session['selected_topic'] = selectedTopic
+        request.session['selected_lab_topic'] = selected_lab_topic
         request.session['uploaded_files'] = [uploaded_file.name for uploaded_file in uploaded_files]
         request.session['video_embedings'] = [video_embedings]
 
