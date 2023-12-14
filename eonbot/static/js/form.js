@@ -26,8 +26,9 @@ document.getElementById("myInput").addEventListener("keydown", function(event) {
   }
 });
 
-document.getElementById("myForm").addEventListener("submit", validateForm);
+document.getElementById("selectOption").addEventListener("change", showHideFields);
 
+document.getElementById("myForm").addEventListener("submit", validateForm);
 
 function autoResize(textarea) {
     textarea.style.height = "auto"; // Reset height to auto
@@ -36,11 +37,23 @@ function autoResize(textarea) {
 
 function validateForm(event) {
     var checkbox = document.getElementById("myCheckbox");
+    var selectOption = document.getElementById("selectOption");
+    var labActivityField = document.getElementById("labActivityField");
+
     event.preventDefault();
     if (!checkbox.checked) {
         alert("Please select the checkbox.");
         return false; // Prevent form submission
     }
+    if (selectOption.value === "" ){
+        alert("Please select a topic from dropdown.");
+        return false; // Prevent form submission
+    }
+    if (labActivityField.value === "" ){
+        alert("Please select an activity from list of lab activities.");
+        return false; // Prevent form submission
+    }
+
 
     // Show the progress bars
     var progressBars = document.querySelectorAll(".progress-bar");
@@ -56,4 +69,33 @@ function validateForm(event) {
     setTimeout(function () {
         document.getElementById("myForm").submit();
     }, 500); // Adjust the delay as needed
+}
+
+function showHideFields() {
+    var selectOption = document.getElementById('selectOption');
+    var courseContent = document.getElementById('courseContent');
+    var teachingPlan = document.getElementById('teachingPlan');
+    var lessonPlan = document.getElementById('lessonPlan');
+    var quizgeneration = document.getElementById('quizgeneration');
+    var labActivity = document.getElementById('labActivity');
+
+    // Hide all fields initially
+    courseContent.style.display = 'none';
+    teachingPlan.style.display = 'none';
+    lessonPlan.style.display = 'none';
+    quizgeneration.style.display = 'none';
+    labActivity.style.display = 'none';
+
+    // Show the selected field based on the dropdown value
+    if (selectOption.value === 'course content') {
+        courseContent.style.display = 'block';
+    } else if (selectOption.value === 'teaching plan') {
+        teachingPlan.style.display = 'block';
+    } else if (selectOption.value === 'lesson plan') {
+        lessonPlan.style.display = 'block';
+    } else if (selectOption.value === 'quiz generation') {
+        quizgeneration.style.display = 'block';
+    } else if (selectOption.value === 'lab activity') {
+        labActivity.style.display = 'block';
+    }
 }

@@ -11,33 +11,60 @@
       </div>
     </div>
 
-    <!-- This is Datalist for Activity lab videos -->
-    <div class="datalist-div">
-      <label for="videoDataList" class="form-label">For Lab Activity Videos Select topic name </label>
-      <input class="form-control" list="datalistOptions" id="videoDataList" name="selectedTopic" placeholder="Type to search...">
+    <div class="selectTopic-div">
+      <label for="selectOption">Select a Topic:</label>
+        <select id="selectOption" name="selectedOption" onchange="showHideFields()" required>
+            <option value="" disabled selected>Select a Topic</option>
+            <option value="course content">Course Content</option>
+            <option value="teaching plan">Teaching Plan</option>
+            <option value="lesson plan">Lesson Plan</option>
+            <option value="quiz generation">Quiz Generation</option>
+            <option value="lab activity">Lab Activity</option>
+        </select>
 
-      <datalist id="datalistOptions">
-      <option value="Boiling Point of Water - Class 9 Chemistry">
-      <option value="Law of Conservation of Mass - Class 9 Chemistry">
-      <option value="Melting Point of Ice - Class 9 Chemistry">
-      <option value="Mixtures_and_Compounds- Class 9 Chemistry">
-      <option value="Separation_of_Components_of_a_Mixture- Class 9 Chemistry">
-      <option value="True_solutions_suspensions_colloids- Class 9 Chemistry">
-      <option value="Types_of_chemical_reactions- Class 9 Chemistry">
-
-      <!-- Add more video names and class names as needed -->
-      </datalist>
+        <div id="courseContent" class="hidden">
+          
+        </div>
+    
+        <div id="teachingPlan" class="hidden">
+            
+        </div>
+    
+        <div id="lessonPlan" class="hidden">
+            
+        </div>
+    
+        <div id="quizgeneration" class="hidden">
+            
+        </div>
+    
+        <div id="labActivity" class="hidden">
+            <label for="labActivityField">Select a Lab Activity :</label>
+            <input class="form-control" list="datalistOptions" id="labActivityField" name="selectedTopic" placeholder="Type to search..." required>
+    
+            <datalist id="datalistOptions">
+                <option value="Boiling Point of Water - Class 9 Chemistry">
+                <option value="Law of Conservation of Mass - Class 9 Chemistry">
+                <option value="Melting Point of Ice - Class 9 Chemistry">
+                <option value="Mixtures_and_Compounds- Class 9 Chemistry">
+                <option value="Separation_of_Components_of_a_Mixture- Class 9 Chemistry">
+                <option value="True_solutions_suspensions_colloids- Class 9 Chemistry">
+                <option value="Types_of_chemical_reactions- Class 9 Chemistry">
+                <!-- Add more video names and class names as needed -->
+            </datalist>           
+        </div>
     </div>
-
+   
     <!-- This is input text and submit button -->
     <div class="form-txt-btn" >
         <textarea id="myInput" class="form-control text-area" name="question" placeholder="Ask your question here..." oninput="autoResize(this)" required></textarea>
         <button type="submit" class="btn btn-primary" id="btn btn-primary">Submit</button>
-      </div>
+    </div>
     
     <div style="padding-left:8px;">
         {% include "tswitch_cbox.html" %}
     </div>
+
     <!--
     <div class="file-upload-container">
       <input type="file" name="attachment" id="upload" accept=".pdf, .doc, .docx, .jpg, .jpeg, .png" multiple hidden onchange="displayUploadedFiles(this)"/>
@@ -49,6 +76,7 @@
       </label>
     </div>
     -->
+
 </form>
 
 <!-- Display uploaded PDFs -->

@@ -54,7 +54,7 @@ def generate_drive_videos_embed_code(selected_topic,video_url):
     video_name = selected_topic
     video_url = video_url
     embed_code = "<html><body>"
-    embed_code += f"<h3>{video_name}</h3>"
+    embed_code += f"<h3>Lab Activity on {video_name}</h3>"
     embed_code += f"<video width='700' height='480' controls>\n"
     embed_code += f"  <source src='{video_url}' type='video/mp4'>\n"
     embed_code += f"  Your browser does not support the video tag.\n"
@@ -261,13 +261,22 @@ def home(request):
     # Check for form submission
     if request.method == "POST":
         question = request.POST.get('question')
-        selected_topic = request.POST.get('selectedTopic', '')
+        selectedTopic = request.POST.get('selectedOption', '')
+        print("Selected Topic is:",selectedTopic)
         
-        print("selected topic is:\n",selected_topic)
-        video_url = get_video_url(selected_topic)  # Implement a function to get the video URL based on the selected topic
-        print("videourl:\n",video_url)
-        video_embedings = generate_drive_videos_embed_code(selected_topic,video_url)
-        print("Iam in home page, video embedings are:",video_embedings)
+        selected_lab_topic = request.POST.get('selectedTopic', '')
+
+        # Initialize an empty string to store video embed code
+        video_embedings = ""
+
+        # Get the video URL and embed code only when a topic is selected
+        if selected_lab_topic !='':
+            print("selected lab topic is:\n",selected_lab_topic)
+            video_url = get_video_url(selected_lab_topic)  # Implement a function to get the video URL based on the selected topic
+            print("videourl:\n",video_url)
+            video_embedings = generate_drive_videos_embed_code(selected_lab_topic,video_url)
+            print("Iam in home page, video embedings are:",video_embedings)
+        
         # Get the value of the toggle switch
         print("Form data:", request.POST)
 
