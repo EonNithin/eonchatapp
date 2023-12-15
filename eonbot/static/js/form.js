@@ -35,19 +35,26 @@ function validateForm(event) {
         if (labActivityField.value === "" ){
             alert("Please select an activity from list of activities.");
             event.preventDefault();// Prevent form submission
+        } else {
+            // Show the progress bars
+            var progressBars = document.querySelectorAll(".progress-bar");
+            progressBars.forEach(function (progressBar) {
+                progressBar.style.display = "block";
+            });
+            // Disable the submit button
+            var submitButton = document.getElementById("btn btn-primary");
+            submitButton.disabled = true;
         }
     }
-    else{
+    else {
         // Show the progress bars
         var progressBars = document.querySelectorAll(".progress-bar");
         progressBars.forEach(function (progressBar) {
             progressBar.style.display = "block";
         });
         // Disable the submit button
-        var submitButton = document.querySelector(".btn-primary");
+        var submitButton = document.getElementById("btn btn-primary");
         submitButton.disabled = true;
-        // No need to manually submit the form if not preventing the default behavior
-        // Form will submit normally
     }
 }
 
@@ -78,4 +85,25 @@ function showHideFields() {
     } else if (selectOption.value === 'lab activity') {
         labActivity.style.display = 'block';
     }
+}
+
+function submitForm(){
+    // Show the progress bars
+    var progressBars = document.querySelectorAll(".progress-bar");
+    progressBars.forEach(function (progressBar) {
+        progressBar.style.display = "block";
+    });
+
+    // Disable the submit button
+    var submitButton = document.getElementById("btn btn-primary");
+    submitButton.disabled = true;
+
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Simulate a delay to show the progress bars
+    setTimeout(function(){
+        // Once the progress is shown, submit the form
+        document.getElementById("myForm").submit();
+    }, 500); // Adjust the delay as needed
 }
