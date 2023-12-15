@@ -49,12 +49,13 @@ function validateForm(event) {
         alert("Please select a topic from dropdown.");
         return false; // Prevent form submission
     }
-    if (selectOption.value === "Lab Activity" && labActivityField.value === "" ){
-        alert("Please select an activity from list of lab activities.");
-        return false; // Prevent form submission
+    // Check the value of selectOption and set the required attribute accordingly
+    if (selectOption.value === 'lab activity') {
+        if (labActivityField.value === "" ){
+            alert("Please select an activity from list of activities.");
+            return false; // Prevent form submission
+        }
     }
-
-
     // Show the progress bars
     var progressBars = document.querySelectorAll(".progress-bar");
     progressBars.forEach(function (progressBar) {

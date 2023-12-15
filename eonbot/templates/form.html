@@ -12,9 +12,9 @@
     </div>
 
     <div class="selectTopic-div">
-      <label for="selectOption">Select a Topic:</label>
+      <label for="selectOption">Select Your Requirement:</label>
         <select id="selectOption" name="selectedOption" onchange="showHideFields()" required>
-            <option value="" disabled selected>Select a Topic</option>
+            <option value="" disabled selected>Select an option</option>
             <option value="course content">Course Content</option>
             <option value="teaching plan">Teaching Plan</option>
             <option value="lesson plan">Lesson Plan</option>
@@ -40,8 +40,7 @@
     
         <div id="labActivity" class="hidden">
             <label for="labActivityField">Select a Lab Activity :</label>
-            <input class="form-control" list="datalistOptions" id="labActivityField" name="selectedTopic" placeholder="Type to search..." required>
-    
+            <input class="form-control" list="datalistOptions" id="labActivityField" name="selectedTopic" placeholder="Type to search..." >
             <datalist id="datalistOptions">
                 <option value="Boiling Point of Water - Class 9 Chemistry">
                 <option value="Law of Conservation of Mass - Class 9 Chemistry">
