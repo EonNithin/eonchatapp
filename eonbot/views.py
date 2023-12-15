@@ -45,6 +45,15 @@ def get_video_url(selected_topic):
         'Separation_of_Components_of_a_Mixture- Class 9 Chemistry': 'https://drive.google.com/uc?id=1GXaLd1I88Fzui9XTC-Kyr3AinEVDJXTh',
         'True_solutions_suspensions_colloids- Class 9 Chemistry': 'https://drive.google.com/uc?id=1YGrJVgapEpNqClszOewsrpeOT8VTS3WJ',
         'Types_of_chemical_reactions- Class 9 Chemistry': 'https://drive.google.com/uc?id=1CBDG_RTZknyfnBoBRdsiyG0X_4GXyyVs',
+        'Archemedis_principle- Class 9 Physics' : 'https://drive.google.com/uc?id=1YvKqjE-CGraFqC6u_vAXgyrU7aiqQD5k',
+        'Density_of_metal- Class 9 Physics' : 'https://drive.google.com/uc?id=1C3i-nQ3nI-B-mZoOr-DxkRyw--1Z08S-',
+        'Characteristics_of_convex_lens- Class 10 Physics' : 'https://drive.google.com/uc?id=1uRagsxZXAX1mM9mLw7kzYu-IHv5Ek3bY',
+        'Focal_length_of_a_concave_mirror- Class 10 Physics' : 'https://drive.google.com/uc?id=1eRVD6r8DOBsv-CGSoyNcpv0YyQLhjbDb',
+        'Focal_length_of_a_convex_lens- Class 10 Physics' : 'https://drive.google.com/uc?id=1H-c_UzErgba9vw3qRq2yjkEXZmPga3xr',
+        'Ohms_law- Class 10 Physics' : 'https://drive.google.com/uc?id=1L0joHxMoakX8lFt_qJeOjRWcmvSElTIC',
+        'Refraction_through_a_glass_prism- Class 10 Physics' : 'https://drive.google.com/uc?id=1Ut-xtBPtUvbAviGnkVSE0_ihYy1ZE1kW',
+        'Refraction_through_a_glass_slab- Class 10 Physics' : 'https://drive.google.com/uc?id=1f84OioUQBUHPHaSYqWBiqe0N2Uzpt9wz',
+        'Resistors_series_parallel- Class 10 Physics' : 'https://drive.google.com/uc?id=1kYjHyiCHK21sw9RPMil4xOhEgdq4zXJA',
         # Add more mappings as needed
     }
     return video_urls.get(selected_topic, '')
