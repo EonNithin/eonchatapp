@@ -13,7 +13,7 @@
 
     <div class="selectTopic-div">
       <label for="selectOption">Select Your Requirement:</label>
-        <select id="selectOption" name="selectedOption" onchange="showHideFields()" required>
+        <select id="selectOption" name="selectedTopic" onchange="showHideFields()" required>
             <option value="" disabled selected>Select an option</option>
             <option value="course content">Course Content</option>
             <option value="teaching plan">Teaching Plan</option>
@@ -40,7 +40,7 @@
     
         <div id="labActivity" class="hidden">
             <label for="labActivityField">Select a Lab Activity :</label>
-            <input class="form-control" list="datalistOptions" id="labActivityField" name="selectedTopic" placeholder="Type to search..." >
+            <input class="form-control" list="datalistOptions" id="labActivityField" name="selectedLabActivity" placeholder="Type to search..." >
             <datalist id="datalistOptions">
                 <option value="Boiling Point of Water - Class 9 Chemistry">
                 <option value="Law of Conservation of Mass - Class 9 Chemistry">
@@ -56,7 +56,7 @@
    
     <!-- This is input text and submit button -->
     <div class="form-txt-btn" >
-        <textarea id="myInput" class="form-control text-area" name="question" placeholder="Ask your question here..." oninput="autoResize(this)" required></textarea>
+        <textarea id="myInputText" class="form-control text-area" name="question" placeholder="Ask your question here..." oninput="autoResize(this)" required ></textarea>
         <button type="submit" class="btn btn-primary" id="btn btn-primary">Submit</button>
     </div>
     

@@ -264,10 +264,10 @@ def home(request):
     # Check for form submission
     if request.method == "POST":
         question = request.POST.get('question')
-        selectedTopic = request.POST.get('selectedOption', '')
+        selectedTopic = request.POST.get('selectedTopic', '')
         print("Selected Topic is:",selectedTopic)
         
-        selected_lab_topic = request.POST.get('selectedTopic', '')
+        selected_lab_topic = request.POST.get('selectedLabActivity', '')
 
         # Initialize an empty string to store video embed code
         video_embedings = ""

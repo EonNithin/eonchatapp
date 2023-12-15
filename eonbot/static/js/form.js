@@ -1,31 +1,3 @@
-
-// Event listener for the "Enter" key press in the input field
-document.getElementById("myInput").addEventListener("keydown", function(event) {
-  if (event.keyCode == 13) {
-     if (!event.shiftKey) {
-        event.preventDefault();
-        validateForm(event); // Call the validateForm function with the event
-    }
-  }
-  else if(event.keyCode == 13 && event.shiftKey){
-     // Prevent the default behavior (newline)
-     event.preventDefault();
-
-     // Move cursor to the next line
-     var textarea = event.target;
-     var startPos = textarea.selectionStart;
-     var endPos = textarea.selectionEnd;
-     var value = textarea.value;
- 
-     // Insert a newline character at the cursor position
-     textarea.value = value.substring(0, startPos) + "\n" + value.substring(endPos, value.length);
- 
-     // Move the cursor to the next line
-     textarea.selectionStart = startPos + 1;
-     textarea.selectionEnd = startPos + 1;
-  }
-});
-
 document.getElementById("selectOption").addEventListener("change", showHideFields);
 
 document.getElementById("myForm").addEventListener("submit", validateForm);
@@ -36,40 +8,47 @@ function autoResize(textarea) {
 }
 
 function validateForm(event) {
+    var textarea = document.getElementById("myInputText");
     var checkbox = document.getElementById("myCheckbox");
     var selectOption = document.getElementById("selectOption");
     var labActivityField = document.getElementById("labActivityField");
     
-    event.preventDefault();
-    if (!checkbox.checked) {
-        alert("Please select the checkbox.");
-        return false; // Prevent form submission
+    // Trim the value to handle cases where only spaces are entered
+    var textValue = textarea.value.trim();
+
+    if (textValue === "") {
+        // If the textarea is empty, prevent form submission and alert the user
+        alert("Please ask a question related to selected topic in the text field.");
+        event.preventDefault(); // Prevent form submission
     }
-    if (selectOption.value === "" ){
+    else if (!checkbox.checked) {
+        alert("Please select the checkbox.");
+        event.preventDefault(); // Prevent form submission
+    }
+    else if (selectOption.value === "" ){
         alert("Please select a topic from dropdown.");
-        return false; // Prevent form submission
+        event.preventDefault();// Prevent form submission
     }
     // Check the value of selectOption and set the required attribute accordingly
-    if (selectOption.value === 'lab activity') {
+    else if (selectOption.value === 'lab activity') {
+        labActivityField.required = true;
         if (labActivityField.value === "" ){
             alert("Please select an activity from list of activities.");
-            return false; // Prevent form submission
+            event.preventDefault();// Prevent form submission
         }
     }
-    // Show the progress bars
-    var progressBars = document.querySelectorAll(".progress-bar");
-    progressBars.forEach(function (progressBar) {
-        progressBar.style.display = "block";
-    });
-
-    // Disable the submit button
-    var submitButton = document.querySelector(".btn-primary");
-    submitButton.disabled = true;
-
-    // Allow the form submission after a short delay
-    setTimeout(function () {
-        document.getElementById("myForm").submit();
-    }, 500); // Adjust the delay as needed
+    else{
+        // Show the progress bars
+        var progressBars = document.querySelectorAll(".progress-bar");
+        progressBars.forEach(function (progressBar) {
+            progressBar.style.display = "block";
+        });
+        // Disable the submit button
+        var submitButton = document.querySelector(".btn-primary");
+        submitButton.disabled = true;
+        // No need to manually submit the form if not preventing the default behavior
+        // Form will submit normally
+    }
 }
 
 function showHideFields() {
