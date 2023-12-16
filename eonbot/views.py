@@ -13,7 +13,9 @@ import time
 import markdown
 import time
 from django.conf import settings
-
+import json
+import webbrowser
+from googleapiclient.discovery import build
 
 # Retrieve the OpenAI API key from the environment variable
 openai_api_key = os.environ.get("OPENAI_API_KEY")
@@ -33,45 +35,22 @@ asst_ZB8ScuNwWCsMybVQ7Ao6zjhg === ['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1
 assistant_id = "asst_ZB8ScuNwWCsMybVQ7Ao6zjhg"
 assistant_file_ids = "['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1hQ8fCDDDuQUPvkvqV4', 'file-iRsXYA4MDzxIgURI7dqYWueu', 'file-NFruvcolPoPvxASsD5wcgTlr', 'file-Z9aYtYYzB26Jzr3myoeznxa3', 'file-O4HyAHeBTbnYpmB2oSHxSx0n', 'file-SoGo3TxBFR25fX2yk6KwC9pr']"  # file that assistant is having
 
+'''
+def upload_files_to_openai(uploaded_file_paths):
+    file_ids = []
+    uploaded_file_paths=uploaded_file_paths
+    print("I am inside upload files to openai function:\n",uploaded_file_paths)
+    for uploaded_file_path in uploaded_file_paths:
+        file = client.files.create(
+        file=open(uploaded_file_path, "rb"),
+        purpose='assistants_output'
+        )
+        file_ids.append(file.id)
+    print("I am inside upload files to openai function:\n",file_ids)
+    return file_ids
+'''
+
 thread_id = None  # Use None instead of an empty string
-
-'''
-def get_video_url(selected_topic):
-    # Implement a function to get the video URL based on the selected topic
-    video_urls = {
-        'Boiling Point of Water - Class 9 Chemistry': 'https://drive.google.com/uc?id=1Lhjkiw-IyAjCYeX_5Eg-HNEZlJepI-tG',
-        'Law of Conservation of Mass - Class 9 Chemistry': 'https://drive.google.com/uc?id=1kw8B88Tmsx4YC2t3RXEJzT34N1A9L3mg',
-        'Melting Point of Ice - Class 9 Chemistry': 'https://drive.google.com/uc?id=1MJKeZmJu3iGDyuKRPho-3Teq7QZjyhgC',
-        'Mixtures_and_Compounds- Class 9 Chemistry': 'https://drive.google.com/uc?id=1njCIyq4Z561ezBMeSuMJ4YnMDuwrGQWU',
-        'Separation_of_Components_of_a_Mixture- Class 9 Chemistry': 'https://drive.google.com/uc?id=1GXaLd1I88Fzui9XTC-Kyr3AinEVDJXTh',
-        'True_solutions_suspensions_colloids- Class 9 Chemistry': 'https://drive.google.com/uc?id=1YGrJVgapEpNqClszOewsrpeOT8VTS3WJ',
-        'Types_of_chemical_reactions- Class 9 Chemistry': 'https://drive.google.com/uc?id=1CBDG_RTZknyfnBoBRdsiyG0X_4GXyyVs',
-        'Archemedis_principle- Class 9 Physics' : 'https://drive.google.com/uc?id=1YvKqjE-CGraFqC6u_vAXgyrU7aiqQD5k',
-        'Density_of_metal- Class 9 Physics' : 'https://drive.google.com/uc?id=1C3i-nQ3nI-B-mZoOr-DxkRyw--1Z08S-',
-        'Characteristics_of_convex_lens- Class 10 Physics' : 'https://drive.google.com/uc?id=1uRagsxZXAX1mM9mLw7kzYu-IHv5Ek3bY',
-        'Focal_length_of_a_concave_mirror- Class 10 Physics' : 'https://drive.google.com/uc?id=1eRVD6r8DOBsv-CGSoyNcpv0YyQLhjbDb',
-        'Focal_length_of_a_convex_lens- Class 10 Physics' : 'https://drive.google.com/uc?id=1H-c_UzErgba9vw3qRq2yjkEXZmPga3xr',
-        'Ohms_law- Class 10 Physics' : 'https://drive.google.com/uc?id=1L0joHxMoakX8lFt_qJeOjRWcmvSElTIC',
-        'Refraction_through_a_glass_prism- Class 10 Physics' : 'https://drive.google.com/uc?id=1Ut-xtBPtUvbAviGnkVSE0_ihYy1ZE1kW',
-        'Refraction_through_a_glass_slab- Class 10 Physics' : 'https://drive.google.com/uc?id=1f84OioUQBUHPHaSYqWBiqe0N2Uzpt9wz',
-        'Resistors_series_parallel- Class 10 Physics' : 'https://drive.google.com/uc?id=1kYjHyiCHK21sw9RPMil4xOhEgdq4zXJA',
-        # Add more mappings as needed
-    }
-    return video_urls.get(selected_topic, '')
-
-def generate_drive_videos_embed_code(selected_topic,video_url):
-    # Generating HTML code for embedding Google Drive videos in an iframe
-    video_name = selected_topic
-    video_url = video_url
-    embed_code = "<html><body>"
-    embed_code += f"<h3>Lab Activity on {video_name}</h3>"
-    embed_code += f"<video width='700' height='480' controls>\n"
-    embed_code += f"  <source src='{video_url}' type='video/mp4'>\n"
-    embed_code += f"  Your browser does not support the video tag.\n"
-    embed_code += f"</video><br>"
-    embed_code += "</body></html>"
-    return embed_code
-'''
 
 def get_imageFileContent(image_file_id):
 
@@ -294,15 +273,9 @@ def get_assistant_response(question):
     return response
 
 def response_view(request):
-    #retrieve required vaues from session
-    #selected_topic = request.session.get('selected_topic','')
-    #selected_lab_topic = request.session.get('selected_lab_topic','')
     response = request.session.get('response', '')  # Retrieve the response from the session
-
-    # video_embedings = request.session.get('video_embedings', [])  # Retrieve video references from the session
-    # Remove square brackets and double quotes
-    # video_embedings = video_embedings[0].strip('[]"')
-    # print("Iam in response view, video embedings are:",video_embedings)
+    video_embedings = request.session.get('embed_videos', [])  # Retrieve video references from the session
+    print("video references are:",video_embedings)
     print('='*100)
     print("\nResponse:\n",response,"\n")
     print('='*100)
@@ -310,36 +283,19 @@ def response_view(request):
     # Convert Markdown to HTML
     html_response = markdown.markdown(response)
     # Concatenate your additional HTML code with the response HTML and video references HTML
-    #full_html_response = f"{html_response}{video_embedings}"
+    full_html_response = f"{html_response}{video_embedings}"
+    
     # Mark the HTML content as safe
-    safe_html_response = mark_safe(html_response)
+    safe_html_response = mark_safe(full_html_response)
     print(safe_html_response)
     # Pass the safe HTML content to the template
-    return render(request, "response_view.html", {"response": safe_html_response})
+    return render(request, "response_view.html", {"response": safe_html_response, "video_embedings": video_embedings})
 
 def home(request):
     
     # Check for form submission
     if request.method == "POST":
         question = request.POST.get('question')
-
-        '''
-        selectedTopic = request.POST.get('selectedTopic', '')
-        print("Selected Topic is:",selectedTopic)
-        
-        selected_lab_topic = request.POST.get('selectedLabActivity', '')
-        
-        # Initialize an empty string to store video embed code
-        video_embedings = ""
-
-        # Get the video URL and embed code only when a topic is selected
-        if selected_lab_topic !='':
-            print("selected lab topic is:\n",selected_lab_topic)
-            video_url = get_video_url(selected_lab_topic)  # Implement a function to get the video URL based on the selected topic
-            print("videourl:\n",video_url)
-            video_embedings = generate_drive_videos_embed_code(selected_lab_topic,video_url)
-            print("Iam in home page, video embedings are:",video_embedings)
-        '''
 
         # Get the value of the toggle switch
         print("Form data:", request.POST)
@@ -349,25 +305,25 @@ def home(request):
         # Get the uploaded files
         uploaded_files = request.FILES.getlist('attachment')
         print("uploaded files:\n",uploaded_files)
+        
+        # Calling a function to upload files to openai
+        #user_file_ids = upload_files_to_openai(uploaded_file_paths)
+        #print("iam retrieving file ids at home User uploaded file ids are:\n",user_file_ids)
+        
 
         toggle_switch = request.POST.get('toggle_switch_checked')
         if toggle_switch == 'on':
             response = get_assistant_response(question)
             video_references = get_youtube_video(question)
             embed_videos = display_video_links(video_references)
+    
         else :
             response = get_assistant_response(question)
 
         #Store the response in the session
-        request.session['question'] = question
         request.session['response'] = response
         request.session['embed_videos'] = embed_videos
         request.session['uploaded_files'] = [uploaded_file.name for uploaded_file in uploaded_files]
-        '''
-        request.session['selected_topic'] = selectedTopic
-        request.session['selected_lab_topic'] = selected_lab_topic
-        request.session['video_embedings'] = [video_embedings]
-        '''
         return redirect('response_view')
 
     return render(request, "home.html", {})
