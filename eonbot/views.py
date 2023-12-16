@@ -35,6 +35,7 @@ assistant_file_ids = "['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1hQ8fCDDDuQUP
 
 thread_id = None  # Use None instead of an empty string
 
+'''
 def get_video_url(selected_topic):
     # Implement a function to get the video URL based on the selected topic
     video_urls = {
@@ -70,6 +71,7 @@ def generate_drive_videos_embed_code(selected_topic,video_url):
     embed_code += f"</video><br>"
     embed_code += "</body></html>"
     return embed_code
+'''
 
 def get_imageFileContent(image_file_id):
 
@@ -121,6 +123,55 @@ def get_file_content(file_ids):
 
     print("PDF file names are:",pdf_filenames)
     return pdf_filenames
+
+def get_youtube_video(question):
+    # Get YouTube videos based on the question
+    youtube_api_key = 'AIzaSyBWWs5-b4ybIfCzm46eXfp0nkDtHqulspk'  # Replace with your actual YouTube API key
+    youtube_question = " ".join(re.findall(r'\b\w+\b', question))  # Remove special characters
+    max_results = 1
+    youtube = build("youtube", "v3", developerKey=youtube_api_key)
+
+    # Search for videos
+    search_response = youtube.search().list(
+        q=youtube_question,
+        part="id,snippet",
+        maxResults=max_results,
+        relevanceLanguage="en"  # Set the language to English
+    ).execute()
+
+    # Extract video links
+    video_links = []
+    for search_result in search_response.get("items", []):
+        if search_result["id"]["kind"] == "youtube#video":
+            video_id = search_result["id"]["videoId"]
+            #video_title = search_result["snippet"]["title"]
+            video_link = f"https://www.youtube.com/watch?v={video_id}"
+            video_links.append(video_link)
+
+    return video_links
+    
+def display_video_links(video_links):
+    for i, video_link in enumerate(video_links, start=1):
+        print(f"{i}. {video_link}")
+        embed_code = generate_embed_code(video_links)
+    return embed_code
+
+def generate_embed_code(video_links):
+# Generating HTML code for embedding videos in an iframe
+    embed_code = "<html><body>\n<h3>Reference Video :</h3>\n"
+
+    for i, video_link in enumerate(video_links, start=1):
+        # Extract video ID from the link
+        video_id = video_link.split("v=")[1]
+        # Create the YouTube embed link
+        embed_link = f"https://www.youtube.com/embed/{video_id}"
+        # Add video title before the iframe
+        #embed_code += f"<h3>{i}. {video_link.title}</h3>\n"
+        embed_code += f"<iframe width='640' height='360' src='{embed_link}' frameborder='0' allowfullscreen></iframe>\n"
+    embed_code += "</body></html>"
+    print("I am inside generate_embed_code:",embed_code)
+
+    return embed_code
 
 def get_assistant_response(question):
     global thread_id, assistant_id, assistant_file_ids
@@ -244,16 +295,14 @@ def get_assistant_response(question):
 
 def response_view(request):
     #retrieve required vaues from session
-    selected_topic = request.session.get('selected_topic','')
-    selected_lab_topic = request.session.get('selected_lab_topic','')
+    #selected_topic = request.session.get('selected_topic','')
+    #selected_lab_topic = request.session.get('selected_lab_topic','')
     response = request.session.get('response', '')  # Retrieve the response from the session
-    print('='*100)
-    print("\nResponse:\n",response,"\n")
-    print('='*100)
-    video_embedings = request.session.get('video_embedings', [])  # Retrieve video references from the session
+
+    # video_embedings = request.session.get('video_embedings', [])  # Retrieve video references from the session
     # Remove square brackets and double quotes
-    video_embedings = video_embedings[0].strip('[]"')
-    print("Iam in response view, video embedings are:",video_embedings)
+    # video_embedings = video_embedings[0].strip('[]"')
+    # print("Iam in response view, video embedings are:",video_embedings)
     print('='*100)
     print("\nResponse:\n",response,"\n")
     print('='*100)
@@ -261,9 +310,9 @@ def response_view(request):
     # Convert Markdown to HTML
     html_response = markdown.markdown(response)
     # Concatenate your additional HTML code with the response HTML and video references HTML
-    full_html_response = f"{html_response}{video_embedings}"
+    #full_html_response = f"{html_response}{video_embedings}"
     # Mark the HTML content as safe
-    safe_html_response = mark_safe(full_html_response)
+    safe_html_response = mark_safe(html_response)
     print(safe_html_response)
     # Pass the safe HTML content to the template
     return render(request, "response_view.html", {"response": safe_html_response})
@@ -273,11 +322,13 @@ def home(request):
     # Check for form submission
     if request.method == "POST":
         question = request.POST.get('question')
+
+        '''
         selectedTopic = request.POST.get('selectedTopic', '')
         print("Selected Topic is:",selectedTopic)
         
         selected_lab_topic = request.POST.get('selectedLabActivity', '')
-
+        
         # Initialize an empty string to store video embed code
         video_embedings = ""
 
@@ -288,7 +339,8 @@ def home(request):
             print("videourl:\n",video_url)
             video_embedings = generate_drive_videos_embed_code(selected_lab_topic,video_url)
             print("Iam in home page, video embedings are:",video_embedings)
-        
+        '''
+
         # Get the value of the toggle switch
         print("Form data:", request.POST)
 
@@ -301,17 +353,21 @@ def home(request):
         toggle_switch = request.POST.get('toggle_switch_checked')
         if toggle_switch == 'on':
             response = get_assistant_response(question)
+            video_references = get_youtube_video(question)
+            embed_videos = display_video_links(video_references)
         else :
             response = get_assistant_response(question)
 
         #Store the response in the session
         request.session['question'] = question
         request.session['response'] = response
+        request.session['embed_videos'] = embed_videos
+        request.session['uploaded_files'] = [uploaded_file.name for uploaded_file in uploaded_files]
+        '''
         request.session['selected_topic'] = selectedTopic
         request.session['selected_lab_topic'] = selected_lab_topic
-        request.session['uploaded_files'] = [uploaded_file.name for uploaded_file in uploaded_files]
         request.session['video_embedings'] = [video_embedings]
-
+        '''
         return redirect('response_view')
 
     return render(request, "home.html", {})
