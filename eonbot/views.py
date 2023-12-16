@@ -35,21 +35,6 @@ asst_ZB8ScuNwWCsMybVQ7Ao6zjhg === ['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1
 assistant_id = "asst_ZB8ScuNwWCsMybVQ7Ao6zjhg"
 assistant_file_ids = "['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1hQ8fCDDDuQUPvkvqV4', 'file-iRsXYA4MDzxIgURI7dqYWueu', 'file-NFruvcolPoPvxASsD5wcgTlr', 'file-Z9aYtYYzB26Jzr3myoeznxa3', 'file-O4HyAHeBTbnYpmB2oSHxSx0n', 'file-SoGo3TxBFR25fX2yk6KwC9pr']"  # file that assistant is having
 
-'''
-def upload_files_to_openai(uploaded_file_paths):
-    file_ids = []
-    uploaded_file_paths=uploaded_file_paths
-    print("I am inside upload files to openai function:\n",uploaded_file_paths)
-    for uploaded_file_path in uploaded_file_paths:
-        file = client.files.create(
-        file=open(uploaded_file_path, "rb"),
-        purpose='assistants_output'
-        )
-        file_ids.append(file.id)
-    print("I am inside upload files to openai function:\n",file_ids)
-    return file_ids
-'''
-
 thread_id = None  # Use None instead of an empty string
 
 def get_imageFileContent(image_file_id):
