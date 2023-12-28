@@ -18,18 +18,20 @@
 
 
 <script>
-
     // Function to scroll to the end of the content inside a div
     function scrollToBottom() {
         var container = document.getElementById("response-view-container");
         container.scrollTop = container.scrollHeight;
     }
 
-    // Call the function to scroll to the end when the page is loaded
-    window.onload = function() {
-        scrollToBottom();
-    };
+    // Add event listener for 'touchstart', if there's more functionality you need to add
+    // This example function doesn't do anything, it's for illustrative purposes
+    document.addEventListener('touchstart', function(evt) {
+        // ... any touchstart-specific code here ...
+    }, { passive: true });  // Mark the event listener as passive
 
+    // Call the scrollToBottom function when the window loads
+    window.onload = scrollToBottom;
 </script>
 
 </body>
