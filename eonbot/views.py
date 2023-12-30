@@ -282,7 +282,6 @@ def home(request):
        request.session['uploaded_files'] = [uploaded_file.name for uploaded_file in uploaded_files]
        return redirect('response_view')
 
-
    return render(request, "home.html", {})
 
 
