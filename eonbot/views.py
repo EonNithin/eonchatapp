@@ -181,9 +181,9 @@ def get_assistant_response(question):
                    response += "<hr>" + "\n"
                elif msg.role == "assistant":
                    msg.role = "EON"
-              
+
                if msg.role == "YOU":
-                   response += f"{msg.role}: {msg.content[0].text.value} \n"
+                   response += f'<div style="color: red;">{msg.role}: {msg.content[0].text.value}</div>\n\n'
                elif msg.role == "EON":
                    response += f"{msg.role}: {msg.content[0].text.value} \n"
                
@@ -237,7 +237,7 @@ def response_view(request):
    
    # Replace YouTube links with embedded video tags
    youtube_link_pattern = r'<a href="https://www.youtube.com/embed/([^"]+)">([^<]+)</a>|https://www.youtube.com/embed/([^"\s]+)'
-   embed_code = '\n<iframe width="720" height="420" src="https://www.youtube.com/embed/{}" frameborder="0" allowfullscreen></iframe>'
+   embed_code = '\n<div style="margin-top: 20px; margin-bottom: 20px;"><iframe width="720" height="420" src="https://www.youtube.com/embed/{}" frameborder="0" allowfullscreen></iframe></div>'
 
    def replace_youtube_links(match):
     # Check if the first or second capturing group is not None
