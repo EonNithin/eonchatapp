@@ -35,7 +35,10 @@ asst_ZB8ScuNwWCsMybVQ7Ao6zjhg === ['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1
 
 
 assistant_id = "asst_ZB8ScuNwWCsMybVQ7Ao6zjhg"
-assistant_file_ids = "['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1hQ8fCDDDuQUPvkvqV4', 'file-iRsXYA4MDzxIgURI7dqYWueu', 'file-NFruvcolPoPvxASsD5wcgTlr', 'file-Z9aYtYYzB26Jzr3myoeznxa3', 'file-O4HyAHeBTbnYpmB2oSHxSx0n', 'file-SoGo3TxBFR25fX2yk6KwC9pr','file-p5RC82i0sY0XupTVFKqbObo1']"  # file that assistant is having
+# Define the assistant ID for lab activities or experiments
+lab_activity_assistant_id = "asst_UyQkSAAsiq08WT38AqW5EMze"
+lab_activity_assistant_file_id = "file-izCZojMrm7SKosUfG8vrmOW1"
+assistant_file_ids = "['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1hQ8fCDDDuQUPvkvqV4', 'file-iRsXYA4MDzxIgURI7dqYWueu', 'file-NFruvcolPoPvxASsD5wcgTlr', 'file-Z9aYtYYzB26Jzr3myoeznxa3', 'file-O4HyAHeBTbnYpmB2oSHxSx0n', 'file-SoGo3TxBFR25fX2yk6KwC9pr']"  # file that assistant is having
 
 
 thread_id = None  # Use None instead of an empty string
@@ -124,8 +127,13 @@ def get_assistant_response(question):
        # Retrieve existing thread
        curr_thread = client.beta.threads.retrieve(thread_id)
 
-   # Initialize instructions with a default value
-   instructions = "Answer to user question as concisely as possible."
+   #=========== Outside if else ============ 
+   # Determine if the question is about a lab activity or experiment
+   lab_activity_keywords = ['lab', 'activity', 'activities', 'experiment', 'laboratory', 'practical']
+   if any(keyword in question.lower() for keyword in lab_activity_keywords):
+       assistant_id = lab_activity_assistant_id
+   else:
+       assistant_id = assistant_id
 
    # Add a message to thread
    message = client.beta.threads.messages.create(
@@ -133,7 +141,9 @@ def get_assistant_response(question):
        role="user",
        content=question,  # user question
    )
-
+    
+   # Initialize instructions with a default value
+   instructions = "Answer to user question as concisely as possible."
    # Run thread
    run = client.beta.threads.runs.create(
        thread_id=curr_thread.id,
@@ -171,15 +181,12 @@ def get_assistant_response(question):
                    response += "<hr>" + "\n"
                elif msg.role == "assistant":
                    msg.role = "EON"
-               '''
-               Here add code for text message extraction ( {msg.content[0].text.value} ).
-               then extract keywords from whole text message.
-               send that keywords as input for extracting top 1 youtube video.
-               '''
+              
                if msg.role == "YOU":
                    response += f"{msg.role}: {msg.content[0].text.value} \n"
                elif msg.role == "EON":
                    response += f"{msg.role}: {msg.content[0].text.value} \n"
+               
                # Code to extract all file ids
                file_ids = msg.file_ids
                if file_ids:
