@@ -183,9 +183,9 @@ def get_assistant_response(question):
                     msg.role = "EON"
 
                 if msg.role == "YOU":
-                    response += f'<div style="color: red;">{msg.role}: {msg.content[0].text.value}</div>\n\n'
+                    response += f'<div style="color: Red;">{msg.role}: {msg.content[0].text.value} </div>\n\n'
                 elif msg.role == "EON":
-                    response += f"{msg.role}: {msg.content[0].text.value} \n"
+                    response += f'<div style="color: DarkSlateGray;">{msg.role}: {msg.content[0].text.value} </div>\n'
                 
                 # Code to extract all file ids
                 file_ids = msg.file_ids
@@ -217,7 +217,7 @@ def get_assistant_response(question):
                 print("final image url is :\n",image_url)
 
                 response += f'{msg.role}:\n<div style=""><img src="{image_url}" alt="Image file" style="max-width:40%; max-height:40%;"></div>\n'
-                response += f"{msg.role}: {msg.content[1].text.value} \n"
+                response += f'<div style="color: DimGray;">{msg.role}: {msg.content[1].text.value} </div>\n'
 
         return response
     else:
