@@ -1,5 +1,10 @@
 
-document.getElementById("myForm").addEventListener("submit", validateForm);
+document.addEventListener('DOMContentLoaded', function () {
+    var form = document.getElementById("myForm");
+    if (form) {
+        form.addEventListener("submit", validateForm);
+    }
+});
 
 function autoResize(textarea) {
     textarea.style.height = "auto"; // Reset height to auto

@@ -1,38 +1,26 @@
 <!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <html>
 <head>
     <!-- Add your head content here |linebreaksbr-->
     
 </head>
 <body>
-<div style="display: flex; justify-content: center; align-items: flex-start; height: 100vh; margin: 0 auto; min-width: 100%;">
-    <div style="min-width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 100vh; margin: 0 auto;">
-        <div id="response-view-container" class="container-scrollable" style="max-height: 80vh; overflow-y: auto; width:90%;padding: 12px;margin-top:50px; border: 1px solid #ccc; border-radius: 10px; background-color: #FDFEFE; font-size: 22px;">
-           <br>{{ response|linebreaksbr|safe }}<hr></br>
-        </div>
-        <div style="text-align: center; margin-top: 20px; width: 100%;">
-            <a href="{% url 'home' %}" class="btn btn-primary" style="font-size: 20px; padding: 10px 20px; text-align: center; text-decoration: none; border: none; border-radius: 5px; background-color: #007bff; color: white;">Ask Another Question </a>
+    
+    <div class="flex-container">
+        <div class="flex-column-container">
+            <div id="response-view-container" class="container-scrollable">
+                <br>{{ response|linebreaksbr|safe }}<hr></br>
+            </div>
+            <div class="center-button">
+                <a href="{% url 'home' %}" class="btn btn-primary primary-button">Ask Another Question </a>
+            </div>
         </div>
     </div>
-</div>
-
-
-<script>
-    // Function to scroll to the end of the content inside a div
-    function scrollToBottom() {
-        var container = document.getElementById("response-view-container");
-        container.scrollTop = container.scrollHeight;
-    }
-
-    // Add event listener for 'touchstart', if there's more functionality you need to add
-    // This example function doesn't do anything, it's for illustrative purposes
-    document.addEventListener('touchstart', function(evt) {
-        // ... any touchstart-specific code here ...
-    }, { passive: true });  // Mark the event listener as passive
-
-    // Call the scrollToBottom function when the window loads
-    window.onload = scrollToBottom;
-</script>
 
 </body>
 </html>
+
+{% endblock content %}

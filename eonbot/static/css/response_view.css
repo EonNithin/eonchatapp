@@ -1,0 +1,53 @@
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0 auto;
+    min-width: 100%;
+}
+
+.flex-column-container {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+#response-view-container {
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 90%;
+    padding: 12px;
+    margin-top: 50px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #FDFEFE;
+    /*font-size: 24px;*/
+    line-height: 1.6; /* Adjust as necessary */
+    font-size: 26px; /* or use vw for viewport width relative size */
+}
+
+#response-view-container p, #response-view-container ul {
+    font-size: 26px; /* or any other size */
+    /* other styles like margin, color, etc. */
+}
+
+.center-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.primary-button {
+    font-size: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+}

@@ -4,7 +4,6 @@ from django.http import HttpResponse
 from django.utils.safestring import mark_safe
 import eonchatapp
 from eonchatapp import settings
-import pandas as pd
 from django.templatetags.static import static
 import re
 import openai
@@ -12,7 +11,6 @@ from openai import OpenAI
 import time
 import markdown
 from django.conf import settings
-from googleapiclient.discovery import build
 
 
 # Retrieve the OpenAI API key from the environment variable
@@ -132,8 +130,11 @@ def get_assistant_response(question):
     lab_activity_keywords = ['lab', 'activity', 'activities', 'experiment', 'laboratory', 'practical']
     if any(keyword in question.lower() for keyword in lab_activity_keywords):
         assistant_id = lab_activity_assistant_id
+        print("assistant used to answer to this question is :",assistant_id)
+        
     else:
         assistant_id = assistant_id
+        print("assistant used to answer to this question is :",assistant_id)
 
     # Add a message to thread
     message = client.beta.threads.messages.create(
@@ -143,7 +144,8 @@ def get_assistant_response(question):
     )
 
     # Initialize instructions with a default value
-    instructions = "Answer to user question as concisely as possible."
+    instructions = """Mention that the responses generated are specific to Phoenixgreens School syllabus related data. 
+    Answer to user question as concisely as possible."""
     # Run thread
     run = client.beta.threads.runs.create(
         thread_id=curr_thread.id,
@@ -183,9 +185,9 @@ def get_assistant_response(question):
                     msg.role = "EON"
 
                 if msg.role == "YOU":
-                    response += f'<div style="color: Red;">{msg.role}: {msg.content[0].text.value} </div>\n\n'
+                    response += f'<div class="question-div" style="color: Red;"><strong>{msg.role}: {msg.content[0].text.value}</strong> </div>\n\n'
                 elif msg.role == "EON":
-                    response += f'<div style="color: DarkSlateGray;">{msg.role}: {msg.content[0].text.value} </div>\n'
+                    response += f'{msg.role}: {msg.content[0].text.value} \n'
                 
                 # Code to extract all file ids
                 file_ids = msg.file_ids
@@ -217,7 +219,7 @@ def get_assistant_response(question):
                 print("final image url is :\n",image_url)
 
                 response += f'{msg.role}:\n<div style=""><img src="{image_url}" alt="Image file" style="max-width:40%; max-height:40%;"></div>\n'
-                response += f'<div style="color: DimGray;">{msg.role}: {msg.content[1].text.value} </div>\n'
+                response += f'<div class="imageTextResponse-div" style="color:#797D7F;">{msg.role}: {msg.content[1].text.value} </div>\n'
 
         return response
     else:
@@ -235,12 +237,13 @@ def response_view(request):
     # Convert Markdown to HTML
     html_response = markdown.markdown(response)
 
-    # Replace YouTube links with embedded video tags
-    youtube_link_pattern = r'<a href="https://www.youtube.com/embed/([^"]+)">([^<]+)</a>|https://www.youtube.com/embed/([^"\s]+)'
-    embed_code = '\n<div style="margin-top: 20px; margin-bottom: 20px;"><iframe width="720" height="420" src="https://www.youtube.com/embed/{}" frameborder="0" allowfullscreen></iframe></div>'
+    # Updated YouTube link pattern to exclude trailing characters like ')'
+    youtube_link_pattern = r'[.,()]*<a href="https://www.youtube.com/embed/([^"]+?)">([^<]+)</a>[.,()]*|https://www.youtube.com/embed/([^"\s]+?)\b'
 
-    def replace_youtube_links(match):
-    # Check if the first or second capturing group is not None
+    embed_code = '\n<div style="margin-top: 20px; margin-bottom: 20px;"><iframe width="720" height="420" src="https://www.youtube.com/embed/{}" frameborder="0" allowfullscreen></iframe></div>\n'
+
+    def replace_youtube_links(match):   
+        # Check if the first or second capturing group is not None
         if match.group(1) is not None:
             video_id = match.group(1)
         else:
@@ -248,7 +251,10 @@ def response_view(request):
 
         return embed_code.format(video_id)
 
-    html_response = re.sub(youtube_link_pattern, replace_youtube_links, html_response)
+    # Check if the YouTube link pattern is found in the HTML response
+    if re.search(youtube_link_pattern, html_response):
+        html_response = re.sub(youtube_link_pattern, replace_youtube_links, html_response)
+    
 
     # Mark the HTML content as safe
     safe_html_response = mark_safe(html_response)
