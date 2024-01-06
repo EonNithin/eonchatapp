@@ -11,7 +11,7 @@ from openai import OpenAI
 import time
 import markdown
 from django.conf import settings
-
+import base64
 
 # Retrieve the OpenAI API key from the environment variable
 openai_api_key = os.environ.get("OPENAI_API_KEY")
@@ -38,35 +38,13 @@ lab_activity_assistant_id = "asst_UyQkSAAsiq08WT38AqW5EMze"
 lab_activity_assistant_file_id = "file-izCZojMrm7SKosUfG8vrmOW1"
 assistant_file_ids = "['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1hQ8fCDDDuQUPvkvqV4', 'file-iRsXYA4MDzxIgURI7dqYWueu', 'file-NFruvcolPoPvxASsD5wcgTlr', 'file-Z9aYtYYzB26Jzr3myoeznxa3', 'file-O4HyAHeBTbnYpmB2oSHxSx0n', 'file-SoGo3TxBFR25fX2yk6KwC9pr']"  # file that assistant is having
 
-
 thread_id = None  # Use None instead of an empty string
 
 
-def get_imageFileContent(image_file_id):
-
-    image_file = openai.files.content(image_file_id)
-
-    # Generate a unique filename for the image
-    image_filename = f"{image_file_id}.png"
-
-        
-    # Build the path to the 'images' subdirectory
-    # MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
-    images_directory = os.path.join(eonchatapp.settings.MEDIA_ROOT,"images")
-    print("Images_diretory:",images_directory)
-
-    # Create the 'images' subdirectory if it doesn't exist
-    os.makedirs(images_directory, exist_ok=True)
-
-    # Build the full path to the file within the 'images' subdirectory
-    image_file_path = os.path.join(images_directory, image_filename)
-    print("image file path:",image_file_path)
-
-    # Write the image content to the file
-    with open(image_file_path, "wb") as f:
-        f.write(image_file.content)
-
-    return image_filename 
+# Function to encode image data to Base64
+def encode_image_data_to_base64(image_data_bytes):
+    encoded_image = base64.b64encode(image_data_bytes).decode("utf-8")
+    return f"data:image/png;base64,{encoded_image}"
 
 
 def get_file_content(file_ids):
@@ -191,17 +169,20 @@ def get_assistant_response(question):
                 
                 # Code to extract all file ids
                 file_ids = msg.file_ids
-                if file_ids:
-                    print("Iam inside if type == text and trying to retrieve file ids :\n")
-                    print("file_ids are :\n",file_ids)
-                    pdf_filenames = get_file_content(file_ids)
-                    
-                    for pdf_filename in pdf_filenames:
-                        # Construct the image URL using MEDIA_URL and the image filename
-                        pdf_file_url = f"{settings.MEDIA_URL}/pdf files/{pdf_filename}"
-                        print("final pdf path url is :\n",pdf_file_url)
-                        response += f'<div>{msg.role}:\n<a href="{pdf_file_url}" download > Click Here To Download PDF File:{pdf_filename} </a></div>\n'
-                    
+                try:
+                    if file_ids:
+                        print("Iam inside if type == text and trying to retrieve file ids :\n")
+                        print("file_ids are :\n",file_ids)
+                        pdf_filenames = get_file_content(file_ids)
+                        
+                        for pdf_filename in pdf_filenames:
+                            # Construct the image URL using MEDIA_URL and the image filename
+                            pdf_file_url = f"{settings.MEDIA_URL}/pdf files/{pdf_filename}"
+                            print("final pdf path url is :\n",pdf_file_url)
+                            response += f'<div>{msg.role}:\n<a href="{pdf_file_url}" download > Click Here To Download PDF File:{pdf_filename} </a></div>\n'
+                except Exception as e:
+                       print(f"An error occurred: {e}")
+                       
             elif msg.content[0].type == "image_file":
                 # Handle images
                 print("hi, Iam inside elif msg.content[0].type == image_file")
@@ -211,17 +192,23 @@ def get_assistant_response(question):
                 elif msg.role == "assistant":
                     msg.role = "EON"
 
-                image_file_id = msg.content[0].image_file.file_id
-                
-                image_filename = get_imageFileContent(image_file_id)
-                
-                # Construct the image URL using MEDIA_URL and the image filename
-                image_url = f"{settings.MEDIA_URL}/images/{image_filename}"
-                print("final image url is :\n",image_url)
+                try: 
+                    image_file_id = msg.content[0].image_file.file_id
 
-                response += f'{msg.role}:\n<div style=""><img src="{image_url}" alt="Image file" style="max-width:40%; max-height:40%;"></div>\n'
+                    # Fetching the image data
+                    image_data = client.files.content(image_file_id)
+                    image_data_bytes = image_data.read()
 
-                response += f'<div class="imageTextResponse-div" style="color:#797D7F;">{msg.role}: {msg.content[1].text.value} </div>\n'
+                    # Encoding the image data to Base64
+                    base64_encoded_image = encode_image_data_to_base64(image_data_bytes)
+
+                    # Constructing the HTML content with the Base64 encoded image
+                    #response_content = f'<div style=""><img src="{base64_encoded_image}" alt="Image file" style="max-width:40%; max-height:40%;"></div>'
+                    
+                    response += f'<div style=""><img src="{base64_encoded_image}" alt="Image file" style="max-width:40%; max-height:40%;"></div>'
+                    response += f'<div class="imageTextResponse-div" style="color:#797D7F;">{msg.role}: {msg.content[1].text.value} </div>\n'
+                except Exception as e:
+                    print(f"An error occurred: {e}")
 
         return response
     else:
