@@ -21,9 +21,7 @@
 
 /* Add custom CSS to position the dropdown to the right */
 #dropdown {
-    /* position: absolute;
-    right: 0;
-    */
+   
     float:right;
 }
 

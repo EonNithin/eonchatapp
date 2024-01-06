@@ -212,6 +212,7 @@ def get_assistant_response(question):
                     msg.role = "EON"
 
                 image_file_id = msg.content[0].image_file.file_id
+                
                 image_filename = get_imageFileContent(image_file_id)
                 
                 # Construct the image URL using MEDIA_URL and the image filename
@@ -219,6 +220,7 @@ def get_assistant_response(question):
                 print("final image url is :\n",image_url)
 
                 response += f'{msg.role}:\n<div style=""><img src="{image_url}" alt="Image file" style="max-width:40%; max-height:40%;"></div>\n'
+
                 response += f'<div class="imageTextResponse-div" style="color:#797D7F;">{msg.role}: {msg.content[1].text.value} </div>\n'
 
         return response
