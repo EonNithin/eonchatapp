@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <!-- Add your head content here |linebreaksbr, image/png;base64, [Base64_Encoded_String], -->
+    
+</head>
+<body>
+    
+    <div class="flex-container">
+        <div class="flex-column-container">
+            <div id="response-view-container" class="container-scrollable">
+                <br>{{ response|linebreaksbr|safe }}<hr></br>
+            </div>
+            <div class="buttons-div">
+                <div class="center-button">
+                    <a href="{% url 'home' %}" class="btn btn-primary primary-button">Ask Another Question </a>
+                </div>
+                <div class="center-button">
+                    <a href="data:html;charset=utf-8,{{ response|urlencode|linebreaksbr|safe }}" class="btn btn-primary primary-button" download="response.html">Download Response</a>
+                </div>                
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+{% endblock content %}

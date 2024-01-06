@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="home-page" style="display: flex; ">
+
+    <div class="left-div" >
+        {% include "images_left_div.html" %}
+    </div>
+    <div class="right-div" >
+        <div class="right-div-card">
+            {% include "cardview.html" %}
+        </div></br>
+        <div class="">
+
+        </div>
+        <div class="right-div-bottom">
+            <div class="">
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+

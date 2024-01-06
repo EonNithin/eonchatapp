@@ -1,0 +1,22 @@
+/* Additional CSS for Mixed Blue and Ash Colored Striped Progress Bar */
+.progress-bar-container {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.progress-bar {
+  position: relative;
+  height: 20px; /* Adjust this value to set the desired height */
+  border-radius: 8px;
+}
+
+.progress {
+  height: 100%; /* Ensure the progress bar fills its container */
+}
+
+.progress-bar-striped .progress-bar-animated {
+  font-size: 16px; /* Adjust this value to set the desired font size */
+  font-family: "Arial", sans-serif; /* Use your preferred font family */
+  font-weight: bold;
+  font-style: italic;
+}

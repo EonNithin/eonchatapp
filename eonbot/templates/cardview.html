@@ -1,0 +1,19 @@
+{% load static %}
+<div class="card" id="card" >
+    <div class="card-header" style="display: flex; align-items: center; background-color: #ffffff;">
+        <img class="card-header-img" src="{% static 'images/eonbotlogo1.png' %}" alt="eonbotlogo" >
+        <div class="card-header-msg">
+        <p class="card-header-p1" >EON Assistant</p>
+        <p class="card-header-p2" >Hi there! How can I help you?</p>
+        </div>
+    </div>
+        <div class="card-body" id="cardBody">
+          <div class="scrollable-content">
+            
+          </div>
+        </div>
+
+    <div class="form-div">
+        {% include "form.html" %}
+    </div>
+</div>

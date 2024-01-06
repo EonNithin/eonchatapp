@@ -1,0 +1,44 @@
+
+#myForm{
+    max-width:980px;
+    display:flex;
+    flex-direction:column;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-item {
+    flex: 1;
+    margin: 10px;
+}
+
+.form-txt-btn{
+    padding:10px;
+}
+
+.selectTopic-div{
+    padding:15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.text-area{
+    max-height:100px;
+}
+
+.btn {
+    margin:5px;
+    float:right;
+}
+
+/* CSS to hide the dropdowns when the toggle switch is not checked */
+/* Initially hide the dropdowns 
+.Classdropdown-container, .Subjectdropdown-container {
+    display: block;
+  }
+*/
