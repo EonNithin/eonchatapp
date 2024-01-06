@@ -1,0 +1,75 @@
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 90vh;
+    margin: 0 auto;
+    min-width: 100%;
+}
+
+.flex-column-container {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 90vh;
+    margin: 0 auto;
+}
+
+#response-view-container {
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 90%;
+    padding: 12px;
+    margin-top: 50px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #FDFEFE;
+    /*font-size: 24px;*/
+    line-height: 1; /* Adjust as necessary */
+    font-size: 24px; /* or use vw for viewport width relative size */
+    font-family: cursive;
+}
+
+#response-view-container p, #response-view-container ul {
+    font-size: 24px; /* or any other size */
+    font-family: cursive;
+    /* other styles like margin, color, etc. */
+}
+
+.buttons-div {
+    display: flex;
+    justify-content: space-between; /* Aligns one button to the left and the other to the right */
+    align-items: center; /* Aligns buttons vertically in the center, if they have different heights */
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.center-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.primary-button {
+    font-size: 20px;
+    font-family: cursive;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-download-response{
+    font-size: 20px;
+    font-family: cursive;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+}

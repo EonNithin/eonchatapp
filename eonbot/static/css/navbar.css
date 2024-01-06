@@ -1,9 +1,12 @@
-
-.navbar {
-  background-color: white; /* Set the background to transparent */
-  border: none; /* Remove any border */
-  box-shadow: none; /* Remove any box shadow */
+.sticky-navbar, .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white; /* Set the background to transparent */
+    border: none; /* Remove any border */
+    box-shadow: none; /* Remove any box shadow */
 }
+
 
 #logo {
     display: flex;
@@ -18,9 +21,7 @@
 
 /* Add custom CSS to position the dropdown to the right */
 #dropdown {
-    /* position: absolute;
-    right: 0;
-    */
+   
     float:right;
 }
 

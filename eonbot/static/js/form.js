@@ -1,33 +1,10 @@
 
-// Event listener for the "Enter" key press in the input field
-document.getElementById("myInput").addEventListener("keydown", function(event) {
-  if (event.keyCode == 13) {
-     if (!event.shiftKey) {
-        event.preventDefault();
-        validateForm(event); // Call the validateForm function with the event
+document.addEventListener('DOMContentLoaded', function () {
+    var form = document.getElementById("myForm");
+    if (form) {
+        form.addEventListener("submit", validateForm);
     }
-  }
-  else if(event.keyCode == 13 && event.shiftKey){
-     // Prevent the default behavior (newline)
-     event.preventDefault();
-
-     // Move cursor to the next line
-     var textarea = event.target;
-     var startPos = textarea.selectionStart;
-     var endPos = textarea.selectionEnd;
-     var value = textarea.value;
- 
-     // Insert a newline character at the cursor position
-     textarea.value = value.substring(0, startPos) + "\n" + value.substring(endPos, value.length);
- 
-     // Move the cursor to the next line
-     textarea.selectionStart = startPos + 1;
-     textarea.selectionEnd = startPos + 1;
-  }
 });
-
-document.getElementById("myForm").addEventListener("submit", validateForm);
-
 
 function autoResize(textarea) {
     textarea.style.height = "auto"; // Reset height to auto
@@ -35,13 +12,34 @@ function autoResize(textarea) {
 }
 
 function validateForm(event) {
+    var textarea = document.getElementById("myInputText");
     var checkbox = document.getElementById("myCheckbox");
-    event.preventDefault();
-    if (!checkbox.checked) {
-        alert("Please select the checkbox.");
-        return false; // Prevent form submission
-    }
+    
+    // Trim the value to handle cases where only spaces are entered
+    var textValue = textarea.value.trim();
 
+    if (textValue === "") {
+        // If the textarea is empty, prevent form submission and alert the user
+        alert("Please ask a question related to selected topic in the text field.");
+        event.preventDefault(); // Prevent form submission
+    }
+    else if (!checkbox.checked) {
+        alert("Please select the checkbox.");
+        event.preventDefault(); // Prevent form submission
+    }
+    else {
+        // Show the progress bars
+        var progressBars = document.querySelectorAll(".progress-bar");
+        progressBars.forEach(function (progressBar) {
+            progressBar.style.display = "block";
+        });
+        // Disable the submit button
+        var submitButton = document.getElementById("btn btn-primary");
+        submitButton.disabled = true;
+    }
+}
+
+function submitForm(){
     // Show the progress bars
     var progressBars = document.querySelectorAll(".progress-bar");
     progressBars.forEach(function (progressBar) {
@@ -49,11 +47,15 @@ function validateForm(event) {
     });
 
     // Disable the submit button
-    var submitButton = document.querySelector(".btn-primary");
+    var submitButton = document.getElementById("btn btn-primary");
     submitButton.disabled = true;
 
-    // Allow the form submission after a short delay
-    setTimeout(function () {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Simulate a delay to show the progress bars
+    setTimeout(function(){
+        // Once the progress is shown, submit the form
         document.getElementById("myForm").submit();
     }, 500); // Adjust the delay as needed
 }

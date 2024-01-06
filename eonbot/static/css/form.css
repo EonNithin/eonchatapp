@@ -19,6 +19,14 @@
     padding:10px;
 }
 
+.selectTopic-div{
+    padding:15px;
+}
+
+.hidden {
+    display: none;
+}
+
 .text-area{
     max-height:100px;
 }
