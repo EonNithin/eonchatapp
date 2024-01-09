@@ -73,3 +73,27 @@
     background-color: #007bff;
     color: white;
 }
+
+#response-view-container, 
+#responsePagequestionForm,
+.responsePageprogress-bar-container {
+    width: 90%; /* Adjust this to match the width of the response view container */
+    margin: 0 auto; /* Centers the form in the parent */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Styles for the textarea */
+.text-area {
+    width: 100%; /* Make the textarea take up the full width of the form */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Styles for the progress bar */
+.responsePageprogress-bar-container {
+    width: 100%; /* This will make the progress bar container take up the full width of its parent (the form) */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.progress-bar {
+    width: 100%; /* Ensures the actual progress bar fills the entire width of its container */
+}

@@ -276,11 +276,13 @@ def get_assistant_response(question):
     
 
 def response_view(request):
+    
     response = request.session.get('response', '')  # Retrieve the response from the session
+    '''
     print('='*100)
     print("\nResponse:\n",response,"\n")
     print('='*100)
-
+    '''
     # Convert Markdown to HTML
     html_response = markdown.markdown(response)
 
@@ -312,9 +314,18 @@ def response_view(request):
 
 
 def home(request):
-  
+    if request.method == 'GET':
+        # Clearing all session data to simulate a restart
+        request.session.flush()
+        global thread_id_asst_jhg, thread_id_asst_Mze
+
+        # Reset thread IDs when loading the home page
+        if request.path == "/":  # '/' is your home page URL
+            thread_id_asst_jhg = None
+            thread_id_asst_Mze = None
+
     # Check for form submission
-    if request.method == "POST":
+    elif request.method == "POST":
         question = request.POST.get('question')
 
         # Get the value of the toggle switch
