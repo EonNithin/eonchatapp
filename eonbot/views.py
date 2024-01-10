@@ -189,8 +189,10 @@ def handle_thread(thread_id, assistant_id, question):
     else:
         return f"Assistant run failed with status: {run.status}. Please try after sometime."
 
+
 def process_messages(messages):
     response = ""
+    keywords_image = ["image","diagram","picture"]
     file_ids = []
     for msg in messages:
         
@@ -204,26 +206,29 @@ def process_messages(messages):
 
             if msg.role == "YOU":
                 response += f'<div class="question-div" style="color: Red;"><strong>{msg.role}: {msg.content[0].text.value}</strong> </div>\n\n'
+                curr_question = msg.content[0].text.value
             elif msg.role == "EON":
                 response += f'{msg.role}: {msg.content[0].text.value} \n'
             
             # Code to extract all file ids
+            
             file_ids = msg.file_ids
             try:
-                if file_ids:
+                if file_ids and "pdf" in curr_question.lower():
                     print("Iam inside if type == text and trying to retrieve file ids :\n")
                     print("file_ids are :\n",file_ids)
                     pdf_filenames = get_file_content(file_ids)
                     
                     for pdf_filename in pdf_filenames:
-                        # Construct the image URL using MEDIA_URL and the image filename
+                        # Construct the pdf URL using MEDIA_URL and the pdf filename
                         pdf_file_url = f"{settings.MEDIA_URL}/pdf files/{pdf_filename}"
                         print("final pdf path url is :\n",pdf_file_url)
                         response += f'<div>{msg.role}:\n<a href="{pdf_file_url}" download > Click Here To Download PDF File:{pdf_filename} </a></div>\n'
             except Exception as e:
                     print(f"An error occurred: {e}")
-                    
-        elif msg.content[0].type == "image_file":
+
+        # Check msg.content type and check if any of the words in the question are in keywords_image
+        elif msg.content[0].type == "image_file" and any(keyword in curr_question.lower() for keyword in keywords_image):
             # Handle images
             print("hi, Iam inside elif msg.content[0].type == image_file")
             if msg.role == "user":
@@ -304,6 +309,10 @@ def response_view(request):
     if re.search(youtube_link_pattern, html_response):
         html_response = re.sub(youtube_link_pattern, replace_youtube_links, html_response)
     
+    # Regular expression pattern to find sandbox links
+    sandbox_link_pattern = r'\(sandbox:/mnt/data/[^)]+\)' or r'download.+?\[.*?\]\(sandbox:/mnt/data/[^)]+\)'
+    if re.search(sandbox_link_pattern, html_response):
+        html_response = re.sub(sandbox_link_pattern," ", html_response)
 
     # Mark the HTML content as safe
     safe_html_response = mark_safe(html_response)
