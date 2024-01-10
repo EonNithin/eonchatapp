@@ -19,8 +19,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 progressBar.style.display = 'block';
             }
         });
+        // Get the textarea element
+        var textarea = document.getElementById('myInputText');
+
+        // Add an event listener to resize the textarea on input
+        textarea.addEventListener('input', function() {
+            autoResize(this); // 'this' refers to the textarea
+        });
     }
 });
+
+function autoResize(textarea) {
+    textarea.style.height = "auto"; // Reset height to auto
+    textarea.style.height = textarea.scrollHeight + "px"; // Set height based on scrollHeight
+}
 
 // Function to scroll to the end of the content inside a div
 function scrollToBottom() {
