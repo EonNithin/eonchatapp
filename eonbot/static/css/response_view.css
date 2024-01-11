@@ -29,12 +29,12 @@
     /*font-size: 24px;*/
     line-height: 1; /* Adjust as necessary */
     font-size: 24px; /* or use vw for viewport width relative size */
-    font-family: cursive;
+    font-family: serif;
 }
 
 #response-view-container p, #response-view-container ul {
     font-size: 24px; /* or any other size */
-    font-family: cursive;
+    font-family: serif;
     /* other styles like margin, color, etc. */
 }
 
@@ -52,7 +52,7 @@
 
 .primary-button {
     font-size: 20px;
-    font-family: cursive;
+    font-family: serif;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -64,7 +64,7 @@
 
 .btn-download-response{
     font-size: 20px;
-    font-family: cursive;
+    font-family: serif;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
