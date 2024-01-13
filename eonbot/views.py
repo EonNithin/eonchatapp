@@ -94,6 +94,7 @@ def clear_old_files():
             file_path = os.path.join(image_files_directory, filename)
             os.remove(file_path)
 
+
 def handle_thread(thread_id, assistant_id, question):
     thread_id = thread_id
     assistant_id = assistant_id
@@ -248,7 +249,6 @@ def process_messages(messages):
                 base64_encoded_image = encode_image_data_to_base64(image_data_bytes)
 
                 # Constructing the HTML content with the Base64 encoded image
-
                 response += f'<div style=""><img src="{base64_encoded_image}" alt="Image file" style="max-width:40%; max-height:40%;"></div>'
                 response += f'<div class="imageTextResponse-div" style="color:#797D7F;">{msg.role}: {msg.content[1].text.value} </div>\n'
             except Exception as e:
@@ -283,11 +283,7 @@ def get_assistant_response(question):
 def response_view(request):
     
     response = request.session.get('response', '')  # Retrieve the response from the session
-    '''
-    print('='*100)
-    print("\nResponse:\n",response,"\n")
-    print('='*100)
-    '''
+  
     # Convert Markdown to HTML
     html_response = markdown.markdown(response)
 
@@ -343,7 +339,6 @@ def home(request):
         toggle_switch = request.POST.get('toggle_switch_checked')
         if toggle_switch == 'on':
             response = get_assistant_response(question)
-
         else :
             response = get_assistant_response(question)
 

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var progressBar = document.querySelector('.progress-bar');
 
         form.addEventListener('submit', function(event) {
-            var question = document.getElementById('myInputText').value.trim();
+            var question = document.getElementById('mycont-InputText').value.trim();
 
             // Check if the question is empty
             if (!question) {
@@ -20,12 +20,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         // Get the textarea element
-        var textarea = document.getElementById('myInputText');
+        var textarea = document.getElementById('mycont-InputText');
 
         // Add an event listener to resize the textarea on input
+        if(textarea){
         textarea.addEventListener('input', function() {
             autoResize(this); // 'this' refers to the textarea
         });
+        }
     }
 });
 
