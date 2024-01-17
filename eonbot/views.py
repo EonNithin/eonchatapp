@@ -248,7 +248,9 @@ def get_assistant_response(question, request):
     # Retrieve thread IDs from the session
     thread_id_asst_jhg = request.session.get('thread_id_asst_jhg')
     thread_id_asst_Mze = request.session.get('thread_id_asst_jhg') 
-    print("thread_id_asst_jhg:",thread_id_asst_jhg, '\n', "thread_id_asst_Mze:", thread_id_asst_Mze)
+
+    print("thread_id_asst_jhg:",thread_id_asst_jhg,"\n")
+    print("thread_id_asst_Mze:", thread_id_asst_Mze)
 
     if any(keyword in question.lower() for keyword in lab_activity_keywords):
         assistant_id_to_use = lab_activity_assistant_id
