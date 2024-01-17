@@ -17,35 +17,23 @@ import base64
 # Retrieve the OpenAI API key from the environment variable
 openai_api_key = os.environ.get("OPENAI_API_KEY")
 
-
 # Check if the API key is available
 if not openai_api_key:
    raise ValueError("OpenAI API key is not set. Please set it in your environment variables.")
-
 
 # Initialize the OpenAI client with the API key
 # API key set inside basch file
 client = OpenAI()
 
-
-'''
-asst_ZB8ScuNwWCsMybVQ7Ao6zjhg === ['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1hQ8fCDDDuQUPvkvqV4', 'file-iRsXYA4MDzxIgURI7dqYWueu', 'file-NFruvcolPoPvxASsD5wcgTlr', 'file-Z9aYtYYzB26Jzr3myoeznxa3', 'file-O4HyAHeBTbnYpmB2oSHxSx0n', 'file-SoGo3TxBFR25fX2yk6KwC9pr']
-'''
-
-# Define the assistant ID for lab activities or experiments
+# Define the assistant IDs and file IDs
 assistant_id = "asst_ZB8ScuNwWCsMybVQ7Ao6zjhg"
-# file that above assistant is having
-assistant_file_ids = "['file-qdVl4pmqpcJXHpZjEGgyQ5zD', 'file-kpasq1hQ8fCDDDuQUPvkvqV4', 'file-iRsXYA4MDzxIgURI7dqYWueu', 'file-NFruvcolPoPvxASsD5wcgTlr', 'file-Z9aYtYYzB26Jzr3myoeznxa3', 'file-O4HyAHeBTbnYpmB2oSHxSx0n', 'file-SoGo3TxBFR25fX2yk6KwC9pr']"  
-
-# Define the assistant ID for lab activities or experiments
 lab_activity_assistant_id = "asst_UyQkSAAsiq08WT38AqW5EMze"
-lab_activity_assistant_file_id = "file-izCZojMrm7SKosUfG8vrmOW1"
 
-thread_id_asst_jhg = None  # Use None instead of an empty string
+# Use None instead of an empty string
+thread_id_asst_jhg = None  
 thread_id_asst_Mze = None
 
-lab_activity_keywords = ['lab', 'activity', 'activities', 'experiment', 'laboratory', 'practical']
-    
+lab_activity_keywords = ['lab', 'activity', 'reference', 'video', 'reference link', 'activities', 'experiment', 'laboratory', 'practical']
 
 # Function to encode image data to Base64
 def encode_image_data_to_base64(image_data_bytes):
@@ -174,11 +162,8 @@ def handle_thread(thread_id, assistant_id, question):
         run = client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
 
     if run.status == "completed":
-        messages = client.beta.threads.messages.list(thread_id=thread_id, order="asc")
         # Process and return messages
-        # ...
         # Update the global thread_id with the current thread ID
-        thread_id = thread_id
 
         messages = client.beta.threads.messages.list(
             thread_id=thread_id,
@@ -257,9 +242,14 @@ def process_messages(messages):
     return response
 
 
-def get_assistant_response(question):
-    global thread_id_asst_jhg, thread_id_asst_Mze, assistant_id, lab_activity_assistant_id
-    
+def get_assistant_response(question, request):
+    global assistant_id, lab_activity_assistant_id
+
+    # Retrieve thread IDs from the session
+    thread_id_asst_jhg = request.session.get('thread_id_asst_jhg')
+    thread_id_asst_Mze = request.session.get('thread_id_asst_jhg') 
+    print("thread_id_asst_jhg:",thread_id_asst_jhg, '\n', "thread_id_asst_Mze:", thread_id_asst_Mze)
+
     if any(keyword in question.lower() for keyword in lab_activity_keywords):
         assistant_id_to_use = lab_activity_assistant_id
         thread_id = thread_id_asst_Mze
@@ -271,14 +261,15 @@ def get_assistant_response(question):
         clear_old_files()
         thread = client.beta.threads.create()
         thread_id = thread.id
+
         # Save the new thread ID in session
         if any(keyword in question.lower() for keyword in lab_activity_keywords):
-            thread_id_asst_Mze = thread_id
+            request.session['thread_id_asst_Mze'] = thread_id
         else:
-            thread_id_asst_jhg = thread_id
+            request.session['thread_id_asst_jhg'] = thread_id
 
     return handle_thread(thread_id, assistant_id_to_use, question)
-    
+
 
 def response_view(request):
     
@@ -338,9 +329,9 @@ def home(request):
         
         toggle_switch = request.POST.get('toggle_switch_checked')
         if toggle_switch == 'on':
-            response = get_assistant_response(question)
+            response = get_assistant_response(question, request)
         else :
-            response = get_assistant_response(question)
+            response = get_assistant_response(question, request)
 
         #Store the response in the session
         request.session['response'] = response
