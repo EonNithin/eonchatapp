@@ -28,10 +28,12 @@ client = OpenAI()
 # Define the assistant IDs and file IDs
 assistant_id = "asst_ZB8ScuNwWCsMybVQ7Ao6zjhg"
 lab_activity_assistant_id = "asst_UyQkSAAsiq08WT38AqW5EMze"
+general_assistant_id = "asst_ww4lJCBRUSVB4ziCRhuYopGF"
 
 # Use None instead of an empty string
 thread_id_asst_jhg = None  
 thread_id_asst_Mze = None
+thread_id_asst_pGF = None
 
 lab_activity_keywords = ['lab', 'activity', 'reference', 'video', 'reference link', 'activities', 'experiment', 'laboratory', 'practical']
 
@@ -250,7 +252,7 @@ def get_assistant_response(question, request):
     thread_id_asst_Mze = request.session.get('thread_id_asst_jhg') 
 
     print("thread_id_asst_jhg:",thread_id_asst_jhg,"\n")
-    print("thread_id_asst_Mze:", thread_id_asst_Mze)
+    print("thread_id_asst_Mze:", thread_id_asst_Mze,"\n")
 
     if any(keyword in question.lower() for keyword in lab_activity_keywords):
         assistant_id_to_use = lab_activity_assistant_id
@@ -273,10 +275,76 @@ def get_assistant_response(question, request):
     return handle_thread(thread_id, assistant_id_to_use, question)
 
 
+def get_general_assistant_response(question, request):
+    global general_assistant_id
+
+    # Retrieve thread IDs from the session
+    thread_id_asst_pGF = request.session.get('thread_id_asst_pGF')
+    
+    print("thread_id_asst_pGF:",thread_id_asst_pGF,"\n")
+
+    if(question):
+        assistant_id_to_use = general_assistant_id
+        thread_id = thread_id_asst_pGF
+    else:
+        return "No question was provided. Please ask a question."
+    
+    if thread_id is None:
+        clear_old_files()
+        thread = client.beta.threads.create()
+        thread_id = thread.id
+
+    # Save the new thread ID in session
+    request.session['thread_id_asst_pGF'] = thread_id
+
+    thread_id = thread_id
+    assistant_id = assistant_id_to_use
+    message = client.beta.threads.messages.create(
+        thread_id=thread_id,
+        role="user",
+        content=question
+    )
+
+    instructions = """
+    You are a helpful assistant, Answer to user questions as concisely and relevantly as possible.
+    Note: Always prioritize user privacy and safety in your interactions. Do not solicit or disclose personal information.
+    """
+    
+    run = client.beta.threads.runs.create(
+        thread_id=thread_id,
+        assistant_id=assistant_id,
+        instructions=instructions
+    )
+
+    start_time = time.time()
+    while run.status not in ["completed", "failed"]:
+        time.sleep(10)
+        elapsed_time = time.time() - start_time
+        print(f"Current run status: {run.status}, Elapsed time: {elapsed_time} seconds")
+        run = client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
+
+    if run.status == "completed":
+        # Process and return messages
+        # Update the global thread_id with the current thread ID
+
+        messages = client.beta.threads.messages.list(
+            thread_id=thread_id,
+            order="asc"
+        )
+        print("\n",messages,"\n")
+
+        return process_messages(messages)
+    else:
+        return f"Assistant run failed with status: {run.status}. Please try after sometime."
+
+
 def response_view(request):
     
     response = request.session.get('response', '')  # Retrieve the response from the session
-  
+    toggle_switch_value = request.session.get('toggle_switch')
+
+    print("\nToggle Switch State:\n", toggle_switch_value, "\n")
+
     # Convert Markdown to HTML
     html_response = markdown.markdown(response)
 
@@ -308,7 +376,7 @@ def response_view(request):
     print(safe_html_response)
 
     # Pass the safe HTML content to the template
-    return render(request, "response_view.html", {"response": safe_html_response })
+    return render(request, "response_view.html", {"response": safe_html_response , "toggle_switch_value": toggle_switch_value})
 
 
 def home(request):
@@ -324,19 +392,43 @@ def home(request):
 
     # Check for form submission
     elif request.method == "POST":
+        
+        flag_file_path = os.path.join(settings.BASE_DIR, 'server_restart_flag.txt')
+
+        # Check if the server restarted
+        server_restarted = False
+        if os.path.exists(flag_file_path):
+            with open(flag_file_path, 'r') as f:
+                server_restarted = f.read().strip() == '1'
+
+        if server_restarted:
+            # Clear session and reset threads
+            request.session.flush()
+            #global thread_id_asst_jhg, thread_id_asst_Mze
+            thread_id_asst_jhg = None
+            thread_id_asst_Mze = None
+
+            # Reset the flag
+            with open(flag_file_path, 'w') as f:
+                f.write('0')
+            
         question = request.POST.get('question')
 
         # Get the value of the toggle switch
         print("Form data:", request.POST)
-        
+
         toggle_switch = request.POST.get('toggle_switch_checked')
+        print("\nToggle_Switch value captured from home page:", toggle_switch,"\n")
+        
         if toggle_switch == 'on':
             response = get_assistant_response(question, request)
         else :
-            response = get_assistant_response(question, request)
+            response = get_general_assistant_response(question, request)
 
         #Store the response in the session
+        request.session['toggle_switch'] = toggle_switch
         request.session['response'] = response
+
         return redirect('response_view')
 
     return render(request, "home.html", {})

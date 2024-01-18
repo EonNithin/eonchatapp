@@ -17,6 +17,9 @@
             
             <form method="POST" id = "responsePagequestionForm" action="{% url 'home' %}">
                 {% csrf_token %}
+                <!-- Hidden field to carry the state of the toggle switch -->
+                <input type="hidden" name="toggle_switch_checked" value="{{ toggle_switch_value }}">
+
                 <!-- This is progress bar -->
                 <div class="responsePageprogress-bar-container">
                     <div class="progress-bar progress-bar-striped" style="display: none;">
