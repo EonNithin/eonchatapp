@@ -14,9 +14,29 @@
             <div id="response-view-container" class="container-scrollable">
                 <br>{{ response|linebreaksbr|safe }}<hr></br>
             </div>
+            
+            <form method="POST" id = "responsePagequestionForm" action="{% url 'home' %}">
+                {% csrf_token %}
+                <!-- This is progress bar -->
+                <div class="responsePageprogress-bar-container">
+                    <div class="progress-bar progress-bar-striped" style="display: none;">
+                        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%; font-style: normal;">Understanding your question...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-contPage-txt-btn">
+                    <div class="img-text-div" >
+                        <img class="bot-logo-img" src="{% static 'images/eonbotlogo1.png' %}" alt="eonbotlogo">
+                        <textarea id="mycont-InputText" class="form-control text-area" name="question" placeholder="Continue to ask your next question here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary primary-button">Submit</button>
+                </div>
+            </form>
+            
             <div class="buttons-div">
                 <div class="center-button">
-                    <a href="{% url 'home' %}" class="btn btn-primary primary-button">Ask Another Question </a>
+                    <a href="{% url 'home' %}" class="btn btn-primary primary-button">Home Page </a>
                 </div>
                 <div class="center-button">
                     <a href="data:html;charset=utf-8,{{ response|urlencode|linebreaksbr|safe }}" class="btn btn-primary primary-button" download="response.html">Download Response</a>

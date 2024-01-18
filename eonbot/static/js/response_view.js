@@ -1,7 +1,40 @@
-
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', function() {
+    // Existing functionality to scroll to the bottom
     scrollToBottom();
+    if(document.getElementById('responsePagequestionForm')){
+        // New functionality for handling form submission
+        var form = document.getElementById('responsePagequestionForm');
+        var progressBar = document.querySelector('.progress-bar');
+
+        form.addEventListener('submit', function(event) {
+            var question = document.getElementById('mycont-InputText').value.trim();
+
+            // Check if the question is empty
+            if (!question) {
+                // Show an alert if the question is empty
+                alert('Please enter a question.');
+                event.preventDefault(); // Prevent form submission
+            } else {
+                // Show the progress bar
+                progressBar.style.display = 'block';
+            }
+        });
+        // Get the textarea element
+        var textarea = document.getElementById('mycont-InputText');
+
+        // Add an event listener to resize the textarea on input
+        if(textarea){
+        textarea.addEventListener('input', function() {
+            autoResize(this); // 'this' refers to the textarea
+        });
+        }
+    }
 });
+
+function autoResize(textarea) {
+    textarea.style.height = "auto"; // Reset height to auto
+    textarea.style.height = textarea.scrollHeight + "px"; // Set height based on scrollHeight
+}
 
 // Function to scroll to the end of the content inside a div
 function scrollToBottom() {
@@ -11,9 +44,8 @@ function scrollToBottom() {
     }
 }
 
-// Add event listener for 'touchstart', if there's more functionality you need to add
-// This example function doesn't do anything, it's for illustrative purposes
+// Add any additional event listeners or functionality you need here
+// For example, for 'touchstart'
 document.addEventListener('touchstart', function(evt) {
     // ... any touchstart-specific code here ...
-}, { passive: true });  // Mark the event listener as passive
-
+}, { passive: true });

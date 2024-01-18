@@ -1,6 +1,7 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+/db.sqlite3/
 
 apikey.py
 __pycache__/*

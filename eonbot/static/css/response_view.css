@@ -29,12 +29,12 @@
     /*font-size: 24px;*/
     line-height: 1; /* Adjust as necessary */
     font-size: 24px; /* or use vw for viewport width relative size */
-    font-family: cursive;
+    font-family: serif;
 }
 
 #response-view-container p, #response-view-container ul {
     font-size: 24px; /* or any other size */
-    font-family: cursive;
+    font-family: serif;
     /* other styles like margin, color, etc. */
 }
 
@@ -42,17 +42,12 @@
     display: flex;
     justify-content: space-between; /* Aligns one button to the left and the other to the right */
     align-items: center; /* Aligns buttons vertically in the center, if they have different heights */
-    margin-top: 20px; /* Adjust as needed */
-}
-
-.center-button {
-    margin-top: 20px;
-    text-align: center;
+    /* margin-top: 0px;  Adjust as needed */
 }
 
 .primary-button {
     font-size: 20px;
-    font-family: cursive;
+    font-family: serif;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -64,7 +59,7 @@
 
 .btn-download-response{
     font-size: 20px;
-    font-family: cursive;
+    font-family: serif;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -72,4 +67,66 @@
     border-radius: 5px;
     background-color: #007bff;
     color: white;
+}
+
+#response-view-container, 
+#responsePagequestionForm,
+.responsePageprogress-bar-container {
+    width: 95%; /* Adjust this to match the width of the response view container */
+    margin: 0 auto; /* Centers the form in the parent */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Styles for the textarea */
+.text-area {
+    width: 100%; /* Make the textarea take up the full width of the form */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Styles for the progress bar */
+.responsePageprogress-bar-container {
+    width: 100%; /* This will make the progress bar container take up the full width of its parent (the form) */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.progress-bar {
+    width: 100%; /* Ensures the actual progress bar fills the entire width of its container */
+    
+}
+
+.container {
+    display: flex;
+    align-items: center; /* This will vertically align items in the center */
+}
+
+/* Optional: ensure the textarea and button fill their container */
+.form-contPage-txt-btn {
+    flex-grow: 1;
+}
+
+.img-text-div {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    margin-top: 10px;
+    gap: 1px; /* Optional: Adds space between the image and the textarea */
+}
+    
+.bot-logo-img {
+    /* Adjust the width as necessary, keeping the image responsive */
+    max-width: 60px; /* Example width, adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+#mycont-inputText {
+    flex-grow: 1; /* Allow the textarea to take up remaining space */
+    /*margin-left: 5px;  Optional: Adds space between the image and the textarea */
+}
+
+#mycont-InputText::placeholder {
+    font-size: 20px;  /* Change to the size you want */
+    color: #909090;  /* Optional: Change the color if you want */
 }
