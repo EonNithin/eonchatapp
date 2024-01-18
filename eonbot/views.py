@@ -251,8 +251,8 @@ def get_assistant_response(question, request):
     thread_id_asst_jhg = request.session.get('thread_id_asst_jhg')
     thread_id_asst_Mze = request.session.get('thread_id_asst_jhg') 
 
-    print("thread_id_asst_jhg:",thread_id_asst_jhg,"\n")
-    print("thread_id_asst_Mze:", thread_id_asst_Mze,"\n")
+    print("\nthread_id_asst_jhg:",thread_id_asst_jhg,"\n")
+    print("\nthread_id_asst_Mze:", thread_id_asst_Mze,"\n")
 
     if any(keyword in question.lower() for keyword in lab_activity_keywords):
         assistant_id_to_use = lab_activity_assistant_id
@@ -343,7 +343,7 @@ def response_view(request):
     response = request.session.get('response', '')  # Retrieve the response from the session
     toggle_switch_value = request.session.get('toggle_switch')
 
-    print("\nToggle Switch State:\n", toggle_switch_value, "\n")
+    print("\nToggle Switch State captured in response view page:", toggle_switch_value, "\n")
 
     # Convert Markdown to HTML
     html_response = markdown.markdown(response)
@@ -411,15 +411,17 @@ def home(request):
             # Reset the flag
             with open(flag_file_path, 'w') as f:
                 f.write('0')
-            
+        
+        # Retrieve question submitted from form
         question = request.POST.get('question')
 
         # Get the value of the toggle switch
-        print("Form data:", request.POST)
-
         toggle_switch = request.POST.get('toggle_switch_checked')
         print("\nToggle_Switch value captured from home page:", toggle_switch,"\n")
         
+        # check form data being submitted.
+        print("\nForm data:", request.POST, "\n")
+
         if toggle_switch == 'on':
             response = get_assistant_response(question, request)
         else :
