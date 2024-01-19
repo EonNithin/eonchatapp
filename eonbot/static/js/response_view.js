@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // New functionality for handling form submission
         var form = document.getElementById('responsePagequestionForm');
         var progressBar = document.querySelector('.progress-bar');
+        var submitButton = document.getElementById("response_view_submitbtn");
 
         form.addEventListener('submit', function(event) {
             var question = document.getElementById('mycont-InputText').value.trim();
@@ -17,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 // Show the progress bar
                 progressBar.style.display = 'block';
+                // Disable the submit button
+                submitButton.disabled = true;
             }
         });
         // Get the textarea element
