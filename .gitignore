@@ -1,11 +1,13 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-/db.sqlite3/
 
-apikey.py
+#Ignores the db.sqlite3 file in the root of your project.
+db.sqlite3 
+.env
+
 __pycache__/*
 eonbot/__pycache__/*
 eonchatapp/__pycache__/*
 eonbot/migrations/__pycache__/*
-.env
+
