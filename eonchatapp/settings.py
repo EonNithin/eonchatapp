@@ -17,7 +17,7 @@ with open(os.path.join(BASE_DIR,"secret_key.txt")) as f:
 # fetch OpenAI secret-key from environment path variables
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # for production env 
 CSRF_TRUSTED_ORIGINS = ['https://vm3.learneon.live']
