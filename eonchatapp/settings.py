@@ -16,13 +16,13 @@ SECRET_KEY = 'django-insecure-(x1euq)lbbm&j**qsx=l7(ex*)e$62e8vo6lx)_qrbdkg=30fy
 
 #OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 
-
-#print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True 
 
-ALLOWED_HOSTS = ["127.0.0.1", "192.168.0.128", "192.168.110.175", "0.0.0.0"]
+# for production env 
+#CSRF_TRUSTED_ORIGINS = ['https://vm3.learneon.live']
+
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.0.29", "192.168.0.30", "vm3.learneon.live"]
 
 # Application definition
 
@@ -116,11 +116,10 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'eonbot/static'),
-    #os.path.join(BASE_DIR, 'media'),
+    os.path.join(BASE_DIR, 'staticfiles'),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'eonbot/static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 

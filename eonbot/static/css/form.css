@@ -19,6 +19,14 @@
     padding:10px;
 }
 
+.selectTopic-div{
+    padding:15px;
+}
+
+.hidden {
+    display: none;
+}
+
 .text-area{
     max-height:100px;
 }
@@ -28,9 +36,3 @@
     float:right;
 }
 
-/* CSS to hide the dropdowns when the toggle switch is not checked */
-/* Initially hide the dropdowns 
-.Classdropdown-container, .Subjectdropdown-container {
-    display: block;
-  }
-*/
