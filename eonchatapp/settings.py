@@ -10,19 +10,28 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(x1euq)lbbm&j**qsx=l7(ex*)e$62e8vo6lx)_qrbdkg=30fy'
+with open(os.path.join(BASE_DIR,"secret_key.txt")) as f:
+    SECRET_KEY = f.read().strip()
+
 
 # fetch OpenAI secret-key from environment path variables
 
-#OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+DEBUG = True
 
+CSRF_TRUSTED_ORIGINS = ['https://vm3.learneon.live']
+
+'''
+DUBUG = False
 # for production env 
-#CSRF_TRUSTED_ORIGINS = ['https://vm3.learneon.live']
+CSRF_TRUSTED_ORIGINS = ['https://vm3.learneon.live']
+#HTTPS settings
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+'''
 
-ALLOWED_HOSTS = ["127.0.0.1", "192.168.0.29", "192.168.0.30", "vm3.learneon.live"]
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.0.128", "192.168.0.29", "192.168.0.30", "vm3.learneon.live"]
 
 # Application definition
 
