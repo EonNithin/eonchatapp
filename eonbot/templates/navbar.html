@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-navbar">
   <div class="container-fluid">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -41,24 +41,26 @@
 
     <!-- Organization Image (Center) -->
 
-        <a class="navbar-brand" id="logo" href="#">
-          <img src="{% static 'images/logo.png' %}" alt="Organization Logo" style="max-width: 100%; max-height: 50px; object-fit: contain;">
-        </a>
+    <div class="mx-auto text-center container-fluid d-flex justify-content-center align-items-center">
+      <a class="navbar-brand" id="logo" href="#">
+        <img src="{% static 'images/logo.png' %}" alt="Organization Logo" style="max-width: 100%; max-height: 50px; object-fit: contain;">
+      </a>
+    </div>
 
-      <!-- Dropdown Menu (right) -->
-        <ul class="navbar-nav ms-auto" id="dropdown">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="dropdown-anchor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Profile
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
+    <!-- Dropdown Menu (right) -->
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="dropdown">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="dropdown-anchor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Profile
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
         </ul>
+      </li>
+    </ul>
 
   </div>
 </nav>
