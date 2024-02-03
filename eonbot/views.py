@@ -209,7 +209,7 @@ def process_messages(messages):
                         # Construct the pdf URL using MEDIA_URL and the pdf filename
                         pdf_file_url = f"{settings.MEDIA_URL}/pdf files/{pdf_filename}"
                         print("final pdf path url is :\n",pdf_file_url)
-                        response += f'<div>{msg.role}:\n<a href="{pdf_file_url}" download > Click Here To Download PDF File:{pdf_filename} </a></div>\n'
+                        response += f'<div>{msg.role}:\n<a href="{pdf_file_url}" download >Click Here To Download PDF File</a></div>\n'
             except Exception as e:
                     print(f"An error occurred: {e}")
 
