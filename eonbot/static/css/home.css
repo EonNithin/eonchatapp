@@ -6,8 +6,6 @@
 
 .left-div {
   flex: 40%; /* Set the left-div to cover 40% of the available width */
-  /*background-color: #f2f2f2; /* Optional: Add a background color for better visualization */
-
 }
 
 .right-div {
