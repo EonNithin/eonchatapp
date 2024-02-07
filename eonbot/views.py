@@ -121,19 +121,19 @@ def handle_thread(thread_id, assistant_id, question):
 
         Resources at Your Disposal:
 
-        Gr 10 Month wise syllabus 2022- '23.pdf: Details the month-wise syllabus for all subjects for Grade 10. Refer to this for syllabus-related queries.
+        Gr 10 Month wise syllabus 2022- '23.pdf: Details the month-wise syllabus for all subjects for Phoenix Greens School Grade 10. Refer to this for syllabus-related queries.
 
-        Grade 10 Science Worksheet.docx: This document includes a collection of questions covering various topics in Grade 10 Science. These can be used for creating quizzes and assignments, aiding teachers in assessing student understanding and providing practice for students.
+        Grade 10 Science Worksheet.docx: This document includes a collection of questions covering various topics in Science Subject for Phoenix Greens School Grade 10. These can be used for creating quizzes and assignments, aiding teachers in assessing student understanding and providing practice for students.
 
-        Grade 10 Mathematics Worksheet.docx: Contains a diverse set of questions for Grade 10 Mathematics topics. This resource is ideal for generating quizzes and assignments, helping teachers to evaluate student progress and offer students valuable practice opportunities.
+        Grade 10 Mathematics Worksheet.docx: Contains a diverse set of questions for Phoenix Greens School Grade 10 Mathematics topics. This resource is ideal for generating quizzes and assignments, helping teachers to evaluate student progress and offer students valuable practice opportunities.
 
-        Grade 10 Social Science Worksheet.docx: Offers a range of questions on different topics in Grade 10 Social Science. These questions are useful for constructing quizzes and assignments, serving as a tool for teachers to gauge learning and for students to reinforce their knowledge.
+        Grade 10 Social Science Worksheet.docx: Offers a range of questions on different topics in Phoenix Greens School Grade 10 Social Science. These questions are useful for constructing quizzes and assignments, serving as a tool for teachers to gauge learning and for students to reinforce their knowledge.
 
-        10 MATHS TEXTBOOK.pdf: The textbook for Grade 10 Mathematics. Use for specific content-related queries in Mathematics.
+        10 MATHS TEXTBOOK.pdf: The Phoenix Greens School textbook for Grade 10 Mathematics. Use for specific content-related queries in Mathematics.
 
-        10 Science Textbook.pdf: The Science textbook for Grade 10. Refer to this for content-specific queries in Science.
+        10 Science Textbook.pdf: The Phoenix Greens School Science textbook for Grade 10. Refer to this for content-specific queries in Science.
 
-        10 Social Science Textbook.pdf: The Social Science textbook for Grade 10. Use this for content-specific queries in Social Science.
+        10 Social Science Textbook.pdf: The Phoenix Greens School Social Science textbook for Grade 10. Use this for content-specific queries in Social Science.
 
         Interacting with Users:
 
@@ -143,11 +143,11 @@ def handle_thread(thread_id, assistant_id, question):
 
         Updating on Availability: If the information requested is not available in the provided resources, inform the user accordingly and, if possible, suggest alternative ways to find the information.
 
-        Maintaining Engagement: Keep your responses engaging and encouraging, especially when interacting with younger students, to foster a positive learning environment.
+        Maintaining Engagement: Keep your responses engaging and encouraging, especially when interacting user, to foster a positive learning environment.
 
         Note: Always prioritize user privacy and safety in your interactions. Do not solicit or disclose personal information.
         """
-    
+
     run = client.beta.threads.runs.create(
         thread_id=thread_id,
         assistant_id=assistant_id,
@@ -224,8 +224,9 @@ def process_messages(messages):
                 msg.role = "EON"
 
             try: 
+                #content[1].text.annotations[0].file_path.file_id
                 image_file_id = msg.content[0].image_file.file_id
-
+                print("image file_id being retrieved is : \n", image_file_id)
                 # Fetching the image data
                 image_data = client.files.content(image_file_id)
                 image_data_bytes = image_data.read()
