@@ -59,7 +59,7 @@ def get_file_content(file_ids):
         # Create the 'pdf files' subdirectory if it doesn't exist
         os.makedirs(pdf_files_directory, exist_ok=True)
 
-        # Build the full path to the file within the 'images' subdirectory
+        # Build the full path to the file within the 'pdf' subdirectory
         pdf_file_path = os.path.join(pdf_files_directory, pdf_filename)
         print("PDF file path:",pdf_file_path)
 
@@ -72,18 +72,18 @@ def get_file_content(file_ids):
 
 def clear_old_files():
     pdf_files_directory = os.path.join(settings.MEDIA_ROOT, "pdf files")
-    image_files_directory = os.path.join(settings.MEDIA_ROOT, "images")
+    #image_files_directory = os.path.join(settings.MEDIA_ROOT, "images")
 
     for filename in os.listdir(pdf_files_directory):
         if filename.startswith("file-"):
             file_path = os.path.join(pdf_files_directory, filename)
             os.remove(file_path)
-
+    '''
     for filename in os.listdir(image_files_directory):
         if filename.startswith("file-"):
             file_path = os.path.join(image_files_directory, filename)
             os.remove(file_path)
-
+    '''
 
 def handle_thread(thread_id, assistant_id, question):
     thread_id = thread_id
@@ -214,7 +214,7 @@ def process_messages(messages):
                     print(f"An error occurred: {e}")
 
         # Check msg.content type and check if any of the words in the question are in keywords_image
-        elif msg.content[0].type == "image_file" and any(keyword in curr_question.lower() for keyword in keywords_image):
+        if msg.content[0].type == "image_file" and any(keyword in curr_question.lower() for keyword in keywords_image):
             # Handle images
             print("hi, Iam inside elif msg.content[0].type == image_file")
             if msg.role == "user":
