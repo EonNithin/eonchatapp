@@ -197,7 +197,6 @@ def process_messages(messages):
                 response += f'{msg.role}: {msg.content[0].text.value} \n'
             
             # Code to extract all file ids
-            
             file_ids = msg.file_ids
             try:
                 if file_ids and "pdf" in curr_question.lower():
@@ -216,7 +215,7 @@ def process_messages(messages):
         # Check msg.content type and check if any of the words in the question are in keywords_image
         if msg.content[0].type == "image_file" and any(keyword in curr_question.lower() for keyword in keywords_image):
             # Handle images
-            print("hi, Iam inside elif msg.content[0].type == image_file")
+            print("hi, Iam inside if msg.content[0].type == image_file")
             if msg.role == "user":
                 msg.role = "YOU"
                 response += "<hr>" + "\n"
