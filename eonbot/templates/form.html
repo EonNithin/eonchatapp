@@ -1,58 +1,24 @@
 
-<form method="post" action="{% url 'home' %}" id="myForm">
-    {% csrf_token %}
+<form method="post" action="{% url 'home' %}" id="myForm" enctype="multipart/form-data">
+  {% csrf_token %}
 
-    <!-- This is progress bar -->
-    <div class="progress-bar-container">
-      <div class="progress-bar progress-bar-striped" style="display: none;">
-        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%">Understanding your question...</div>
-        </div>
+  <!-- This is progress bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar progress-bar-striped" style="display: none;">
+      <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%; font-style: normal;">Understanding your question...</div>
       </div>
     </div>
+  </div>
+  
+  <!-- This is input text and submit button -->
+  <div class="form-txt-btn" >
+      <textarea id="myInputText" class="form-control text-area" name="question" placeholder="Ask your question here..." oninput="autoResize(this)" required ></textarea>
+      <button type="submit" class="btn btn-primary" id="btn btn-primary">Submit</button>
+  </div>
+  
+  <div style="padding-left:8px;">
+      {% include "tswitch_cbox.html" %}
+  </div>
 
-    <div class="flex-container dropdown-container">
-      <!-- Dropdown for selecting class -->
-      <div class="flex-item Classdropdown-container">
-        <div class="col-md-3">
-          <label for="validationCustom04" class="form-label">Select Class</label>
-          <select class="form-select Classdropdown" id="validationCustom04" name="selected_class">
-            <option selected disabled value="">Choose...</option>
-            <option>Class 10</option>
-            <option>Class 9</option>
-            <option>Class 8</option>
-          </select>
-          <div class="invalid-feedback">
-            Please select a valid Class.
-          </div>
-        </div>
-      </div>
-    
-      <!-- Dropdown for selecting subject -->
-      <div class="flex-item Subjectdropdown-container">
-        <div class="col-md-3">
-          <label for="validationCustom04" class="form-label">Select Subject</label>
-          <select class="form-select Subjectdropdown" id="validationCustom04" name="selected_subject">
-            <option selected disabled value="">Choose...</option>
-            <option>Mathematics</option>
-            <option>Science</option>
-            <option>Social Science</option>
-          </select>
-          <div class="invalid-feedback">
-            Please select a valid Subject.
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
-    <!-- This is input text and submit button -->
-    <div class="form-txt-btn" >
-        <textarea id="myInput" class="form-control text-area" name="question" placeholder="Ask your question here..." oninput="autoResize(this)" required></textarea>
-        <button type="submit" class="btn btn-primary" id="btn btn-primary">Submit</button>
-    </div>
-    <div style="padding-left:8px;">
-        {% include "tswitch_cbox.html" %}
-    </div>
 </form>
-

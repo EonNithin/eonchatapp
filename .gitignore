@@ -1,6 +1,8 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+/openaisecret_key.txt
+/googlesecret_key.txt
 
 apikey.py
 __pycache__/*

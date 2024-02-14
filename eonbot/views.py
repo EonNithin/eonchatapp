@@ -11,131 +11,127 @@ import pandas as pd
 from django.templatetags.static import static
 import html
 import re
+from googleapiclient.discovery import build
+from openai import OpenAI
 
-# excel file data importing and processing
-excel_file_path = os.path.join(eonchatapp.settings.STATIC_ROOT, 'CBSE Syllabus-Class10-Maths&Science.xlsx')
+# Define the path to the file containing the API key
+google_api_key_file = '/home/eon/VSCodeProjects/eonchatapp/googlesecret_key.txt'
 
-# Read the Excel file into a DataFrame
-df = pd.read_excel(excel_file_path)
-# Get the column names
-column_names = df.columns
-# Create a dictionary to store the data with labels
-data_dict = {}
-print(df.head())  # Print the first few rows to see the column names
+# Read the API key from the file
+with open(google_api_key_file, 'r') as f:
+    google_api_key = f.read().strip()
 
-# Loop through each row in the DataFrame and populate the data_dict dictionary
-for _, row in df.iterrows():
-    class_name = row['Class name']
-    subject_name = row['Subject name']
-    unit_name = row['Unit name']
-    chapter_name = row['Chapter name']
-    reference_video = row['Reference video']  # New column: "Reference Video"
-
-    # Add the class, subject, unit, and chapter to the data_dict dictionary
-    if class_name not in data_dict:
-        data_dict[class_name] = {}
-
-    if subject_name not in data_dict[class_name]:
-        data_dict[class_name][subject_name] = {}
-
-    if unit_name not in data_dict[class_name][subject_name]:
-        data_dict[class_name][subject_name][unit_name] = []
-
-    data_dict[class_name][subject_name][unit_name].append({
-        "chapter_name": chapter_name,
-        "reference_video": reference_video  # Include reference video in the hierarchy
-    })
+# Set up the Custom Search Engine ID as an environment variable
+search_engine_id = os.environ['SEARCH_ENGINE_ID'] = 'b608d92f156b5480e'
 
 
-# Print the hierarchical data_dict dictionary to see the format
-# Convert the data_dict dictionary to a JSON-formatted string
-data_dict_str = json.dumps(data_dict)
-#print(data_dict_str)
+openai_api_key_file = "/home/eon/VSCodeProjects/eonchatapp/openaisecret_key.txt"
+# Read the API key from the file
+with open(openai_api_key_file, 'r') as f:
+    openai_api_key = f.read().strip()
 
-syllabus_keywords = [
-    "Phoenix Greens School", "CBSE syllabus", "Class", "Grade", "Maths", "Mathematics", "Science",
-    "Physics", "Chemistry", "Biology", "History", "Economics", "Geography", "Politics", "English", "Social",
-    "Telugu", "Hindi", "EVS", "Computer Science","Chapter", "Chapters", "Unit", "Units","Subject", "Subjects",
-    "Topic", "Topics", "describe", "elaborate", "more", "above", "from", "OK", "Thanks", "cool",
-    "great", "nice", "no", "yes"
-    # Add more relevant keywords related to subjects, chapters, units, etc.
-]
-
-# Combine csv_syllabus_keywords and syllabus_keywords into a single list
-# syllabus_keywords = csv_syllabus_keywords.split(',') + basic_keywords
+client = OpenAI(api_key=openai_api_key)
 
 # Variable to store the conversation history
 conversation_history = []
 
-def is_syllabus_related_question(question):
-    question_lower = question.lower()
-    for keyword in syllabus_keywords:
-        if keyword.lower() in question_lower:
-            return True
-    return False
 
-def construct_prompt(data_dict, selected_class, selected_subject):
-    # Extract the rows for the selected class and subject
-    relevant_rows = data_dict.get(selected_class, {}).get(selected_subject, [])
-    print("\n",'='*100,"\n")
-    print("relevant_rows:\n",relevant_rows)
-    print("\n",'='*100,"\n")
-    
-    # Convert the relevant rows to JSON string
-    relevant_rows_json = json.dumps(relevant_rows)
+# Function to get images based on a query using Google Custom Search API
+def get_images(query):
+    num_results = 3
+    service = build("customsearch", "v1", developerKey=google_api_key)
+    res = service.cse().list(q=query, cx=search_engine_id, searchType='image', safe='medium', num=num_results).execute()
+    image_links = [item['link'] for item in res['items']]
+    return image_links
 
-    # Construct the prompt using the JSON string and the user's question
-    prompt = f"User selected class: {selected_class}\nUser selected subject: {selected_subject}\n"
-    prompt += f"Relevant Rows (units):\n{relevant_rows_json}\n"
-    print("\n",'='*100,"\n")
-    print("Relavant rows to json:\n",prompt)
-    print("\n",'='*100,"\n")
-    
-    return prompt
+# Function to define the tool for image search
+def define_tool():
+    tool = {
+        "type": "function",
+        "function": {
+            "name": "get_images",
+            "description": "Get images based on a query",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "The search query for images",
+                    }
+                },
+                "required": ["query"],
+            },
+        },
+    }
+    return tool
+
+# Function to run the conversation with image search functionality
+def run_conversation(tool, question):
+    try:
+        messages = [{"role": "user", "content": question}]
+        tools = [tool]
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo-0125",
+            messages=messages,
+            tools=tools,
+            tool_choice="auto",
+        )
+        response_message = response.choices[0].message
+        tool_calls = response_message.tool_calls
+
+        if tool_calls:
+            available_functions = {
+                "get_images": get_images,
+            }
+            messages.append(response_message)
+            for tool_call in tool_calls:
+                function_name = tool_call.function.name
+                function_to_call = available_functions[function_name]
+                function_args = json.loads(tool_call.function.arguments)
+                function_response = function_to_call(
+                    query=function_args.get("query"),
+                )
+                messages.append(
+                    {
+                        "tool_call_id": tool_call.id,
+                        "role": "tool",
+                        "name": function_name,
+                        "content": json.dumps(function_response),
+                    }
+                )
+
+            second_response = client.chat.completions.create(
+                model="gpt-3.5-turbo-0125",
+                messages=messages,
+            )
+            if(second_response):
+                response = second_response.choices[0].message.content
+                conversation_history.append(response)
+                conversation_length = len(conversation_history)
+            return response
+    except Exception as e:
+        print(f"Error: {e}")
 
 
-def get_custom_chatgpt_response(question, selected_class, selected_subject):
+def get_custom_chatgpt_response(question):
     global conversation_history
-    if is_syllabus_related_question(question):
-
-        # API implementation
-        # create openai instance
-        openai.Model.list()
-        # Set the API key -- Get OpenAI api key from environment variables path(eonchatapp-m3) done in settings.py file.
-        openai.api_key = os.getenv("OPENAI_API_KEY")
-        #print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
-
+    if(question):
+       
         # Get the previous question and response from the conversation history
         prev_question = conversation_history[-2] if len(conversation_history) >= 2 else ""
         prev_response = conversation_history[-1] if len(conversation_history) >= 1 else ""
         # print(prev_question+" : "+prev_response+"\n"+"***")
 
-        # Construct the prompt using previous question and response
-        prompt = f"Use this information to understand what was the previous question asked by user \
-                    {prev_question}\n{prev_response}"
-        #print(prompt)
         # Append the current question to the conversation history
         conversation_history.append(question)
 
-        '''
-        # send relevant info as prompt to openai completion
-        prompt_data = f"""Available CBSE syllabus for Phoenix Greens School is : {data_dict_str}.\
-        Always consider this syllabus data information to answer to user questions,\
-        Always provide reference video for asked syllabus related question,\"""
-        '''
-        # Construct the dynamic prompt based on selected class and subject
-        prompt_data= construct_prompt(data_dict, selected_class, selected_subject)
-        print("\n",'='*100,"\n")
-        print("Prompt data:\n",prompt_data)
-        print("\n",'='*100,"\n")
-        
         # Make a Completion
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+        response = client.chat.completions.create(
+            model="gpt-4-1106-preview",
             messages=[
-                {"role": "system", "content": prompt_data},
-                {"role": "assistant", "content": prompt},
-                {"role": "user", "content": question+", using markdown format"}
+                {"role": "system", "content": "Respond to user question as concisely as possible"},
+                {"role": "assistant", "content": "answer to user questions"},
+                {"role": "user", "content": question}
             ],
             temperature=0.5,
             max_tokens=1500,
@@ -143,10 +139,10 @@ def get_custom_chatgpt_response(question, selected_class, selected_subject):
             frequency_penalty=1,
             presence_penalty=0
         )
-        
+        print(response)
         # Check if response exists and has 'choices' list
-        if response and 'choices' in response and response['choices']:
-            response_content = response['choices'][0]['message']['content']
+        if response:
+            response_content = response.choices[0].message.content
             response = response_content.strip() if response_content else 'Sorry, I could not answer your question. Please try again later or ask a different question.'
         else:
             response = 'Sorry, Something went wrong cannot process your request at the moment. Please try again later.'
@@ -156,15 +152,6 @@ def get_custom_chatgpt_response(question, selected_class, selected_subject):
         conversation_length = len(conversation_history)
         # print(conversation_history)
         return response, conversation_length
-
-    elif not is_syllabus_related_question(question):
-        # Respond to unrelated questions
-        response = "Sorry, I can only answer questions related to the CBSE syllabus data for Phoenix Greens School. Please try asking a relevant question."
-        conversation_history.append(question)
-        conversation_history.append(response)
-        conversation_length = len(conversation_history)
-        return response, conversation_length
-
     else:
         quest=question
         res="Please ask a question to generate a response"
@@ -176,12 +163,7 @@ def get_custom_chatgpt_response(question, selected_class, selected_subject):
 def get_chatgpt_response(question):
     global conversation_history
     # API implementation
-    # create openai instance
-    openai.Model.list()
-    # Set the API key -- Get OpenAI api key from environment variables path(eonchatapp-m3) done in settings.py file.
-    #openai.api_key = OPENAI_API_KEY
-    # print(f"OPENAI_API_KEY: {OPENAI_API_KEY}")
-
+    
     # Get the previous question and response from the conversation history
     prev_question = conversation_history[-2] if len(conversation_history) >= 2 else ""
     prev_response = conversation_history[-1] if len(conversation_history) >= 1 else ""
@@ -192,8 +174,8 @@ def get_chatgpt_response(question):
     prompt_data = "Answer as consisely and relevantly as possible"
     # Append the current question to the conversation history
     conversation_history.append(question)
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+    response = client.Completion.create(
+        model="gpt-4-1106-preview",
         messages=[
             {"role": "system", "content": prompt_data},
             {"role": "assistant", "content": prompt},
@@ -267,29 +249,31 @@ def home(request):
     # Check for form submission
     if request.method == "POST":
         question = request.POST.get('question')
-        selected_class = request.POST.get('selected_class')  # Retrieve selected class
-        selected_subject = request.POST.get('selected_subject')  # Retrieve selected subject
-        print(selected_subject,selected_class)
-
         # Get the value of the toggle switch
         print("Form data:", request.POST)
 
         toggle_switch = request.POST.get('toggle_switch_checked')
         if toggle_switch == 'on':
-            response, conversation_length = get_custom_chatgpt_response(question,selected_class=selected_class,selected_subject=selected_subject)
+            response, conversation_length = get_custom_chatgpt_response(question)
+            image_response = run_conversation(define_tool(), question)
+
         else :
             response, conversation_length = get_chatgpt_response(question)
 
         #Store the response in the session
         request.session['response'] = response
-        #print(response)
+        print("\nResponse ","="*10,"\n",response)
+        print("\nImage response ","="*10,"\n",image_response)
+       
+        # Combine text and image responses
+        response = f"{response}\n\nImages:\n{image_response}"
+        print("\nResponse ","="*10,"\n",response)
 
-        # Convert the response to Markdown format
-        markdown_response = f"## Response\n\n{response}"
         # Convert Markdown to HTML
-        html_response = markdown.markdown(markdown_response)
-
-        return redirect('response_view')
+        html_response = markdown.markdown(response)
+        html_response = f"<html><body>{html_response}</body></html>"
+      
+        return render(request, "home.html", {'response': html_response, 'conversation_history': conversation_history})
 
     return render(request, "home.html", {})
 
