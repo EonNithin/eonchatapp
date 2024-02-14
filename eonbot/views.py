@@ -1,3 +1,4 @@
+from distutils.command import build
 import os
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -7,7 +8,7 @@ import eonchatapp
 from eonchatapp import settings
 from django.templatetags.static import static
 import re
-import openai
+import json
 from openai import OpenAI
 import time
 import markdown
@@ -42,7 +43,6 @@ def encode_image_data_to_base64(image_data_bytes):
     encoded_image = base64.b64encode(image_data_bytes).decode("utf-8")
     return f"data:image/png;base64,{encoded_image}"
 
-
 def get_file_content(file_ids):
     pdf_filenames = []
     for file_id in file_ids:
@@ -68,7 +68,6 @@ def get_file_content(file_ids):
 
     print("PDF file names are:",pdf_filenames)
     return pdf_filenames
-
 
 def clear_old_files():
     pdf_files_directory = os.path.join(settings.MEDIA_ROOT, "pdf files")
@@ -175,10 +174,8 @@ def handle_thread(thread_id, assistant_id, question):
     else:
         return f"Assistant run failed with status: {run.status}. Please try after sometime."
 
-
 def process_messages(messages):
     response = ""
-    keywords_image = ["image","diagram","picture"]
     file_ids = []
     for msg in messages:
         
@@ -213,7 +210,7 @@ def process_messages(messages):
                     print(f"An error occurred: {e}")
 
         # Check msg.content type and check if any of the words in the question are in keywords_image
-        if msg.content[0].type == "image_file" and any(keyword in curr_question.lower() for keyword in keywords_image):
+        if msg.content[0].type == "image_file" :
             # Handle images
             print("hi, Iam inside if msg.content[0].type == image_file")
             if msg.role == "user":
@@ -240,7 +237,6 @@ def process_messages(messages):
                 print(f"An error occurred: {e}")
 
     return response
-
 
 def get_assistant_response(question, request):
     global assistant_id, lab_activity_assistant_id
@@ -271,7 +267,6 @@ def get_assistant_response(question, request):
             request.session['thread_id_asst_jhg'] = thread_id
 
     return handle_thread(thread_id, assistant_id_to_use, question)
-
 
 def get_general_assistant_response(question, request):
     global general_assistant_id
@@ -335,7 +330,6 @@ def get_general_assistant_response(question, request):
     else:
         return f"Assistant run failed with status: {run.status}. Please try after sometime."
 
-
 def response_view(request):
     
     response = request.session.get('response', '')  # Retrieve the response from the session
@@ -344,7 +338,6 @@ def response_view(request):
     print("\nToggle Switch State captured in response view page:", toggle_switch_value, "\n")
 
     # Convert Markdown to HTML
-    html_response = markdown.markdown(response)
 
     # Updated YouTube link pattern to exclude trailing characters like ')'
     youtube_link_pattern = r'[.,()]*<a href="https://www.youtube.com/embed/([^"]+?)">([^<]+)</a>[.,()]*|https://www.youtube.com/embed/([^"\s]+?)\b'
@@ -375,7 +368,6 @@ def response_view(request):
 
     # Pass the safe HTML content to the template
     return render(request, "response_view.html", {"response": safe_html_response , "toggle_switch_value": toggle_switch_value})
-
 
 def home(request):
     if request.method == 'GET':
