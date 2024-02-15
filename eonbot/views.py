@@ -37,7 +37,6 @@ thread_id_asst_Mze = None
 thread_id_asst_pGF = None
 
 lab_activity_keywords = ['lab', 'activity', 'reference', 'video', 'reference link', 'activities', 'experiment', 'laboratory', 'practical']
-
 # Function to encode image data to Base64
 def encode_image_data_to_base64(image_data_bytes):
     encoded_image = base64.b64encode(image_data_bytes).decode("utf-8")
@@ -338,7 +337,7 @@ def response_view(request):
     print("\nToggle Switch State captured in response view page:", toggle_switch_value, "\n")
 
     # Convert Markdown to HTML
-
+    html_response = markdown.markdown(response)
     # Updated YouTube link pattern to exclude trailing characters like ')'
     youtube_link_pattern = r'[.,()]*<a href="https://www.youtube.com/embed/([^"]+?)">([^<]+)</a>[.,()]*|https://www.youtube.com/embed/([^"\s]+?)\b'
 
