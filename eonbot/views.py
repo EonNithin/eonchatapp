@@ -202,11 +202,12 @@ def get_chatgpt_response(question):
 
     return response, conversation_length
 
+
 def response_view(request):
     response = request.session.get('response', '')  # Retrieve the response from the session
-    print('='*100)
-    print("\nResponse:\n",response,"\n")
-    print('='*100)
+    print('='*60)
+    print("\nResponse in response_view:\n",response,"\n")
+    print('='*60)
 
     def convert_to_markdown(plain_text):
     # Function to replace YouTube links with embeds
@@ -223,9 +224,9 @@ def response_view(request):
         # Convert plain text to Markdown
         markdown_text = markdown.markdown(markdown_text)
 
-        print("\n",'='*100,"\n")
+        print("\n",'='*60,"\n")
         print("Raw Markdown:\n",markdown_text)
-        print("\n",'='*100,"\n")
+        print("\n",'='*60,"\n")
         markdown_text=fix_markdown_format(markdown_text)
         return markdown_text
     
@@ -233,9 +234,9 @@ def response_view(request):
         # Remove extra spaces around links
         markdown_text = re.sub(r'\]\s+\(', '](', markdown_text)
 
-        print("\n",'='*100,"\n")
+        print("\n",'='*60,"\n")
         print("Filtered Markdown:\n",markdown_text)
-        print("\n",'='*100,"\n")
+        print("\n",'='*60,"\n")
 
         return markdown_text
 
@@ -259,21 +260,19 @@ def home(request):
 
         else :
             response, conversation_length = get_chatgpt_response(question)
+        
+        # Combine text and image responses
+        response = f"{response}\n\nImages:\n{image_response}"
+        print("\nResponse before markdown conversion: ","="*10,"\n",response)
 
         #Store the response in the session
         request.session['response'] = response
-        print("\nResponse ","="*10,"\n",response)
-        print("\nImage response ","="*10,"\n",image_response)
-       
-        # Combine text and image responses
-        response = f"{response}\n\nImages:\n{image_response}"
-        print("\nResponse ","="*10,"\n",response)
 
         # Convert Markdown to HTML
         html_response = markdown.markdown(response)
         html_response = f"<html><body>{html_response}</body></html>"
-      
-        return render(request, "home.html", {'response': html_response, 'conversation_history': conversation_history})
+        print("\nHtml Response after markdown: ","="*10,"\n",response)
 
+        return render(request, "home.html", {'response': html_response, 'conversation_history': conversation_history})
     return render(request, "home.html", {})
 

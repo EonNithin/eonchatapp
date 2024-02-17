@@ -32,6 +32,10 @@ p, pre{
     font-size:16px;
 }
 
+p img{
+    width: 300px;
+    height: 200px
+}
 /* Card styles */
 
 .card {

@@ -1,18 +1,54 @@
 <!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <html>
 <head>
-    <!-- Add your head content here -->
+    <!-- Add your head content here |linebreaksbr, image/png;base64, [Base64_Encoded_String], -->
+    
 </head>
 <body>
-<div style="display: flex; justify-content: center; align-items: flex-start; height: 100vh; margin: 0 auto; min-width: 100%;">
-    <div style="min-width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 100vh; margin: 0 auto;">
-        <div class="container-scrollable" style="max-height: 70vh; overflow-y: auto; width:90%;padding: 12px;margin-top:50px; border: 1px solid #ccc; border-radius: 10px; background-color: #FDFEFE;">
-            {{ response|safe }}<br>
-        </div>
-        <div style="text-align: center; margin-top: 20px; width: 100%;">
-            <a href="{% url 'home' %}" class="btn btn-primary" style="font-size: 20px; padding: 10px 20px; text-align: center; text-decoration: none; border: none; border-radius: 5px; background-color: #007bff; color: white;">Ask Another Question</a>
+    
+    <div class="flex-container">
+        <div class="flex-column-container">
+            <div id="response-view-container" class="container-scrollable">
+                <br>{{ response|safe }}<hr></br>
+            </div>
+            
+            <form method="POST" id = "responsePagequestionForm" action="{% url 'home' %}">
+                {% csrf_token %}
+                <!-- Hidden field to carry the state of the toggle switch -->
+                <input type="hidden" name="toggle_switch_checked" value="{{ toggle_switch_value }}">
+
+                <!-- This is progress bar -->
+                <div class="responsePageprogress-bar-container">
+                    <div class="progress-bar progress-bar-striped" style="display: none;">
+                        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%; font-style: normal;">Understanding your question...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-contPage-txt-btn">
+                    <div class="img-text-div" >
+                        <img class="bot-logo-img" src="{% static 'images/eonbotlogo1.png' %}" alt="eonbotlogo">
+                        <textarea id="mycont-InputText" class="form-control text-area" name="question" placeholder="Continue to ask your next question here..." required></textarea>
+                    </div>
+                    <button type="submit" id="response_view_submitbtn" class="btn btn-primary primary-button">Submit</button>
+                </div>
+            </form>
+            
+            <div class="buttons-div">
+                <div class="center-button">
+                    <a href="{% url 'home' %}" class="btn btn-primary primary-button">Home Page </a>
+                </div>
+                <div class="center-button">
+                    <a href="data:html;charset=utf-8,{{ response|urlencode|linebreaksbr|safe }}" class="btn btn-primary primary-button" download="response.html">Download Response</a>
+                </div>                
+            </div>
         </div>
     </div>
-</div>
+
 </body>
 </html>
+
+{% endblock content %}
