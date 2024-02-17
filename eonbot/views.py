@@ -261,6 +261,7 @@ def home(request):
         else :
             response, conversation_length = get_chatgpt_response(question)
         
+        
         # Combine text and image responses
         response = f"{response}\n\nImages:\n{image_response}"
         print("\nResponse before markdown conversion: ","="*10,"\n",response)
