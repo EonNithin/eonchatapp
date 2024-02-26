@@ -1,4 +1,5 @@
 .sticky-navbar, .navbar {
+    width: 100%; /* Responsive width */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -7,12 +8,10 @@
     box-shadow: none; /* Remove any box shadow */
 }
 
-
 #logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right:750px;
 }
 
 #dropdown-anchor{
@@ -20,10 +19,7 @@
 }
 
 /* Add custom CSS to position the dropdown to the right */
-#dropdown {
-   
-    float:right;
-}
+
 
 /* Adjust the width and other styles of the dropdown menu */
 .dropdown-menu {

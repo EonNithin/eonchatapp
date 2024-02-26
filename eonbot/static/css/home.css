@@ -1,27 +1,17 @@
 /* Add the following styles to your CSS file or <style> tag in your <head> section */
 .home-page {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .left-div {
   flex: 40%; /* Set the left-div to cover 40% of the available width */
-  /*background-color: #f2f2f2; /* Optional: Add a background color for better visualization */
-
 }
 
 .right-div {
   flex: 60%; /* Set the right-div to cover 60% of the available width */
   display: flex;
-  align:center;
   flex-direction: column;
 }
 
-.right-div-card {
-
-  /* Add any other styles you need for the right-div-top */
-}
-.right-div-form {
-
-  /* Add any other styles you need for the right-div-top */
-}
 /* Add any additional styles as needed */

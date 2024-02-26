@@ -1,3 +1,4 @@
+from distutils.command import build
 import os
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -7,7 +8,7 @@ import eonchatapp
 from eonchatapp import settings
 from django.templatetags.static import static
 import re
-import openai
+import json
 from openai import OpenAI
 import time
 import markdown
@@ -36,12 +37,10 @@ thread_id_asst_Mze = None
 thread_id_asst_pGF = None
 
 lab_activity_keywords = ['lab', 'activity', 'reference', 'video', 'reference link', 'activities', 'experiment', 'laboratory', 'practical']
-
 # Function to encode image data to Base64
 def encode_image_data_to_base64(image_data_bytes):
     encoded_image = base64.b64encode(image_data_bytes).decode("utf-8")
     return f"data:image/png;base64,{encoded_image}"
-
 
 def get_file_content(file_ids):
     pdf_filenames = []
@@ -59,7 +58,7 @@ def get_file_content(file_ids):
         # Create the 'pdf files' subdirectory if it doesn't exist
         os.makedirs(pdf_files_directory, exist_ok=True)
 
-        # Build the full path to the file within the 'images' subdirectory
+        # Build the full path to the file within the 'pdf' subdirectory
         pdf_file_path = os.path.join(pdf_files_directory, pdf_filename)
         print("PDF file path:",pdf_file_path)
 
@@ -69,21 +68,20 @@ def get_file_content(file_ids):
     print("PDF file names are:",pdf_filenames)
     return pdf_filenames
 
-
 def clear_old_files():
     pdf_files_directory = os.path.join(settings.MEDIA_ROOT, "pdf files")
-    image_files_directory = os.path.join(settings.MEDIA_ROOT, "images")
+    #image_files_directory = os.path.join(settings.MEDIA_ROOT, "images")
 
     for filename in os.listdir(pdf_files_directory):
         if filename.startswith("file-"):
             file_path = os.path.join(pdf_files_directory, filename)
             os.remove(file_path)
-
+    '''
     for filename in os.listdir(image_files_directory):
         if filename.startswith("file-"):
             file_path = os.path.join(image_files_directory, filename)
             os.remove(file_path)
-
+    '''
 
 def handle_thread(thread_id, assistant_id, question):
     thread_id = thread_id
@@ -101,19 +99,17 @@ def handle_thread(thread_id, assistant_id, question):
         Streamlined User Query Response Protocol:
 
         Reference Link Provision:
+        When a lab activity inquiry is made, the assistant will check if the requested activity is present in the "Lab Activity.html" file. 
+        If requested activity found, it will provide the corresponding YouTube reference link, stating: "Here is an educational resource of Phoenix Greens School that may assist you with the lab activity."
+        If the requested activity is not found, the assistant will respond: "In the educational resource of Phoenix Greens School, there is no specific activity matching your query."
 
-        For every lab activity inquiry, promptly provide the YouTube reference link from the "Lab Activity.html" file without any additional prompts or information from the user.
         Lab Activity Guidance:
-
         Include a general explanation of the lab activity, focusing on standard procedures that are commonly associated with the type of activity mentioned (e.g., "Density of metal" might involve measuring mass and volume, calculating density).
-        Autonomous Resource Reference:
 
-        The assistant should autonomously refer to the uploaded "Lab Activity.html" file when providing reference links and should not request further information from the user for this purpose.
         Engage with Follow-Up:
-
         After supplying the reference link and a general explanation, encourage the user to explore the video for specific details and invite further queries related to lab activities or other topics.
-        Maintain User Privacy:
 
+        Maintain User Privacy:
         Continue to ensure the user's privacy and security by not requesting or disclosing personal information.
         """
     else:    
@@ -123,19 +119,19 @@ def handle_thread(thread_id, assistant_id, question):
 
         Resources at Your Disposal:
 
-        Gr 10 Month wise syllabus 2022- '23.pdf: Details the month-wise syllabus for all subjects for Grade 10. Refer to this for syllabus-related queries.
+        Gr 10 Month wise syllabus 2022- '23.pdf: Details the month-wise syllabus for all subjects for Phoenix Greens School Grade 10. Refer to this for syllabus-related queries.
 
-        Grade 10 Science Worksheet.docx: This document includes a collection of questions covering various topics in Grade 10 Science. These can be used for creating quizzes and assignments, aiding teachers in assessing student understanding and providing practice for students.
+        Grade 10 Science Worksheet.docx: This document includes a collection of questions covering various topics in Science Subject for Phoenix Greens School Grade 10. These can be used for creating quizzes and assignments, aiding teachers in assessing student understanding and providing practice for students.
 
-        Grade 10 Mathematics Worksheet.docx: Contains a diverse set of questions for Grade 10 Mathematics topics. This resource is ideal for generating quizzes and assignments, helping teachers to evaluate student progress and offer students valuable practice opportunities.
+        Grade 10 Mathematics Worksheet.docx: Contains a diverse set of questions for Phoenix Greens School Grade 10 Mathematics topics. This resource is ideal for generating quizzes and assignments, helping teachers to evaluate student progress and offer students valuable practice opportunities.
 
-        Grade 10 Social Science Worksheet.docx: Offers a range of questions on different topics in Grade 10 Social Science. These questions are useful for constructing quizzes and assignments, serving as a tool for teachers to gauge learning and for students to reinforce their knowledge.
+        Grade 10 Social Science Worksheet.docx: Offers a range of questions on different topics in Phoenix Greens School Grade 10 Social Science. These questions are useful for constructing quizzes and assignments, serving as a tool for teachers to gauge learning and for students to reinforce their knowledge.
 
-        10 MATHS TEXTBOOK.pdf: The textbook for Grade 10 Mathematics. Use for specific content-related queries in Mathematics.
+        10 MATHS TEXTBOOK.pdf: The Phoenix Greens School textbook for Grade 10 Mathematics. Use for specific content-related queries in Mathematics.
 
-        10 Science Textbook.pdf: The Science textbook for Grade 10. Refer to this for content-specific queries in Science.
+        10 Science Textbook.pdf: The Phoenix Greens School Science textbook for Grade 10. Refer to this for content-specific queries in Science.
 
-        10 Social Science Textbook.pdf: The Social Science textbook for Grade 10. Use this for content-specific queries in Social Science.
+        10 Social Science Textbook.pdf: The Phoenix Greens School Social Science textbook for Grade 10. Use this for content-specific queries in Social Science.
 
         Interacting with Users:
 
@@ -145,11 +141,11 @@ def handle_thread(thread_id, assistant_id, question):
 
         Updating on Availability: If the information requested is not available in the provided resources, inform the user accordingly and, if possible, suggest alternative ways to find the information.
 
-        Maintaining Engagement: Keep your responses engaging and encouraging, especially when interacting with younger students, to foster a positive learning environment.
+        Maintaining Engagement: Keep your responses engaging and encouraging, especially when interacting user, to foster a positive learning environment.
 
         Note: Always prioritize user privacy and safety in your interactions. Do not solicit or disclose personal information.
         """
-    
+
     run = client.beta.threads.runs.create(
         thread_id=thread_id,
         assistant_id=assistant_id,
@@ -177,10 +173,8 @@ def handle_thread(thread_id, assistant_id, question):
     else:
         return f"Assistant run failed with status: {run.status}. Please try after sometime."
 
-
 def process_messages(messages):
     response = ""
-    keywords_image = ["image","diagram","picture"]
     file_ids = []
     for msg in messages:
         
@@ -199,7 +193,6 @@ def process_messages(messages):
                 response += f'{msg.role}: {msg.content[0].text.value} \n'
             
             # Code to extract all file ids
-            
             file_ids = msg.file_ids
             try:
                 if file_ids and "pdf" in curr_question.lower():
@@ -211,14 +204,14 @@ def process_messages(messages):
                         # Construct the pdf URL using MEDIA_URL and the pdf filename
                         pdf_file_url = f"{settings.MEDIA_URL}/pdf files/{pdf_filename}"
                         print("final pdf path url is :\n",pdf_file_url)
-                        response += f'<div>{msg.role}:\n<a href="{pdf_file_url}" download > Click Here To Download PDF File:{pdf_filename} </a></div>\n'
+                        response += f'<div>{msg.role}:\n<a href="{pdf_file_url}" download >Click Here To Download PDF File</a></div>\n'
             except Exception as e:
                     print(f"An error occurred: {e}")
 
         # Check msg.content type and check if any of the words in the question are in keywords_image
-        elif msg.content[0].type == "image_file" and any(keyword in curr_question.lower() for keyword in keywords_image):
+        if msg.content[0].type == "image_file" :
             # Handle images
-            print("hi, Iam inside elif msg.content[0].type == image_file")
+            print("hi, Iam inside if msg.content[0].type == image_file")
             if msg.role == "user":
                 msg.role = "YOU"
                 response += "<hr>" + "\n"
@@ -226,8 +219,9 @@ def process_messages(messages):
                 msg.role = "EON"
 
             try: 
+                #content[1].text.annotations[0].file_path.file_id
                 image_file_id = msg.content[0].image_file.file_id
-
+                print("image file_id being retrieved is : \n", image_file_id)
                 # Fetching the image data
                 image_data = client.files.content(image_file_id)
                 image_data_bytes = image_data.read()
@@ -242,7 +236,6 @@ def process_messages(messages):
                 print(f"An error occurred: {e}")
 
     return response
-
 
 def get_assistant_response(question, request):
     global assistant_id, lab_activity_assistant_id
@@ -273,7 +266,6 @@ def get_assistant_response(question, request):
             request.session['thread_id_asst_jhg'] = thread_id
 
     return handle_thread(thread_id, assistant_id_to_use, question)
-
 
 def get_general_assistant_response(question, request):
     global general_assistant_id
@@ -337,7 +329,6 @@ def get_general_assistant_response(question, request):
     else:
         return f"Assistant run failed with status: {run.status}. Please try after sometime."
 
-
 def response_view(request):
     
     response = request.session.get('response', '')  # Retrieve the response from the session
@@ -347,7 +338,6 @@ def response_view(request):
 
     # Convert Markdown to HTML
     html_response = markdown.markdown(response)
-
     # Updated YouTube link pattern to exclude trailing characters like ')'
     youtube_link_pattern = r'[.,()]*<a href="https://www.youtube.com/embed/([^"]+?)">([^<]+)</a>[.,()]*|https://www.youtube.com/embed/([^"\s]+?)\b'
 
@@ -377,7 +367,6 @@ def response_view(request):
 
     # Pass the safe HTML content to the template
     return render(request, "response_view.html", {"response": safe_html_response , "toggle_switch_value": toggle_switch_value})
-
 
 def home(request):
     if request.method == 'GET':
