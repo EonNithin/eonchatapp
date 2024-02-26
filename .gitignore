@@ -5,6 +5,7 @@
 /openaisecret_key.txt
 #Ignores the db.sqlite3 file in the root of your project.
 db.sqlite3 
+venv
 .env
 
 __pycache__/*
